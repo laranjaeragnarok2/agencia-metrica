@@ -9,250 +9,265 @@
   <meta name="description" content="Transformamos investimento em marketing em faturamento real para o seu negócio." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 </head>
 
-<body>
-  <header class="header sticky glass">
-    <div class="container header-content">
-      <div class="logo">
-        <span class="logo-text">AGÊNCIA<span class="accent-text">MÉTRICA</span></span>
-      </div>
-      <nav class="nav-menu">
-        <a href="#sobre">A Agência</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#metodo">Método</a>
-        <a href="#resultados">Resultados</a>
+<body class="bg-dark text-light">
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full z-50 py-4 glass">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <a href="#" class="text-xl font-black tracking-tight">
+        AGÊNCIA<span class="text-accent">MÉTRICA</span>
+      </a>
+      <nav class="hidden md:flex gap-8">
+        <a href="#sobre" class="text-sm font-medium opacity-70 hover:opacity-100 hover:text-accent transition">A
+          Agência</a>
+        <a href="#servicos"
+          class="text-sm font-medium opacity-70 hover:opacity-100 hover:text-accent transition">Serviços</a>
+        <a href="#metodo"
+          class="text-sm font-medium opacity-70 hover:opacity-100 hover:text-accent transition">Método</a>
+        <a href="#resultados"
+          class="text-sm font-medium opacity-70 hover:opacity-100 hover:text-accent transition">Resultados</a>
       </nav>
-      <a href="https://wa.me/seunumeroaqui" class="btn btn-primary">Análise Gratuita</a>
+      <a href="https://wa.me/seunumeroaqui"
+        class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-xl font-semibold text-sm transition shadow-lg shadow-primary/30">
+        Análise Gratuita
+      </a>
     </div>
   </header>
 
   <main>
-    <!-- SECTION 1: HERO -->
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <span class="badge">Especialistas em Negócios Locais</span>
-          <h1>Tráfego pago que gera conversas, <span class="highlight">leads e vendas reais.</span></h1>
-          <p>Transformamos investimento em marketing em oportunidades reais de venda no WhatsApp para o seu negócio.</p>
-          <div class="hero-btns">
-            <a href="https://wa.me/seunumeroaqui" class="btn btn-primary btn-large">👉 Falar com a Agência Métrica no
-              WhatsApp</a>
-          </div>
+    <!-- Hero Section -->
+    <section class="min-h-screen pt-32 pb-20 px-6">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span
+            class="inline-block px-4 py-2 bg-accent/10 text-accent text-xs font-bold rounded-full border border-accent/20 mb-6">
+            Especialistas em Negócios Locais
+          </span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6">
+            Tráfego pago que gera conversas, <span class="gradient-text">leads e vendas reais.</span>
+          </h1>
+          <p class="text-lg text-light/60 mb-10 max-w-lg">
+            Transformamos investimento em marketing em oportunidades reais de venda no WhatsApp para o seu negócio.
+          </p>
+          <a href="https://wa.me/seunumeroaqui"
+            class="inline-flex items-center gap-2 bg-primary hover:bg-primary/80 text-white px-8 py-4 rounded-2xl font-bold text-lg transition shadow-xl shadow-primary/40">
+            👉 Falar com a Agência Métrica
+          </a>
         </div>
-        <div class="hero-image">
-          <div class="dashboard-mockup glass">
-            <div class="mock-header"></div>
-            <div class="mock-notification glass">
-              <span>Novo Lead no WhatsApp! ✅</span>
-            </div>
-            <div class="mock-charts">
-              <div class="chart bar1"></div>
-              <div class="chart bar2"></div>
-              <div class="chart bar3"></div>
-            </div>
+        <div class="glass p-8 h-96 relative overflow-hidden">
+          <div class="absolute top-6 right-6 glass px-4 py-2 rounded-full text-sm font-bold animate-pulse">
+            Novo Lead no WhatsApp! ✅
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: PROBLEMA -->
-    <section class="problem-section" id="problema">
-      <div class="container text-center">
-        <div class="section-header center">
-          <h2>O problema não é falta de anúncio. <span class="highlight">É anúncio sem estratégia.</span></h2>
-        </div>
-        <div class="problem-grid">
-          <div class="problem-card glass">
-            <span class="icon">💸</span>
-            <p>Curtidas não pagam contas</p>
-          </div>
-          <div class="problem-card glass">
-            <span class="icon">📉</span>
-            <p>Engajamento não garante venda</p>
-          </div>
-          <div class="problem-card glass">
-            <span class="icon">⚠️</span>
-            <p>Tráfego mal feito vira gasto</p>
-          </div>
-        </div>
-        <p class="section-footer">Negócios locais precisam de clientes entrando todos os dias.</p>
-      </div>
-    </section>
-
-    <!-- SECTION 3: POSICIONAMENTO -->
-    <section class="positioning glass" id="sobre">
-      <div class="container positioning-grid">
-        <div class="pos-content">
-          <h2>Dados, <span class="highlight">não achismo.</span></h2>
-          <p>A Agência Métrica é especializada em tráfego pago para negócios locais em todo o Brasil. Aqui, cada decisão
-            é baseada em dados, testes e otimização contínua.</p>
-        </div>
-        <div class="pos-visual">
-          <div class="stats-box">
-            <div class="stat-item featured">
-              <h3>100%</h3>
-              <p>Baseado em dados</p>
-            </div>
-            <div class="stat-item">
-              <h3>0%</h3>
-              <p>Achismo</p>
-            </div>
+          <div class="flex items-end gap-4 h-48 mt-20">
+            <div class="flex-1 bg-gradient-to-t from-primary to-accent rounded-t-lg h-3/5"></div>
+            <div class="flex-1 bg-gradient-to-t from-primary to-accent rounded-t-lg h-full"></div>
+            <div class="flex-1 bg-gradient-to-t from-primary to-accent rounded-t-lg h-4/5"></div>
+            <div class="flex-1 bg-gradient-to-t from-primary to-accent rounded-t-lg h-2/3"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 4: SERVIÇOS -->
-    <section class="services" id="servicos">
-      <div class="container">
-        <div class="section-header">
-          <h2>O que fazemos</h2>
-          <p>Estratégias focadas onde o seu cliente está.</p>
-        </div>
-        <div class="services-main">
-          <div class="service-card primary-service glass">
-            <div class="service-icon">🚀</div>
-            <h4>Tráfego Pago</h4>
-            <p>Google Ads, Meta Ads e Campanhas Geolocalizadas com foco total em WhatsApp e Vendas.</p>
+    <!-- Problema -->
+    <section class="py-20 px-6" id="problema">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-black mb-6">
+          O problema não é falta de anúncio. <span class="gradient-text">É anúncio sem estratégia.</span>
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+          <div class="glass p-8 text-center">
+            <span class="text-4xl mb-4 block">💸</span>
+            <p class="font-semibold">Curtidas não pagam contas</p>
           </div>
-          <div class="services-secondary">
-            <div class="service-card small glass">
-              <h5>Mídias Sociais</h5>
-              <p>Gestão estratégica de presença digital.</p>
-            </div>
-            <div class="service-card small glass">
-              <h5>Identidade Visual</h5>
-              <p>Design que prepara sua marca para vender.</p>
-            </div>
+          <div class="glass p-8 text-center">
+            <span class="text-4xl mb-4 block">📉</span>
+            <p class="font-semibold">Engajamento não garante venda</p>
+          </div>
+          <div class="glass p-8 text-center">
+            <span class="text-4xl mb-4 block">⚠️</span>
+            <p class="font-semibold">Tráfego mal feito vira gasto</p>
           </div>
         </div>
-        <div class="center-text mt-40">
-          <a href="https://wa.me/seunumeroaqui" class="btn btn-accent">👉 Quero gerar mais clientes</a>
-        </div>
+        <p class="text-xl font-bold text-accent mt-12">Negócios locais precisam de clientes entrando todos os dias.</p>
       </div>
     </section>
 
-    <!-- SECTION 5: MÉTODO -->
-    <section class="method" id="metodo">
-      <div class="container">
-        <div class="section-header center">
-          <h2>Método Métrica</h2>
-          <p>Marketing eficiente não é gastar mais. É gastar melhor.</p>
+    <!-- Posicionamento -->
+    <section class="py-20 px-6 glass mx-6 rounded-3xl" id="sobre">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black mb-6">Dados, <span class="gradient-text">não achismo.</span></h2>
+          <p class="text-light/70 text-lg">
+            A Agência Métrica é especializada em tráfego pago para negócios locais em todo o Brasil.
+            Aqui, cada decisão é baseada em dados, testes e otimização contínua.
+          </p>
         </div>
-        <div class="method-grid">
-          <div class="method-step">
-            <div class="step-num">01</div>
-            <h5>Diagnóstico</h5>
-            <p>Entendemos o seu momento atual e gargalos.</p>
+        <div class="flex gap-8 justify-center">
+          <div class="text-center">
+            <p class="text-6xl font-black text-secondary">100%</p>
+            <p class="text-sm opacity-60">Baseado em dados</p>
           </div>
-          <div class="method-step">
-            <div class="step-num">02</div>
-            <h5>Estratégia</h5>
-            <p>Planejamento focado em conversão local.</p>
-          </div>
-          <div class="method-step">
-            <div class="step-num">03</div>
-            <h5>Execução</h5>
-            <p>Anúncios no ar com segmentação precisa.</p>
-          </div>
-          <div class="method-step">
-            <div class="step-num">04</div>
-            <h5>Otimização</h5>
-            <p>Escala baseada no que traz lucro real.</p>
+          <div class="text-center">
+            <p class="text-6xl font-black text-accent">0%</p>
+            <p class="text-sm opacity-60">Achismo</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 6: RESULTADOS (PROVA SOCIAL) -->
-    <section class="results" id="resultados">
-      <div class="container">
-        <div class="section-header center">
-          <h2>Resultados Reais</h2>
-          <p>Conversas prontas para venda direto no seu celular.</p>
+    <!-- Serviços -->
+    <section class="py-20 px-6" id="servicos">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-black mb-4">O que fazemos</h2>
+        <p class="text-light/60 mb-12">Estratégias focadas onde o seu cliente está.</p>
+
+        <div class="glass p-12 text-center mb-8">
+          <span class="text-5xl mb-4 block">🚀</span>
+          <h3 class="text-3xl font-bold mb-4">Tráfego Pago</h3>
+          <p class="text-light/70 max-w-lg mx-auto">Google Ads, Meta Ads e Campanhas Geolocalizadas com foco total em
+            WhatsApp e Vendas.</p>
         </div>
-        <div class="results-grid">
-          <div class="result-item glass">
-            <div class="result-placeholder">
-              <span class="badge-result">Print WhatsApp</span>
-            </div>
-            <p>“Leads reais via tráfego pago”</p>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="glass p-8">
+            <h4 class="text-xl font-bold mb-2">Mídias Sociais</h4>
+            <p class="text-light/60">Gestão estratégica de presença digital.</p>
           </div>
-          <div class="result-item glass">
-            <div class="result-placeholder">
-              <span class="badge-result">Print Campanha</span>
-            </div>
-            <p>“Custo por lead otimizado”</p>
+          <div class="glass p-8">
+            <h4 class="text-xl font-bold mb-2">Identidade Visual</h4>
+            <p class="text-light/60">Design que prepara sua marca para vender.</p>
           </div>
-          <div class="result-item glass">
-            <div class="result-placeholder">
-              <span class="badge-result">Conversas</span>
-            </div>
-            <p>“Conversas prontas para venda”</p>
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="https://wa.me/seunumeroaqui"
+            class="inline-block bg-accent text-dark px-8 py-4 rounded-2xl font-bold text-lg transition hover:opacity-90">
+            👉 Quero gerar mais clientes
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Método -->
+    <section class="py-20 px-6 bg-white/5" id="metodo">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-black mb-4">Método Métrica</h2>
+          <p class="text-light/60">Marketing eficiente não é gastar mais. É gastar melhor.</p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="relative p-6">
+            <span class="text-6xl font-black opacity-10 absolute top-0 left-0">01</span>
+            <h4 class="text-xl font-bold text-accent mb-3 mt-8">Diagnóstico</h4>
+            <p class="text-light/60 text-sm">Entendemos o seu momento atual e gargalos.</p>
+          </div>
+          <div class="relative p-6">
+            <span class="text-6xl font-black opacity-10 absolute top-0 left-0">02</span>
+            <h4 class="text-xl font-bold text-accent mb-3 mt-8">Estratégia</h4>
+            <p class="text-light/60 text-sm">Planejamento focado em conversão local.</p>
+          </div>
+          <div class="relative p-6">
+            <span class="text-6xl font-black opacity-10 absolute top-0 left-0">03</span>
+            <h4 class="text-xl font-bold text-accent mb-3 mt-8">Execução</h4>
+            <p class="text-light/60 text-sm">Anúncios no ar com segmentação precisa.</p>
+          </div>
+          <div class="relative p-6">
+            <span class="text-6xl font-black opacity-10 absolute top-0 left-0">04</span>
+            <h4 class="text-xl font-bold text-accent mb-3 mt-8">Otimização</h4>
+            <p class="text-light/60 text-sm">Escala baseada no que traz lucro real.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 7: ANTES E DEPOIS -->
-    <section class="before-after">
-      <div class="container">
-        <div class="section-header center">
-          <h2>Marca fraca não vende, mesmo com anúncio rodando.</h2>
-          <p>O tráfego só escala quando a marca está preparada para vender.</p>
+    <!-- Resultados -->
+    <section class="py-20 px-6" id="resultados">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-black mb-4">Resultados Reais</h2>
+          <p class="text-light/60">Conversas prontas para venda direto no seu celular.</p>
         </div>
-        <div class="comparison-visual">
-          <div class="comp-box glass">
-            <span class="label red">Antes</span>
-            <div class="feed-mockup">Feed Genérico</div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="glass p-6">
+            <div
+              class="h-64 bg-white/5 rounded-xl flex items-center justify-center border border-dashed border-white/20 mb-4">
+              <span class="text-sm opacity-40">Print WhatsApp</span>
+            </div>
+            <p class="text-center font-semibold">"Leads reais via tráfego pago"</p>
           </div>
-          <div class="comp-box featured">
-            <span class="label green">Depois</span>
-            <div class="feed-mockup">Feed Profissional</div>
+          <div class="glass p-6">
+            <div
+              class="h-64 bg-white/5 rounded-xl flex items-center justify-center border border-dashed border-white/20 mb-4">
+              <span class="text-sm opacity-40">Print Campanha</span>
+            </div>
+            <p class="text-center font-semibold">"Custo por lead otimizado"</p>
+          </div>
+          <div class="glass p-6">
+            <div
+              class="h-64 bg-white/5 rounded-xl flex items-center justify-center border border-dashed border-white/20 mb-4">
+              <span class="text-sm opacity-40">Conversas</span>
+            </div>
+            <p class="text-center font-semibold">"Conversas prontas para venda"</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 9: CHAMADA FINAL -->
-    <section class="final-cta">
-      <div class="container center-text">
-        <div class="cta-box featured">
-          <h2>Pronto para gerar mais clientes?</h2>
-          <p>Se o seu negócio depende de clientes entrando todos os dias, você precisa de tráfego bem feito.</p>
-          <a href="https://wa.me/seunumeroaqui" class="btn btn-primary btn-large">👉 Solicitar análise gratuita no
-            WhatsApp</a>
+    <!-- Antes e Depois -->
+    <section class="py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-black mb-4">Marca fraca não vende, mesmo com anúncio rodando.</h2>
+          <p class="text-light/60">O tráfego só escala quando a marca está preparada para vender.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="glass p-8 text-center relative">
+            <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded">Antes</span>
+            <div class="h-48 flex items-center justify-center opacity-40 font-bold">Feed Genérico</div>
+          </div>
+          <div class="glass p-8 text-center relative border-accent border">
+            <span class="absolute top-4 left-4 bg-accent text-dark text-xs font-bold px-3 py-1 rounded">Depois</span>
+            <div class="h-48 flex items-center justify-center font-bold">Feed Profissional</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- CTA Final -->
+    <section class="py-20 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass p-16 text-center bg-gradient-to-br from-secondary/20 to-accent/10 border-white/10">
+          <h2 class="text-3xl md:text-5xl font-black mb-6">Pronto para gerar mais clientes?</h2>
+          <p class="text-light/70 text-lg mb-10 max-w-lg mx-auto">
+            Se o seu negócio depende de clientes entrando todos os dias, você precisa de tráfego bem feito.
+          </p>
+          <a href="https://wa.me/seunumeroaqui"
+            class="inline-block bg-primary hover:bg-primary/80 text-white px-10 py-5 rounded-2xl font-bold text-xl transition shadow-xl shadow-primary/40">
+            👉 Solicitar análise gratuita no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-info">
-        <h4>Agência Métrica</h4>
-        <p>Cnpj: 00.000.000/0001-00</p>
-        <p>Tráfego pago focado em resultado para negócios locais.</p>
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-center md:text-left">
+        <h4 class="text-lg font-bold text-accent mb-2">Agência Métrica</h4>
+        <p class="text-sm opacity-50">CNPJ: 00.000.000/0001-00</p>
+        <p class="text-sm opacity-50">Tráfego pago focado em resultado para negócios locais.</p>
       </div>
-      <div class="footer-links">
-        <a href="#">WhatsApp</a>
-        <a href="#">Instagram</a>
+      <div class="flex gap-6">
+        <a href="#" class="text-sm opacity-60 hover:opacity-100 hover:text-accent transition">WhatsApp</a>
+        <a href="#" class="text-sm opacity-60 hover:opacity-100 hover:text-accent transition">Instagram</a>
       </div>
     </div>
   </footer>
-
-  <!-- EXIT POPUP -->
-  <div class="exit-popup-overlay" id="exitPopup">
-    <div class="exit-popup glass">
-      <button class="close-popup" id="closePopup">&times;</button>
-      <h2>Não vá embora ainda!</h2>
-      <p>Seu negócio em Rio Verde pode faturar mais com inteligência de dados.</p>
-      <a href="https://wa.me/seunumeroaqui" class="btn btn-primary">Falar com Especialista</a>
-    </div>
-  </div>
 
   <script type="module" src="/src/main.ts"></script>
 </body>
