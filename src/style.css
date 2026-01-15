@@ -1,16 +1,14 @@
 @import "tailwindcss";
 
-/* Custom Theme */
+/* Custom Theme - Cores da Métrica */
 @theme {
-  --color-primary: #0056b3;
-  --color-secondary: #6f42c1;
-  --color-accent: #00d4ff;
-  --color-dark: #0b0e14;
-  --color-light: #f8f9fa;
+  --color-primary: #1045D9;
+  --color-dark: #0a0a0a;
+  --color-light: #ffffff;
+  --color-gray: #8a8a8a;
   --font-family-sans: 'Inter', system-ui, sans-serif;
 }
 
-/* Base Styles */
 body {
   @apply bg-dark text-light font-sans antialiased;
 }
@@ -20,7 +18,7 @@ body {
   @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
 }
 
-/* Gradient Text */
-.gradient-text {
-  @apply bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent;
+/* Accent text - azul da marca */
+.text-brand {
+  @apply text-primary;
 }
