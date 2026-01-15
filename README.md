@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Agência Métrica](https://img.shields.io/badge/Agência-Métrica-1045D9?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMyAzdjE4aDE4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTE4IDE3VjkiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTMgMTdWNSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik04IDE3di0zIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+)
+![Agência Métrica](https://img.shields.io/badge/Agência-Métrica-1045D9?style=for-the-badge)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -34,19 +34,30 @@ Converter visitantes em leads qualificados através de uma experiência visual i
 - ✅ **Hover Effects Premium** - Animações sutis em todos os elementos interativos
 - ✅ **Glow Effects** - Iluminação ambiente nos componentes principais
 - ✅ **100% Responsivo** - Layout otimizado para Mobile, Tablet e Desktop
+- ✅ **Mobile-First** - Textos e elementos otimizados para telas pequenas
 
 ### Conversão
 - ✅ **CTAs Estratégicos** - Botões de WhatsApp em pontos-chave da jornada
 - ✅ **Copywriting Focado** - Textos baseados em metodologia de vendas
+- ✅ **Seção de Nichos** - Destaque para Restaurantes/iFood e Garagens/Veículos
+- ✅ **Seção de Portfólio** - Grid para imagens e vídeos
 - ✅ **Seção de Resultados** - Espaço para prints de campanhas reais
 - ✅ **Prova Social** - Estrutura para depoimentos e cases
 
-### Técnico
+### Técnico & Performance
 - ✅ **Meta Tags SEO** - Otimizado para buscadores
 - ✅ **Open Graph Tags** - Preview otimizado para redes sociais
 - ✅ **Twitter Cards** - Compartilhamento premium no Twitter/X
+- ✅ **Preload de Fontes** - Carregamento assíncrono para melhor performance
 - ✅ **Smooth Scroll** - Navegação suave entre seções
 - ✅ **Header Fixo** - Navegação sempre acessível
+
+### Acessibilidade
+- ✅ **Skip Link** - Pular para conteúdo principal
+- ✅ **ARIA Labels** - Em todos os elementos interativos
+- ✅ **Roles Semânticos** - banner, navigation, main
+- ✅ **Color Scheme** - Dark mode nativo
+- ✅ **Contraste Adequado** - Textos legíveis
 
 ---
 
@@ -85,7 +96,7 @@ agencia-metrica/
 - Headline de impacto focada em resultados
 - Badge de especialização
 - CTA principal para WhatsApp
-- Dashboard mockup com métricas simuladas (Leads, Conversão, ROI)
+- Logo/Brand showcase com glow effect
 
 ### 2. Problema + Identificação
 - Três cards destacando dores do cliente
@@ -101,22 +112,29 @@ agencia-metrica/
 - Cards secundários: Mídias Sociais e Identidade Visual
 - CTA secundário
 
-### 5. Método Métrica
+### 5. 🆕 Nichos de Atuação
+- **Restaurantes & Delivery** - Estratégias para iFood, Rappi e delivery próprio
+- **Garagens & Veículos** - Leads qualificados para revendas e concessionárias
+- CTA específico para nichos
+
+### 6. Portfólio
+- Grid 2x3 no mobile, 3x2 no desktop
+- Suporte para imagens e vídeos
+- Hover effect com overlay
+
+### 7. Método Métrica
 - 4 etapas visuais: Diagnóstico → Estratégia → Execução → Otimização
 - Cards com efeito glow no hover
 
-### 6. Resultados Reais
+### 8. Resultados Reais
 - 3 placeholders para prints de campanhas
 - Estrutura pronta para inserir provas sociais
 
-### 7. Antes e Depois
-- Comparativo visual de marca fraca vs profissional
-
-### 8. CTA Final
+### 9. CTA Final
 - Seção de fechamento com headline forte
-- Botão de ação principal
+- Botão de ação principal com glow
 
-### 9. Footer
+### 10. Footer
 - Informações da empresa
 - Links para WhatsApp e Instagram
 
@@ -182,6 +200,7 @@ vercel --prod
 | **Dark** | `#0a0a0a` | Background principal |
 | **Light** | `#ffffff` | Texto principal, elementos claros |
 | **Gray** | `#8a8a8a` | Texto secundário |
+| **Red** | `#ef4444` | Destaque iFood/Delivery |
 
 ### Gradiente de Fundo
 ```css
@@ -200,9 +219,10 @@ background: linear-gradient(180deg,
 
 | Breakpoint | Largura | Adaptações |
 |------------|---------|------------|
-| Mobile | < 768px | Layout single column, menu oculto |
-| Tablet | 768px - 1024px | Grid 2 colunas |
-| Desktop | > 1024px | Layout completo |
+| Mobile | < 640px | Layout single column, textos maiores |
+| SM | 640px+ | Grid 2 colunas, botões inline |
+| MD | 768px+ | Grid adaptativo |
+| LG | 1024px+ | Layout completo, navegação visível |
 
 ---
 
@@ -212,6 +232,12 @@ background: linear-gradient(180deg,
 - **First Contentful Paint**: < 1s
 - **Time to Interactive**: < 2s
 - **Bundle Size**: ~50KB (gzipped)
+
+### Otimizações Aplicadas
+- Preload de fontes com fallback noscript
+- Carregamento assíncrono de CSS
+- Imagens com lazy loading
+- SVGs inline (sem requisições extras)
 
 ---
 
@@ -230,6 +256,9 @@ Busque e substitua `seunumeroaqui` em `index.html` pelo número real.
 
 ### Adicionar Prints de Resultados
 Substitua os placeholders na seção "Resultados Reais" por imagens reais de campanhas.
+
+### Adicionar Portfólio
+Substitua os placeholders na seção "Nosso Trabalho" por imagens e vídeos reais.
 
 ---
 
