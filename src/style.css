@@ -26,7 +26,28 @@ body {
   @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
 }
 
+/* Animations */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
 /* Accent text - azul da marca */
 .text-brand {
   @apply text-primary;
+}
+
+/* Scroll improvements */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  @apply bg-primary/30 text-light;
 }
