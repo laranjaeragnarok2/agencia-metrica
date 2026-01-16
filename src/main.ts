@@ -19,6 +19,10 @@ window.addEventListener('scroll', () => {
   const currentScroll = window.scrollY;
 
   if (header) {
+    // Reset any transforms that might have been applied by parallax
+    (header as HTMLElement).style.transform = 'none';
+    (header as HTMLElement).style.scale = '1';
+
     // Background blur on scroll with shadow
     if (currentScroll > 50) {
       header.classList.add('shadow-xl');
@@ -96,12 +100,16 @@ window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
 
       // Parallax for background glows (slower movement, growing effect)
+      // Exclude header to prevent navbar from growing
       const glows = document.querySelectorAll('[class*="blur-"]');
       glows.forEach((glow, index) => {
-        const speed = 0.3 + (index * 0.05);
-        const scale = 1 + (scrolled * 0.0002);
-        (glow as HTMLElement).style.transform = `translateY(${scrolled * speed * 0.08}px) scale(${scale})`;
-        (glow as HTMLElement).style.transition = 'transform 0.1s ease-out';
+        // Skip if element is inside header
+        if (!(glow as HTMLElement).closest('header')) {
+          const speed = 0.3 + (index * 0.05);
+          const scale = 1 + (scrolled * 0.0002);
+          (glow as HTMLElement).style.transform = `translateY(${scrolled * speed * 0.08}px) scale(${scale})`;
+          (glow as HTMLElement).style.transition = 'transform 0.1s ease-out';
+        }
       });
 
       // Parallax for hero section (smooth fade and movement)
