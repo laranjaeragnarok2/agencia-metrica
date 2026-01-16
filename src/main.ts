@@ -13,16 +13,13 @@ window.addEventListener('load', () => {
   }, 100);
 });
 
-// Header scroll effect - Always visible, sticky at top
+// Header scroll effect - Hide on scroll down, show on scroll up
+let lastScroll = 0;
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   const currentScroll = window.scrollY;
 
   if (header) {
-    // Reset any transforms that might have been applied by parallax
-    (header as HTMLElement).style.transform = 'none';
-    (header as HTMLElement).style.scale = '1';
-
     // Background blur on scroll with shadow
     if (currentScroll > 50) {
       header.classList.add('shadow-xl');
@@ -31,7 +28,21 @@ window.addEventListener('scroll', () => {
       header.classList.remove('shadow-xl');
       (header as HTMLElement).style.backdropFilter = 'blur(12px)';
     }
+
+    // Auto-hide logic
+    if (currentScroll > lastScroll && currentScroll > 100) {
+      // Scrolling down - hide
+      (header as HTMLElement).style.transform = 'translateY(-100%)';
+    } else {
+      // Scrolling up or at top - show
+      (header as HTMLElement).style.transform = 'translateY(0)';
+    }
+
+    // Safety reset for scale to prevent "growing" issue
+    (header as HTMLElement).style.scale = '1';
   }
+
+  lastScroll = currentScroll;
 });
 
 // Smooth scroll with easing
