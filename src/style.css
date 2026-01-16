@@ -26,7 +26,130 @@ body {
   @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
 }
 
-/* Animations */
+/* ========================================
+   ✨ Scroll Reveal Animations
+   ======================================== */
+.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ========================================
+   🌟 Cursor Trail Effect
+   ======================================== */
+.cursor-trail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(16, 69, 217, 0.4) 0%, rgba(16, 69, 217, 0) 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: trail-fade 0.8s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes trail-fade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+}
+
+/* ========================================
+   🎯 Button Enhancements
+   ======================================== */
+.bg-primary,
+.hover\:bg-primary\/90 {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              background-color 0.3s ease,
+              box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.bg-primary:hover {
+  box-shadow: 0 10px 40px rgba(16, 69, 217, 0.4);
+}
+
+/* ========================================
+   🖼️ Image Enhancements
+   ======================================== */
+img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+  will-change: transform;
+}
+
+img:hover {
+  filter: brightness(1.1);
+}
+
+/* ========================================
+   📦 Card Hover Effects
+   ======================================== */
+.bg-\[\#111\] {
+  transition: transform 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
+}
+
+.bg-\[\#111\]:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   🎨 Gradient Text Animation
+   ======================================== */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text-primary {
+  background: linear-gradient(90deg, #1045D9, #5B8DEF, #1045D9);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* ========================================
+   ⚡ Loading Fade In
+   ======================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body {
+  animation: fadeInUp 0.8s ease;
+}
+
+/* ========================================
+   🎪 Infinite Scroll Animation
+   ======================================== */
 @keyframes infinite-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -38,16 +161,127 @@ body {
   width: max-content;
 }
 
-/* Accent text - azul da marca */
-.text-brand {
-  @apply text-primary;
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
 }
 
-/* Scroll improvements */
+/* ========================================
+   💫 Pulse Animation for Badges
+   ======================================== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(16, 69, 217, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(16, 69, 217, 0.8);
+  }
+}
+
+.animate-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ========================================
+   🎯 Smooth Scrolling
+   ======================================== */
 html {
   scroll-behavior: smooth;
 }
 
+/* ========================================
+   ✨ Selection Styling
+   ======================================== */
 ::selection {
   @apply bg-primary/30 text-light;
+}
+
+::-moz-selection {
+  @apply bg-primary/30 text-light;
+}
+
+/* ========================================
+   🎨 Accent text
+   ======================================== */
+.text-brand {
+  @apply text-primary;
+}
+
+/* ========================================
+   🌈 Backdrop Blur Enhancement
+   ======================================== */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* ========================================
+   ⚡ Performance Optimizations
+   ======================================== */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU Acceleration */
+.bg-\[\#111\],
+img,
+.bg-primary {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ========================================
+   🎭 Link Hover Effects
+   ======================================== */
+a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   📱 Mobile Optimizations
+   ======================================== */
+@media (max-width: 768px) {
+  .cursor-trail {
+    display: none;
+  }
+  
+  /* Reduce motion for mobile */
+  * {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.3s !important;
+  }
+}
+
+/* ========================================
+   🎨 Focus Styles for Accessibility
+   ======================================== */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }
