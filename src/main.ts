@@ -13,29 +13,21 @@ window.addEventListener('load', () => {
   }, 100);
 });
 
-// Header scroll effect with scale animation
-let lastScroll = 0;
+// Header scroll effect - Always visible, sticky at top
 window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   const currentScroll = window.scrollY;
 
   if (header) {
-    // Background blur on scroll
+    // Background blur on scroll with shadow
     if (currentScroll > 50) {
       header.classList.add('shadow-xl');
+      (header as HTMLElement).style.backdropFilter = 'blur(20px) saturate(180%)';
     } else {
       header.classList.remove('shadow-xl');
-    }
-
-    // Hide/show header on scroll
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      header.style.transform = 'translateY(-100%)';
-    } else {
-      header.style.transform = 'translateY(0)';
+      (header as HTMLElement).style.backdropFilter = 'blur(12px)';
     }
   }
-
-  lastScroll = currentScroll;
 });
 
 // Smooth scroll with easing
@@ -94,23 +86,64 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========================================
-// 🎭 Parallax Effect
+// 🎭 Enhanced Parallax Effects
 // ========================================
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrolled = window.pageYOffset;
 
-  // Parallax for background glows
-  const glows = document.querySelectorAll('[class*="blur-"]');
-  glows.forEach((glow, index) => {
-    const speed = 0.5 + (index * 0.1);
-    (glow as HTMLElement).style.transform = `translateY(${scrolled * speed * 0.1}px)`;
-  });
+      // Parallax for background glows (slower movement, growing effect)
+      const glows = document.querySelectorAll('[class*="blur-"]');
+      glows.forEach((glow, index) => {
+        const speed = 0.3 + (index * 0.05);
+        const scale = 1 + (scrolled * 0.0002);
+        (glow as HTMLElement).style.transform = `translateY(${scrolled * speed * 0.08}px) scale(${scale})`;
+        (glow as HTMLElement).style.transition = 'transform 0.1s ease-out';
+      });
 
-  // Parallax for hero section
-  const hero = document.querySelector('.min-h-screen');
-  if (hero && scrolled < window.innerHeight) {
-    (hero as HTMLElement).style.transform = `translateY(${scrolled * 0.3}px)`;
-    (hero as HTMLElement).style.opacity = `${1 - scrolled / 1000}`;
+      // Parallax for hero section (smooth fade and movement)
+      const hero = document.querySelector('.min-h-screen');
+      if (hero && scrolled < window.innerHeight) {
+        (hero as HTMLElement).style.transform = `translateY(${scrolled * 0.4}px)`;
+        (hero as HTMLElement).style.opacity = `${Math.max(0, 1 - scrolled / 800)}`;
+      }
+
+      // Parallax for images (gentle float effect)
+      const images = document.querySelectorAll('img');
+      images.forEach((img) => {
+        const rect = img.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          const scrollPosition = rect.top / window.innerHeight;
+          const movement = (scrollPosition - 0.5) * 20;
+          img.style.transform = `translateY(${movement}px)`;
+          img.style.transition = 'transform 0.1s ease-out';
+        }
+      });
+
+      // Parallax for cards (subtle depth, alternating directions)
+      const cards = document.querySelectorAll('.bg-\\[\\#111\\]');
+      cards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+          const scrollPosition = rect.top / window.innerHeight;
+          const direction = index % 2 === 0 ? 1 : -1;
+          const movement = (scrollPosition - 0.5) * 10 * direction;
+          (card as HTMLElement).style.transform = `translateY(${movement}px)`;
+          (card as HTMLElement).style.transition = 'transform 0.1s ease-out';
+        }
+      });
+
+      ticking = false;
+    });
+
+    ticking = true;
   }
 });
 
@@ -215,5 +248,5 @@ document.querySelectorAll('.text-3xl, .text-5xl, .text-7xl, .text-8xl').forEach(
 // ========================================
 const header = document.querySelector('header');
 if (header) {
-  (header as HTMLElement).style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+  (header as HTMLElement).style.transition = 'backdrop-filter 0.3s ease, box-shadow 0.3s ease';
 }
