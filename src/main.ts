@@ -120,9 +120,10 @@ window.addEventListener('scroll', () => {
 const buttons = document.querySelectorAll('.bg-primary, .hover\\:bg-primary\\/90');
 buttons.forEach(button => {
   button.addEventListener('mousemove', (e) => {
+    const mouseEvent = e as MouseEvent;
     const rect = (button as HTMLElement).getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
+    const x = mouseEvent.clientX - rect.left - rect.width / 2;
+    const y = mouseEvent.clientY - rect.top - rect.height / 2;
 
     (button as HTMLElement).style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
   });
