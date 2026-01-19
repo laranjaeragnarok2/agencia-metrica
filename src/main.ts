@@ -111,6 +111,13 @@ window.addEventListener('scroll', () => {
       }
       lastScroll = scrolled;
 
+      // Update Scroll Progress Bar
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolledPct = (winScroll / height) * 100;
+      const progressBar = document.getElementById('scroll-progress');
+      if (progressBar) progressBar.style.width = `${scrolledPct}%`;
+
       // Parallax for background glows
       parallaxGlows.forEach((glow, index) => {
         if (!(glow as HTMLElement).closest('header')) {
