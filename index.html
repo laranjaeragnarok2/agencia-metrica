@@ -97,7 +97,7 @@
             Negócios Locais
           </span>
           <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 md:mb-6">
-            Tráfego pago que gera <span class="text-primary">vendas reais.</span>
+            Tráfego pago que gera <span class="text-accent-gradient">vendas reais.</span>
           </h1>
           <p class="text-base md:text-lg text-gray mb-6 md:mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
             Transformamos investimento em marketing em oportunidades reais de venda no WhatsApp.
@@ -114,19 +114,19 @@
         <!-- Logo/Brand Showcase -->
         <div class="hidden sm:flex items-center justify-center">
           <div
-            class="bg-[#111] rounded-2xl md:rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden w-full max-w-md aspect-square flex items-center justify-center">
+            class="bg-[#111] rounded-2xl md:rounded-3xl p-8 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden w-full max-w-md aspect-square flex items-center justify-center group hover:scale-[1.02] transition-transform duration-500">
             <!-- Glow effect -->
-            <div class="absolute inset-0 bg-primary/5"></div>
+            <div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500"></div>
             <div
-              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-primary/20 rounded-full blur-[60px]">
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-primary/20 rounded-full blur-[60px] animate-pulse">
             </div>
 
             <!-- Logo Placeholder -->
             <div class="relative z-10 text-center">
               <div
-                class="w-24 h-24 md:w-32 md:h-32 bg-primary rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-xl shadow-primary/30">
-                <svg class="w-12 h-12 md:w-16 md:h-16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
+                class="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-primary to-blue-600 rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-xl shadow-primary/30 group-hover:shadow-primary/50 transition-all duration-300">
+                <svg class="w-12 h-12 md:w-16 md:h-16 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5">
                   <path d="M3 3v18h18" stroke-linecap="round" stroke-linejoin="round" />
                   <path d="M18 17V9" stroke-linecap="round" />
                   <path d="M13 17V5" stroke-linecap="round" />
@@ -134,58 +134,82 @@
                 </svg>
               </div>
               <p class="text-2xl md:text-3xl font-black tracking-tight">AGÊNCIA</p>
-              <p class="text-2xl md:text-3xl font-black tracking-tight text-primary">MÉTRICA</p>
-              <p class="text-xs md:text-sm text-gray mt-2 md:mt-3">Tráfego Pago • Negócios Locais</p>
+              <p class="text-2xl md:text-3xl font-black tracking-tight text-gradient">MÉTRICA</p>
+              <p class="text-xs md:text-sm text-gray mt-2 md:mt-3 font-medium uppercase tracking-widest">Tráfego Pago •
+                Negócios Locais</p>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-
     <!-- Problema -->
-    <section class="py-16 md:py-24 px-4 md:px-6" id="problema">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-10 md:mb-16 leading-tight px-2">
+    <section class="py-16 md:py-32 px-4 md:px-6 relative overflow-hidden" id="problema">
+      <!-- Glow background para preencher o vazio -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none">
+      </div>
+
+      <div class="max-w-5xl mx-auto text-center relative z-10">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-12 md:mb-20 leading-tight px-2">
           O problema não é falta de anúncio.<br>
-          <span class="text-primary">É anúncio sem estratégia.</span>
+          <span class="text-accent-gradient italic">É anúncio sem estratégia.</span>
         </h2>
-        <div class="grid gap-4 md:grid-cols-3 md:gap-6">
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-6 md:p-8">
+
+        <div class="grid gap-6 md:grid-cols-3 md:gap-8">
+          <!-- Card 1 -->
+          <div
+            class="bg-[#111] border border-white/5 rounded-2xl md:rounded-[2rem] p-8 md:p-10 flex flex-col items-center group transition-all duration-500 hover:border-primary/20">
             <div
-              class="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 md:w-7 md:h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
+              class="w-20 h-20 md:w-24 md:h-24 bg-primary/10 rounded-3xl flex items-center justify-center mb-8 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:rotate-3 shadow-xl shadow-primary/5">
+              <svg class="w-10 h-10 md:w-12 md:h-12 text-primary transition-all duration-300 group-hover:scale-110"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.09 4.14 9.75 4.997 9.75H5.25" />
               </svg>
             </div>
-            <p class="font-bold text-base md:text-lg">Like não paga boleto</p>
+            <h3 class="font-black text-xl md:text-2xl mb-4 group-hover:text-primary transition-colors">Like não paga
+              boleto</h3>
+            <p class="text-gray text-sm md:text-base leading-relaxed max-w-[280px]">Métricas de vaidade não enchem o
+              caixa. Focamos no que realmente importa: <span class="text-light font-semibold">Lucro Real</span>.</p>
           </div>
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-6 md:p-8">
+
+          <!-- Card 2 -->
+          <div
+            class="bg-[#111] border border-white/5 rounded-2xl md:rounded-[2rem] p-8 md:p-10 flex flex-col items-center group transition-all duration-500 hover:border-primary/20">
             <div
-              class="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 md:w-7 md:h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
+              class="w-20 h-20 md:w-24 md:h-24 bg-primary/10 rounded-3xl flex items-center justify-center mb-8 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:-rotate-3 shadow-xl shadow-primary/5">
+              <svg class="w-10 h-10 md:w-12 md:h-12 text-primary transition-all duration-300 group-hover:scale-110"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
               </svg>
             </div>
-            <p class="font-bold text-base md:text-lg">Engajamento não garante venda</p>
+            <h3 class="font-black text-xl md:text-2xl mb-4 group-hover:text-primary transition-colors">Engajamento ≠
+              Venda</h3>
+            <p class="text-gray text-sm md:text-base leading-relaxed max-w-[280px]">Curtidas são ótimas, mas o objetivo
+              final deve ser sempre <span class="text-light font-semibold">novos clientes</span> no seu WhatsApp.</p>
           </div>
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-6 md:p-8">
+
+          <!-- Card 3 -->
+          <div
+            class="bg-[#111] border border-white/5 rounded-2xl md:rounded-[2rem] p-8 md:p-10 flex flex-col items-center group transition-all duration-500 hover:border-primary/20">
             <div
-              class="w-12 h-12 md:w-14 md:h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 md:w-7 md:h-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
+              class="w-20 h-20 md:w-24 md:h-24 bg-primary/10 rounded-3xl flex items-center justify-center mb-8 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20 group-hover:rotate-3 shadow-xl shadow-primary/5">
+              <svg class="w-10 h-10 md:w-12 md:h-12 text-primary transition-all duration-300 group-hover:scale-110"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <p class="font-bold text-base md:text-lg">Tráfego mal feito vira gasto</p>
+            <h3 class="font-black text-xl md:text-2xl mb-4 group-hover:text-primary transition-colors">Tráfego não é
+              Gasto</h3>
+            <p class="text-gray text-sm md:text-base leading-relaxed max-w-[280px]">Anúncios sem estratégia são
+              desperdício. Com a Métrica, são <span class="text-light font-semibold">investimento escalável</span>.</p>
           </div>
         </div>
-        <p class="text-xl md:text-2xl font-black text-primary mt-10 md:mt-16">Estratégia paga.</p>
+
+        <p class="text-2xl md:text-4xl font-black text-primary mt-16 md:mt-28 animate-pulse-text">Estratégia que se
+          paga.</p>
       </div>
     </section>
 
@@ -207,7 +231,8 @@
 
           <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
             <div class="text-center md:text-left">
-              <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6 leading-tight">Dados,<br>não achismo.
+              <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-4 md:mb-6 leading-tight">Dados,<br><span
+                  class="text-white">não achismo.</span>
               </h2>
               <p class="text-light/80 text-base md:text-lg leading-relaxed">
                 A Agência Métrica é especializada em tráfego pago para negócios locais em todo o Brasil.
@@ -237,7 +262,7 @@
           <div class="relative">
             <div class="absolute -inset-4 bg-primary/20 blur-2xl rounded-full"></div>
             <img src="/assets/team/team.png" alt="Equipe Agência Métrica"
-              class="relative rounded-2xl md:rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]">
+              class="relative rounded-2xl md:rounded-3xl shadow-2xl w-full h-auto object-top">
           </div>
           <div>
             <span
@@ -245,7 +270,7 @@
               <span class="w-2 h-2 bg-primary rounded-full"></span>
               Pessoas por trás dos dados
             </span>
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">Quem Somos</h2>
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight text-gradient">Quem Somos</h2>
             <p class="text-gray text-base md:text-lg mb-6 leading-relaxed">
               Somos um time de especialistas apaixonados por gerar escala e rentabilidade para negócios que buscam
               crescimento real. Não entregamos apenas cliques; entregamos clientes.
@@ -256,11 +281,11 @@
             </p>
             <div class="grid grid-cols-2 gap-6">
               <div>
-                <p class="text-3xl font-black text-primary">+100</p>
+                <p class="text-3xl font-black text-primary">81+</p>
                 <p class="text-xs md:text-sm text-gray uppercase tracking-wider font-bold">Clientes Atendidos</p>
               </div>
               <div>
-                <p class="text-3xl font-black text-primary">R$ 1M+</p>
+                <p class="text-3xl font-black text-primary">R$ 1.2M+</p>
                 <p class="text-xs md:text-sm text-gray uppercase tracking-wider font-bold">Investidos em Anúncios</p>
               </div>
             </div>
@@ -269,37 +294,11 @@
       </div>
     </section>
 
-    <!-- Clientes -->
-    <section class="py-12 bg-white/5 overflow-hidden">
-      <div class="max-w-6xl mx-auto px-4 mb-8">
-        <p class="text-center text-gray text-sm font-bold uppercase tracking-widest">Empresas que confiam na Métrica</p>
-      </div>
-      <div class="relative">
-        <div class="flex gap-12 animate-infinite-scroll">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil ACM.png" alt="ACM logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil Ademicon.png" alt="Ademicon logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil Jaguar.png" alt="Jaguar logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil ONROTA.png" alt="ONROTA logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil Terra e Sabor.png" alt="Terra e Sabor logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil WP.png" alt="WP logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <!-- Duplicated for scroll loop -->
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil ACM.png" alt="ACM logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-          <img src="/assets/clients/Padrão Perfil Clientes_Perfil Ademicon.png" alt="Ademicon logo"
-            class="h-12 w-auto grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition cursor-default">
-        </div>
-      </div>
-    </section>
     <section class="py-16 md:py-24 px-4 md:px-6" id="servicos">
       <div class="max-w-6xl mx-auto">
         <div class="mb-10 md:mb-16 text-center md:text-left">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">O que fazemos</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-gradient">O que fazemos
+          </h2>
           <p class="text-gray text-base md:text-lg">Estratégias focadas onde o seu cliente está.</p>
         </div>
 
@@ -375,7 +374,8 @@
             <span class="w-2 h-2 bg-primary rounded-full"></span>
             Especialidades
           </span>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Nichos que Dominamos</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Nichos que <span
+              class="text-accent-gradient">Dominamos</span></h2>
           <p class="text-gray text-sm md:text-lg max-w-2xl mx-auto">Estratégias personalizadas para segmentos
             específicos com resultados comprovados.</p>
         </div>
@@ -502,12 +502,52 @@
       </div>
     </section>
 
+    <!-- Clientes (3D Carousel) -->
+    <section class="py-16 bg-[#050505] overflow-hidden border-y border-white/5" id="clientes">
+      <div class="max-w-6xl mx-auto px-4 mb-12">
+        <p class="text-center text-gray text-xs md:text-sm font-bold uppercase tracking-[0.3em] opacity-50">Empresas que
+          confiam na Métrica</p>
+      </div>
+
+      <div id="carousel-container">
+        <div id="carousel-3d">
+          <div class="hideLeft">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil ACM.png" alt="ACM logo">
+          </div>
+          <div class="prevLeftSecond">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil Ademicon.png" alt="Ademicon logo">
+          </div>
+          <div class="prev">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil Jaguar.png" alt="Jaguar logo">
+          </div>
+          <div class="selected">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil ONROTA.png" alt="ONROTA logo">
+          </div>
+          <div class="next">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil Terra e Sabor.png" alt="Terra e Sabor logo">
+          </div>
+          <div class="nextRightSecond">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil WP.png" alt="WP logo">
+          </div>
+          <div class="hideRight">
+            <img src="/assets/clients/Padrão Perfil Clientes_Perfil ACM.png" alt="ACM logo (v2)">
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-buttons">
+        <button id="prev-3d" aria-label="Anterior">← Anterior</button>
+        <button id="next-3d" aria-label="Próximo">Próximo →</button>
+      </div>
+    </section>
+
     <!-- Portfólio -->
 
     <section class="py-16 md:py-24 px-4 md:px-6" id="portfolio">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Nosso Trabalho</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-gradient">Nosso Trabalho
+          </h2>
           <p class="text-gray text-sm md:text-lg">Criações que conectam marcas ao seu público.</p>
         </div>
 
@@ -587,7 +627,8 @@
     <section class="py-16 md:py-24 px-4 md:px-6 bg-[#0a0a0a]">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Evolução de Perfil</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Evolução de <span
+              class="text-accent-gradient">Perfil</span></h2>
           <p class="text-gray text-sm md:text-lg">O impacto imediato de um posicionamento profissional.</p>
         </div>
 
@@ -632,14 +673,13 @@
         </div>
       </div>
     </section>
-    </div>
-    </section>
 
     <!-- Método -->
     <section class="py-16 md:py-24 px-4 md:px-6 bg-[#0d0d0d]" id="metodo">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-20">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Método Métrica</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-gradient">Método Métrica
+          </h2>
           <p class="text-gray text-sm md:text-lg">Marketing eficiente não é gastar mais. É gastar melhor.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
@@ -671,7 +711,8 @@
     <section class="py-16 md:py-24 px-4 md:px-6" id="resultados">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Resultados Reais</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Resultados <span
+              class="text-accent-gradient">Reais</span></h2>
           <p class="text-gray text-sm md:text-lg">Conversas prontas para venda no seu celular.</p>
         </div>
         <div class="grid md:grid-cols-3 gap-4 md:gap-6">

@@ -131,16 +131,18 @@ window.addEventListener('scroll', () => {
       }
 
       // Parallax for images (gentle float effect)
-      const images = document.querySelectorAll('img');
+      // Excluir imagens que já possuem animações complexas (como o slider 3D)
+      const images = document.querySelectorAll('img:not(#carousel-3d img)');
       images.forEach((img) => {
-        const rect = img.getBoundingClientRect();
+        const htmlImg = img as HTMLElement;
+        const rect = htmlImg.getBoundingClientRect();
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
         if (isInView) {
           const scrollPosition = rect.top / window.innerHeight;
           const movement = (scrollPosition - 0.5) * 20;
-          img.style.transform = `translateY(${movement}px)`;
-          img.style.transition = 'transform 0.1s ease-out';
+          htmlImg.style.transform = `translateY(${movement}px)`;
+          htmlImg.style.transition = 'transform 0.1s ease-out';
         }
       });
 
@@ -222,7 +224,7 @@ if (window.innerWidth > 768) {
 }
 
 // ========================================
-// 📊 Counter Animation
+// ⏳ Counter Animation
 // ========================================
 const animateCounter = (element: HTMLElement, target: number, suffix: string = '') => {
   let current = 0;
@@ -263,9 +265,74 @@ document.querySelectorAll('.text-3xl, .text-5xl, .text-7xl, .text-8xl').forEach(
 });
 
 // ========================================
-// 🎯 Add smooth transitions to header
+// 🎯 Header Transitions
 // ========================================
 const header = document.querySelector('header');
 if (header) {
-  (header as HTMLElement).style.transition = 'backdrop-filter 0.3s ease, box-shadow 0.3s ease';
+  (header as HTMLElement).style.transition = 'backdrop-filter 0.3s ease, box-shadow 0.3s ease, transform 0.4s ease';
 }
+
+// ========================================
+// 🏢 3D Carousel Logic (Optimized)
+// ========================================
+function init3DCarousel() {
+  const container = document.getElementById('carousel-3d');
+  if (!container) return;
+
+  const items = Array.from(container.querySelectorAll('div')) as HTMLElement[];
+  const btnPrev = document.getElementById('prev-3d');
+  const btnNext = document.getElementById('next-3d');
+
+  if (!btnPrev || !btnNext || items.length === 0) return;
+
+  let currentIndex = 0;
+
+  function updateCarousel(newIndex: number) {
+    currentIndex = (newIndex + items.length) % items.length;
+
+    items.forEach(item => {
+      item.className = '';
+    });
+
+    const getIdx = (offset: number) => (currentIndex + offset + items.length) % items.length;
+
+    items[getIdx(0)].className = 'selected';
+    items[getIdx(-1)].className = 'prev';
+    items[getIdx(-2)].className = 'prevLeftSecond';
+    items[getIdx(-3)].className = 'prevLeftThird';
+    items[getIdx(1)].className = 'next';
+    items[getIdx(2)].className = 'nextRightSecond';
+    items[getIdx(3)].className = 'nextRightThird';
+
+    items.forEach((item, idx) => {
+      if (!item.className) {
+        const diff = (idx - currentIndex + items.length + items.length / 2) % items.length - items.length / 2;
+        item.className = diff < 0 ? 'hideLeft' : 'hideRight';
+      }
+    });
+  }
+
+  updateCarousel(currentIndex);
+
+  btnPrev.onclick = (e) => { e.preventDefault(); updateCarousel(currentIndex - 1); };
+  btnNext.onclick = (e) => { e.preventDefault(); updateCarousel(currentIndex + 1); };
+
+  items.forEach((item, index) => {
+    item.onclick = () => updateCarousel(index);
+  });
+
+  let interval = setInterval(() => updateCarousel(currentIndex + 1), 5000);
+
+  container.onmouseenter = () => clearInterval(interval);
+  container.onmouseleave = () => {
+    clearInterval(interval);
+    interval = setInterval(() => updateCarousel(currentIndex + 1), 5000);
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
+    if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
+  });
+}
+
+init3DCarousel();
