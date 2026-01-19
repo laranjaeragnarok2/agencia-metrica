@@ -13,37 +13,8 @@ window.addEventListener('load', () => {
   }, 100);
 });
 
-// Header scroll effect - Hide on scroll down, show on scroll up
+// Header scroll effect - Logic moved to optimized scroll listener
 let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('header');
-  const currentScroll = window.scrollY;
-
-  if (header) {
-    // Background blur on scroll with shadow
-    if (currentScroll > 50) {
-      header.classList.add('shadow-xl');
-      (header as HTMLElement).style.backdropFilter = 'blur(20px) saturate(180%)';
-    } else {
-      header.classList.remove('shadow-xl');
-      (header as HTMLElement).style.backdropFilter = 'blur(12px)';
-    }
-
-    // Auto-hide logic
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      // Scrolling down - hide
-      (header as HTMLElement).style.transform = 'translateY(-100%)';
-    } else {
-      // Scrolling up or at top - show
-      (header as HTMLElement).style.transform = 'translateY(0)';
-    }
-
-    // Safety reset for scale to prevent "growing" issue
-    (header as HTMLElement).style.scale = '1';
-  }
-
-  lastScroll = currentScroll;
-});
 
 // Smooth scroll with easing
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -105,35 +76,58 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========================================
 let ticking = false;
 
+// Cache elements for performance
+const headerElement = document.querySelector('header');
+const parallaxGlows = document.querySelectorAll('[class*="blur-"]');
+const heroSection = document.querySelector('.min-h-screen');
+const parallaxImages = document.querySelectorAll('img:not(#carousel-3d img)');
+const parallaxCards = document.querySelectorAll('.bg-\\[\\#111\\]');
+
 window.addEventListener('scroll', () => {
   if (!ticking) {
     window.requestAnimationFrame(() => {
       const scrolled = window.pageYOffset;
 
-      // Parallax for background glows (slower movement, growing effect)
-      // Exclude header to prevent navbar from growing
-      const glows = document.querySelectorAll('[class*="blur-"]');
-      glows.forEach((glow, index) => {
-        // Skip if element is inside header
+      // Header Logic (moved here for optimization)
+      if (headerElement) {
+        // Background blur
+        if (scrolled > 50) {
+          headerElement.classList.add('shadow-xl');
+          (headerElement as HTMLElement).style.backdropFilter = 'blur(20px) saturate(180%)';
+        } else {
+          headerElement.classList.remove('shadow-xl');
+          (headerElement as HTMLElement).style.backdropFilter = 'blur(12px)';
+        }
+
+        // Auto-hide
+        if (scrolled > lastScroll && scrolled > 100) {
+          (headerElement as HTMLElement).style.transform = 'translateY(-100%)';
+        } else {
+          (headerElement as HTMLElement).style.transform = 'translateY(0)';
+        }
+
+        // Safety reset
+        (headerElement as HTMLElement).style.scale = '1';
+      }
+      lastScroll = scrolled;
+
+      // Parallax for background glows
+      parallaxGlows.forEach((glow, index) => {
         if (!(glow as HTMLElement).closest('header')) {
           const speed = 0.3 + (index * 0.05);
           const scale = 1 + (scrolled * 0.0002);
           (glow as HTMLElement).style.transform = `translateY(${scrolled * speed * 0.08}px) scale(${scale})`;
-          (glow as HTMLElement).style.transition = 'transform 0.1s ease-out';
         }
       });
 
-      // Parallax for hero section (smooth fade and movement)
-      const hero = document.querySelector('.min-h-screen');
-      if (hero && scrolled < window.innerHeight) {
-        (hero as HTMLElement).style.transform = `translateY(${scrolled * 0.4}px)`;
-        (hero as HTMLElement).style.opacity = `${Math.max(0, 1 - scrolled / 800)}`;
+      // Parallax for hero section
+      if (heroSection && scrolled < window.innerHeight) {
+        (heroSection as HTMLElement).style.transform = `translateY(${scrolled * 0.4}px)`;
+        (heroSection as HTMLElement).style.opacity = `${Math.max(0, 1 - scrolled / 800)}`;
       }
 
-      // Parallax for images (gentle float effect)
-      // Excluir imagens que já possuem animações complexas (como o slider 3D)
-      const images = document.querySelectorAll('img:not(#carousel-3d img)');
-      images.forEach((img) => {
+      // Parallax for images
+      parallaxImages.forEach((img) => {
         const htmlImg = img as HTMLElement;
         const rect = htmlImg.getBoundingClientRect();
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
@@ -142,13 +136,11 @@ window.addEventListener('scroll', () => {
           const scrollPosition = rect.top / window.innerHeight;
           const movement = (scrollPosition - 0.5) * 20;
           htmlImg.style.transform = `translateY(${movement}px)`;
-          htmlImg.style.transition = 'transform 0.1s ease-out';
         }
       });
 
-      // Parallax for cards (subtle depth, alternating directions)
-      const cards = document.querySelectorAll('.bg-\\[\\#111\\]');
-      cards.forEach((card, index) => {
+      // Parallax for cards
+      parallaxCards.forEach((card, index) => {
         const rect = card.getBoundingClientRect();
         const isInView = rect.top < window.innerHeight && rect.bottom > 0;
 
@@ -157,7 +149,6 @@ window.addEventListener('scroll', () => {
           const direction = index % 2 === 0 ? 1 : -1;
           const movement = (scrollPosition - 0.5) * 10 * direction;
           (card as HTMLElement).style.transform = `translateY(${movement}px)`;
-          (card as HTMLElement).style.transition = 'transform 0.1s ease-out';
         }
       });
 

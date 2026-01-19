@@ -139,10 +139,7 @@ img:hover {
   }
 }
 
-.text-primary {
-  color: #3b82f6;
-  /* Fallback */
-}
+
 
 /* Gradient Text Class for Titles */
 .text-gradient {
