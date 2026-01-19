@@ -273,64 +273,55 @@ if (header) {
 // ========================================
 // 🏢 3D Carousel Logic (Optimized)
 // ========================================
-function init3DCarousel() {
-  const container = document.getElementById('carousel-3d');
-  if (!container) return;
+// ========================================
+// 🏢 Swiper 3D Carousel Logic
+// ========================================
+import Swiper from 'swiper';
+import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
 
-  const items = Array.from(container.querySelectorAll('div')) as HTMLElement[];
+function initSwiperCarousel() {
+  const swiperElement = document.querySelector('.mySwiper');
+  if (!swiperElement) return;
+
+  const swiper = new Swiper('.mySwiper', {
+    modules: [EffectCoverflow, Autoplay, Navigation],
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    initialSlide: 3,
+    loop: true,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 150,
+      modifier: 2.5,
+      slideShadows: false,
+    },
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    speed: 800,
+  });
+
+  // Custom Navigation Buttons
   const btnPrev = document.getElementById('prev-3d');
   const btnNext = document.getElementById('next-3d');
 
-  if (!btnPrev || !btnNext || items.length === 0) return;
-
-  let currentIndex = 0;
-
-  function updateCarousel(newIndex: number) {
-    currentIndex = (newIndex + items.length) % items.length;
-
-    items.forEach(item => {
-      item.className = '';
+  if (btnPrev && btnNext) {
+    btnPrev.addEventListener('click', () => {
+      swiper.slidePrev();
     });
 
-    const getIdx = (offset: number) => (currentIndex + offset + items.length) % items.length;
-
-    items[getIdx(0)].className = 'selected';
-    items[getIdx(-1)].className = 'prev';
-    items[getIdx(-2)].className = 'prevLeftSecond';
-    items[getIdx(-3)].className = 'prevLeftThird';
-    items[getIdx(1)].className = 'next';
-    items[getIdx(2)].className = 'nextRightSecond';
-    items[getIdx(3)].className = 'nextRightThird';
-
-    items.forEach((item, idx) => {
-      if (!item.className) {
-        const diff = (idx - currentIndex + items.length + items.length / 2) % items.length - items.length / 2;
-        item.className = diff < 0 ? 'hideLeft' : 'hideRight';
-      }
+    btnNext.addEventListener('click', () => {
+      swiper.slideNext();
     });
   }
-
-  updateCarousel(currentIndex);
-
-  btnPrev.onclick = (e) => { e.preventDefault(); updateCarousel(currentIndex - 1); };
-  btnNext.onclick = (e) => { e.preventDefault(); updateCarousel(currentIndex + 1); };
-
-  items.forEach((item, index) => {
-    item.onclick = () => updateCarousel(index);
-  });
-
-  let interval = setInterval(() => updateCarousel(currentIndex + 1), 5000);
-
-  container.onmouseenter = () => clearInterval(interval);
-  container.onmouseleave = () => {
-    clearInterval(interval);
-    interval = setInterval(() => updateCarousel(currentIndex + 1), 5000);
-  };
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
-    if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
-  });
 }
 
-init3DCarousel();
+initSwiperCarousel();
+
+

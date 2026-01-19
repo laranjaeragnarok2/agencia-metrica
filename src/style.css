@@ -244,145 +244,71 @@ body {
 /* ========================================
    🏢 3D Logo Carousel
    ======================================== */
-#carousel-container {
-  position: relative;
-  height: 350px;
+/* ========================================
+   Swiper 3D Carousel
+   ======================================== */
+.swiper {
   width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  perspective: 1000px;
-  padding: 40px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
-#carousel-3d {
-  position: relative;
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: blur(4px) grayscale(100%);
+  opacity: 0.5;
+  transition: all 0.3s;
+  border-radius: 20px;
+  user-select: none;
+}
+
+.swiper-slide img {
+  display: block;
   width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-#carousel-3d div {
-  position: absolute;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.5);
-  pointer-events: none;
-  visibility: hidden;
-}
-
-#carousel-3d div img {
-  width: 150px;
   height: auto;
-  transition: all 0.8s ease;
-  filter: grayscale(100%) brightness(0.5);
-  opacity: 0.5;
+  max-width: 200px;
+  transition: all 0.5s ease;
+  pointer-events: none;
 }
 
-#carousel-3d div.selected {
+.swiper-slide-active {
+  filter: blur(0) grayscale(0%);
+  opacity: 1;
   z-index: 10;
+}
+
+.swiper-slide-active img {
+  transform: scale(1.2);
+  filter: drop-shadow(0 10px 20px rgba(16, 69, 217, 0.4));
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-primary);
   opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(-50%, -50%) scale(1) translateZ(150px);
-}
-
-#carousel-3d div.selected img {
-  width: 260px;
-  filter: grayscale(0%) brightness(1);
-  opacity: 1;
-}
-
-/* Nível 1: Imediatamente ao lado */
-#carousel-3d div.prev {
-  z-index: 8;
-  opacity: 0.8;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(-120%, -50%) scale(0.75) translateZ(50px);
-}
-
-#carousel-3d div.next {
-  z-index: 8;
-  opacity: 0.8;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(20%, -50%) scale(0.75) translateZ(50px);
-}
-
-/* Nível 2: Segunda camada */
-#carousel-3d div.prevLeftSecond {
-  z-index: 6;
-  opacity: 0.5;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(-180%, -50%) scale(0.55) translateZ(0px);
-}
-
-#carousel-3d div.nextRightSecond {
-  z-index: 6;
-  opacity: 0.5;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(80%, -50%) scale(0.55) translateZ(0px);
-}
-
-/* Nível 3: Terceira camada (Nova) */
-#carousel-3d div.prevLeftThird {
-  z-index: 4;
-  opacity: 0.25;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(-230%, -50%) scale(0.4) translateZ(-50px);
-}
-
-#carousel-3d div.nextRightThird {
-  z-index: 4;
-  opacity: 0.25;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(130%, -50%) scale(0.4) translateZ(-50px);
-}
-
-#carousel-3d div.prev img,
-#carousel-3d div.next img,
-#carousel-3d div.prevLeftSecond img,
-#carousel-3d div.nextRightSecond img,
-#carousel-3d div.prevLeftThird img,
-#carousel-3d div.nextRightThird img {
-  width: 180px;
-}
-
-/* Escondidos */
-#carousel-3d div.hideLeft {
-  z-index: 1;
-  opacity: 0;
-  transform: translate(-280%, -50%) scale(0.2) translateZ(-200px);
-}
-
-#carousel-3d div.hideRight {
-  z-index: 1;
-  opacity: 0;
-  transform: translate(180%, -50%) scale(0.2) translateZ(-200px);
 }
 
 .carousel-buttons {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 20;
 }
 
 .carousel-buttons button {
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
@@ -390,12 +316,21 @@ body {
   transition: all 0.3s;
   font-size: 0.875rem;
   font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .carousel-buttons button:hover {
   background: var(--color-primary);
   border-color: var(--color-primary);
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -5px rgba(16, 69, 217, 0.3);
+}
+
+.swiper-3d {
+  perspective: 1200px;
 }
 
 /* ========================================
