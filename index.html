@@ -461,111 +461,186 @@
       </div>
     </section>
 
-    <section class="py-12 md:py-16 px-4 md:px-6" id="servicos">
+    <section class="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden" id="servicos">
+      <!-- Glow decorativo para a seção -->
+      <div
+        class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none">
+      </div>
+
       <div class="max-w-6xl mx-auto">
-        <div class="mb-10 md:mb-16 text-center md:text-left">
-          <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-gradient">O que fazemos
-          </h2>
-          <p class="text-gray text-base md:text-lg">Estratégias focadas onde o seu cliente está.</p>
+        <div class="mb-12 md:mb-20 text-center">
+          <span
+            class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/20 text-[#5B8DEF] text-xs md:text-sm font-bold rounded-full border border-primary/30 mb-4">
+            <span class="w-2 h-2 bg-primary rounded-full"></span>
+            Nossa Especialidade
+          </span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 text-gradient">Estratégia
+            <span class="text-white">Core</span></h2>
+          <p class="text-gray text-base md:text-xl max-w-2xl mx-auto">Colocamos sua marca onde o lucro acontece: na
+            frente do cliente certo, na hora certa.</p>
         </div>
 
-        <!-- Main Service -->
+        <!-- PRODUCT CORE: Tráfego Pago (Full Width & Premium) -->
         <div
-          class="bg-[#111] border border-white/5 rounded-2xl md:rounded-3xl p-8 md:p-10 lg:p-14 mb-6 md:mb-8 relative overflow-hidden">
+          class="group relative bg-[#0a0a0a] border border-primary/20 rounded-2xl md:rounded-[2.5rem] p-8 md:p-12 lg:p-16 mb-12 md:mb-16 overflow-hidden shadow-[0_0_50px_-12px_rgba(16,69,217,0.3)] transition-all duration-500 hover:border-primary/40">
+          <!-- Background Decoration -->
           <div
-            class="absolute top-0 right-0 w-40 md:w-64 h-40 md:h-64 bg-primary/10 rounded-full blur-[80px] md:blur-[100px]">
+            class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none">
           </div>
-          <div class="relative z-10 flex flex-col items-center text-center md:flex-row md:text-left gap-6 md:gap-8">
-            <div
-              class="w-16 h-16 md:w-20 md:h-20 bg-primary rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
-              <svg class="w-8 h-8 md:w-10 md:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-2xl md:text-3xl font-bold mb-2 md:mb-3">Tráfego Pago</h3>
-              <p class="text-gray text-sm md:text-base max-w-xl leading-relaxed">
-                Não dependa da sorte orgânica. Criamos ecossistemas de vendas usando Google Ads e Meta Ads para colocar
-                seu negócio na frente de quem <b>já está procurando</b> pelo que você vende.
-                <br><span class="text-sm opacity-60 mt-2 block">• Campanhas de Alta Conversão</span>
-                <span class="text-sm opacity-60 block">• Rastreamento de Vendas no WhatsApp</span>
-              <p class="text-gray text-sm md:text-base max-w-xl leading-relaxed mb-4">
-                Não dependa da sorte orgânica. Criamos ecossistemas de vendas usando Google Ads e Meta Ads para colocar
-                seu negócio na frente de quem <b>já está procurando</b> pelo que você vende.
+          <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-[100px] opacity-50"></div>
+
+          <div class="relative z-10 grid lg:grid-cols-12 gap-10 items-center">
+            <div class="lg:col-span-7">
+              <div
+                class="inline-block px-4 py-1.5 bg-primary text-white text-xs font-black uppercase tracking-widest rounded-full mb-6 shadow-lg shadow-primary/20">
+                O Carro-Chefe
+              </div>
+              <h3 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 leading-tight">
+                Gestão de <span class="text-primary">Tráfego Pago</span>
+              </h3>
+              <p class="text-gray text-base md:text-lg mb-8 leading-relaxed">
+                Não é sobre "impulsionar posts". É sobre criar uma <strong>máquina de vendas previsível</strong>.
+                Utilizamos inteligência de dados no Google Ads e Meta Ads para capturar a intenção de compra do seu
+                cliente local.
               </p>
-              <ul class="space-y-2">
-                <li class="flex items-center gap-2 text-sm text-gray/80">
-                  <svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+
+              <div class="grid sm:grid-cols-2 gap-4 mb-10">
+                <div class="bg-white/5 border border-white/5 p-4 rounded-xl">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div
+                      class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold">G
+                    </div>
+                    <span class="font-bold text-white text-sm">Google Ads</span>
+                  </div>
+                  <p class="text-gray text-xs leading-relaxed">Apareça no momento exato da busca. Quem procura, quer
+                    comprar agora.</p>
+                </div>
+                <div class="bg-white/5 border border-white/5 p-4 rounded-xl">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div
+                      class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold">M
+                    </div>
+                    <span class="font-bold text-white text-sm">Meta Ads</span>
+                  </div>
+                  <p class="text-gray text-xs leading-relaxed">Instagram e Facebook com segmentação geográfica cirúrgica
+                    para o seu bairro.</p>
+                </div>
+                <div class="bg-white/5 border border-white/5 p-4 rounded-xl">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div
+                      class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold">W
+                    </div>
+                    <span class="font-bold text-white text-sm">Smart WhatsApp</span>
+                  </div>
+                  <p class="text-gray text-xs leading-relaxed">Configuração de funis de mensagem que facilitam o
+                    fechamento da venda.</p>
+                </div>
+                <div class="bg-white/5 border border-white/5 p-4 rounded-xl">
+                  <div class="flex items-center gap-3 mb-2">
+                    <div
+                      class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold">R
+                    </div>
+                    <span class="font-bold text-white text-sm">Remarketing</span>
+                  </div>
+                  <p class="text-gray text-xs leading-relaxed">Não deixe o cliente esquecer de você. Perseguição
+                    estratégica para conversão.</p>
+                </div>
+              </div>
+
+              <a href="https://wa.me/seunumeroaqui"
+                class="inline-flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-light px-8 py-4 rounded-xl font-bold text-lg transition shadow-xl shadow-primary/30 group-hover:scale-105">
+                Escalar minhas vendas
+                <svg class="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="lg:col-span-5 hidden lg:block">
+              <!-- Gráfico Ilustrativo ou Imagem de Performance -->
+              <div
+                class="bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-white/10 rounded-[2rem] p-8 relative shadow-inner">
+                <div class="space-y-6">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-bold text-gray uppercase tracking-widest">ROI Mensal</span>
+                    <span class="text-primary font-black text-xl">12.4x</span>
+                  </div>
+                  <div class="h-40 flex items-end gap-2">
+                    <div class="flex-1 bg-primary/20 h-1/4 rounded-t-md"></div>
+                    <div class="flex-1 bg-primary/30 h-2/5 rounded-t-md"></div>
+                    <div class="flex-1 bg-primary/40 h-3/5 rounded-t-md"></div>
+                    <div class="flex-1 bg-primary/60 h-4/5 rounded-t-md animate-pulse"></div>
+                    <div class="flex-1 bg-primary h-full rounded-t-md"></div>
+                  </div>
+                  <div class="pt-4 border-t border-white/5 text-center">
+                    <p class="text-xs text-gray">Custo por Lead médio: <span class="text-white font-bold">R$ 2,45</span>
+                    </p>
+                  </div>
+                </div>
+                <!-- Float Badge -->
+                <div class="absolute -top-4 -right-4 bg-white text-dark p-4 rounded-2xl shadow-2xl rotate-12">
+                  <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                   </svg>
-                  Campanhas de Alta Conversão
-                </li>
-                <li class="flex items-center gap-2 text-sm text-gray/80">
-                  <svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Rastreamento de Vendas no WhatsApp
-                </li>
-                <li class="flex items-center gap-2 text-sm text-gray/80">
-                  <svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  Remarketing Inteligente
-                </li>
-              </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Secondary Services -->
-        <div class="grid md:grid-cols-2 gap-4 md:gap-6">
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-6 md:p-8">
+        <!-- SECONDARY SERVICES: Serviços que dão suporte ao Tráfego -->
+        <div class="text-center mb-10">
+          <h4 class="text-gray text-sm font-bold uppercase tracking-[0.3em] mb-8">Ecossistema de Suporte</h4>
+          <div class="grid md:grid-cols-2 gap-6">
             <div
-              class="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-lg md:rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-              </svg>
+              class="group bg-[#111] border border-white/5 rounded-2xl p-8 hover:border-primary/30 transition-all duration-300">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Mídias Sociais</h3>
+              <p class="text-gray text-sm leading-relaxed">
+                Gestão de conteúdo para validar o tráfego. Quando o cliente clica no seu anúncio, ele visita seu perfil.
+                Garantimos que ele encontre autoridade e confiança.
+              </p>
             </div>
-            <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2">Mídias Sociais</h3>
-            <p class="text-gray text-sm md:text-base leading-relaxed">
-              Transforme seguidores em fãs e fãs em clientes. Gerenciamos seu conteúdo para criar autoridade imediata.
-              Seus clientes vão visitar seu perfil antes de fechar negócio; garanta que eles gostem do que veem.
-            </p>
-          </div>
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-6 md:p-8">
             <div
-              class="w-10 h-10 md:w-12 md:h-12 bg-primary/10 rounded-lg md:rounded-xl flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 md:w-6 md:h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
-              </svg>
+              class="group bg-[#111] border border-white/5 rounded-2xl p-8 hover:border-primary/30 transition-all duration-300">
+              <div
+                class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                  stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold mb-3">Identidade Visual</h3>
+              <p class="text-gray text-sm leading-relaxed">
+                Branding que converte. Criamos uma imagem profissional que permite cobrar o preço justo e se destacar da
+                concorrência amadora nos anúncios.
+              </p>
             </div>
-            <h3 class="text-lg md:text-xl font-bold mb-1 md:mb-2">Identidade Visual</h3>
-            <p class="text-gray text-sm md:text-base leading-relaxed">
-              O design é a roupa do seu negócio. Uma marca bem posicionada cobra mais caro e vende mais fácil. Criamos
-              logotipos e identidades que transmitem profissionalismo e confiança instantânea.
-            </p>
           </div>
-        </div>
-
-        <div class="text-center mt-10 md:mt-14">
-          <a href="https://wa.me/seunumeroaqui"
-            class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-light px-6 md:px-8 py-3.5 md:py-4 rounded-xl font-bold text-base md:text-lg transition shadow-xl shadow-primary/25 w-full sm:w-auto">
-            Quero gerar mais clientes
-            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
         </div>
       </div>
+    </section>
+
+    <div class="text-center mt-10 md:mt-14">
+      <a href="https://wa.me/seunumeroaqui"
+        class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-light px-6 md:px-8 py-3.5 md:py-4 rounded-xl font-bold text-base md:text-lg transition shadow-xl shadow-primary/25 w-full sm:w-auto">
+        Quero gerar mais clientes
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+      </a>
+    </div>
+    </div>
     </section>
 
     <!-- Nichos de Atuação -->
