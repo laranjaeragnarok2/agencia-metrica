@@ -278,9 +278,6 @@ if (header) {
 // ========================================
 import Swiper from 'swiper';
 import { EffectCoverflow, Autoplay, Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
 
 function initSwiperCarousel() {
   const swiperElement = document.querySelector('.mySwiper');
