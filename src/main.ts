@@ -70,10 +70,7 @@ let ticking = false;
 
 // Cache elements for performance
 const headerElement = document.querySelector('header');
-const parallaxGlows = document.querySelectorAll('[class*="blur-"]');
 const heroSection = document.querySelector('.min-h-screen');
-const parallaxImages = document.querySelectorAll('img:not(#carousel-3d img)');
-const parallaxCards = document.querySelectorAll('.bg-\\[\\#111\\]');
 
 window.addEventListener('scroll', () => {
   if (!ticking) {
