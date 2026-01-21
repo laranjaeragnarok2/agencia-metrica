@@ -55,10 +55,10 @@ const observer = new IntersectionObserver(revealCallback, observerOptions);
 // Add reveal animation to sections
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('section');
-  sections.forEach((section, index) => {
+  sections.forEach((section) => {
     section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     observer.observe(section);
   });
 
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.bg-\\[\\#111\\]');
   cards.forEach((card, index) => {
     card.classList.add('reveal-card');
-    (card as HTMLElement).style.transitionDelay = `${index * 0.05}s`;
+    (card as HTMLElement).style.transitionDelay = `${Math.min(index * 0.03, 0.2)}s`;
     observer.observe(card);
   });
 });
@@ -88,26 +88,22 @@ window.addEventListener('scroll', () => {
     window.requestAnimationFrame(() => {
       const scrolled = window.pageYOffset;
 
-      // Header Logic (moved here for optimization)
+      // Header Logic
       if (headerElement) {
-        // Background blur
         if (scrolled > 50) {
           headerElement.classList.add('shadow-xl');
-          (headerElement as HTMLElement).style.backdropFilter = 'blur(20px) saturate(180%)';
+          (headerElement as HTMLElement).style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
         } else {
           headerElement.classList.remove('shadow-xl');
-          (headerElement as HTMLElement).style.backdropFilter = 'blur(12px)';
+          (headerElement as HTMLElement).style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
         }
 
-        // Auto-hide
+        // Hide/Show on scroll
         if (scrolled > lastScroll && scrolled > 100) {
           (headerElement as HTMLElement).style.transform = 'translateY(-100%)';
         } else {
           (headerElement as HTMLElement).style.transform = 'translateY(0)';
         }
-
-        // Safety reset
-        (headerElement as HTMLElement).style.scale = '1';
       }
       lastScroll = scrolled;
 
@@ -118,53 +114,18 @@ window.addEventListener('scroll', () => {
       const progressBar = document.getElementById('scroll-progress');
       if (progressBar) progressBar.style.width = `${scrolledPct}%`;
 
-      // Parallax for background glows
-      parallaxGlows.forEach((glow, index) => {
-        if (!(glow as HTMLElement).closest('header')) {
-          const speed = 0.3 + (index * 0.05);
-          const scale = 1 + (scrolled * 0.0002);
-          (glow as HTMLElement).style.transform = `translateY(${scrolled * speed * 0.08}px) scale(${scale})`;
-        }
-      });
-
-      // Parallax for hero section
+      // Simplified Parallax for hero only (most visible)
       if (heroSection && scrolled < window.innerHeight) {
-        (heroSection as HTMLElement).style.transform = `translateY(${scrolled * 0.4}px)`;
-        (heroSection as HTMLElement).style.opacity = `${Math.max(0, 1 - scrolled / 800)}`;
+        (heroSection as HTMLElement).style.transform = `translateY(${scrolled * 0.3}px)`;
+        (heroSection as HTMLElement).style.opacity = `${Math.max(0, 1 - scrolled / 600)}`;
       }
-
-      // Parallax for images
-      parallaxImages.forEach((img) => {
-        const htmlImg = img as HTMLElement;
-        const rect = htmlImg.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-
-        if (isInView) {
-          const scrollPosition = rect.top / window.innerHeight;
-          const movement = (scrollPosition - 0.5) * 20;
-          htmlImg.style.transform = `translateY(${movement}px)`;
-        }
-      });
-
-      // Parallax for cards
-      parallaxCards.forEach((card, index) => {
-        const rect = card.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-
-        if (isInView) {
-          const scrollPosition = rect.top / window.innerHeight;
-          const direction = index % 2 === 0 ? 1 : -1;
-          const movement = (scrollPosition - 0.5) * 10 * direction;
-          (card as HTMLElement).style.transform = `translateY(${movement}px)`;
-        }
-      });
 
       ticking = false;
     });
 
     ticking = true;
   }
-});
+}, { passive: true });
 
 // ========================================
 // 🖱️ Magnetic Button Effect
@@ -198,28 +159,8 @@ images.forEach(img => {
 // ========================================
 // 🌟 Cursor Trail Effect (Desktop only)
 // ========================================
-if (window.innerWidth > 768) {
-  const createTrail = (e: MouseEvent) => {
-    const trail = document.createElement('div');
-    trail.className = 'cursor-trail';
-    trail.style.left = e.clientX + 'px';
-    trail.style.top = e.clientY + 'px';
-    document.body.appendChild(trail);
+// Cursor trail removed for performance
 
-    setTimeout(() => {
-      trail.remove();
-    }, 800);
-  };
-
-  let throttle = false;
-  document.addEventListener('mousemove', (e) => {
-    if (!throttle) {
-      createTrail(e);
-      throttle = true;
-      setTimeout(() => { throttle = false; }, 100);
-    }
-  });
-}
 
 // ========================================
 // ⏳ Counter Animation
@@ -313,14 +254,14 @@ function initSwiperCarousel() {
       }
     },
     autoplay: {
-      delay: 2500,
+      delay: 3000,
       disableOnInteraction: false,
     },
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
     },
-    speed: 1000,
+    speed: 600,
   });
 
   // Custom Navigation Buttons
