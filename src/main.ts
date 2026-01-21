@@ -277,34 +277,53 @@ if (header) {
 // 🏢 Swiper 3D Carousel Logic
 // ========================================
 import Swiper from 'swiper';
-import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
+import { EffectCoverflow, Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
 
 function initSwiperCarousel() {
   const swiperElement = document.querySelector('.mySwiper');
   if (!swiperElement) return;
 
   const swiper = new Swiper('.mySwiper', {
-    modules: [EffectCoverflow, Autoplay, Navigation],
+    modules: [EffectCoverflow, Autoplay, Navigation, Pagination],
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
-    initialSlide: 3,
+    initialSlide: 2,
     loop: true,
     coverflowEffect: {
-      rotate: 0,
+      rotate: 30,
       stretch: 0,
-      depth: 150,
-      modifier: 2.5,
-      slideShadows: false,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    breakpoints: {
+      320: {
+        coverflowEffect: {
+          rotate: 20,
+          depth: 50,
+        }
+      },
+      768: {
+        coverflowEffect: {
+          rotate: 30,
+          depth: 100,
+        }
+      }
     },
     autoplay: {
-      delay: 3000,
+      delay: 2500,
       disableOnInteraction: false,
     },
-    speed: 800,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    speed: 1000,
   });
 
   // Custom Navigation Buttons
@@ -312,13 +331,8 @@ function initSwiperCarousel() {
   const btnNext = document.getElementById('next-3d');
 
   if (btnPrev && btnNext) {
-    btnPrev.addEventListener('click', () => {
-      swiper.slidePrev();
-    });
-
-    btnNext.addEventListener('click', () => {
-      swiper.slideNext();
-    });
+    btnPrev.onclick = () => swiper.slidePrev();
+    btnNext.onclick = () => swiper.slideNext();
   }
 }
 
