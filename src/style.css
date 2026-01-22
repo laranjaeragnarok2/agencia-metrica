@@ -6,8 +6,8 @@
   --color-dark: #0a0a0a;
   --color-light: #ffffff;
   --color-gray: #8a8a8a;
-  --font-family-sans: 'Inter', system-ui, sans-serif;
-  --font-family-display: 'Outfit', sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', sans-serif;
 }
 
 body {
