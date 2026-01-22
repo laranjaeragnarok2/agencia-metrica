@@ -1,22 +1,32 @@
 import './style.css'
 
 // ========================================
-// 🎨 Eye Candies & Smooth Interactions
+// 🚀 Performance Optimizations
 // ========================================
 
-// Loading animation
+// Detect mobile device
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  || window.innerWidth < 768;
+
+// Detect reduced motion preference
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ========================================
+// 🎨 Loading Animation (Optimized)
+// ========================================
 window.addEventListener('load', () => {
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 0.6s ease';
-    document.body.style.opacity = '1';
-  }, 100);
+  if (!prefersReducedMotion) {
+    document.body.style.opacity = '0';
+    requestAnimationFrame(() => {
+      document.body.style.transition = 'opacity 0.4s ease';
+      document.body.style.opacity = '1';
+    });
+  }
 });
 
-// Header scroll effect - Logic moved to optimized scroll listener
-let lastScroll = 0;
-
-// Smooth scroll with easing
+// ========================================
+// 🔗 Smooth Scroll (Native)
+// ========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', (e) => {
     const target = e.currentTarget as HTMLAnchorElement;
@@ -25,27 +35,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        const offset = 100;
+        const offset = 80;
         const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+        window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
       }
     }
   });
 });
 
 // ========================================
-// ✨ Scroll Reveal Animations
+// ✨ Scroll Reveal (Optimized for Mobile)
 // ========================================
-const observerOptions = {
+const observerOptions: IntersectionObserverInit = {
   root: null,
-  rootMargin: '0px',
-  threshold: 0.1
+  rootMargin: '50px',
+  threshold: 0.05 // Lower threshold = earlier trigger
 };
 
 const revealCallback = (entries: IntersectionObserverEntry[]) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('revealed');
+      // Stop observing once revealed for performance
+      observer.unobserve(entry.target);
     }
   });
 };
@@ -53,127 +65,123 @@ const revealCallback = (entries: IntersectionObserverEntry[]) => {
 const observer = new IntersectionObserver(revealCallback, observerOptions);
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Reveal sections and cards
-  const revealElements = document.querySelectorAll('section, .bg-\\[\\#111\\], .group, .max-w-3xl');
+  // Only observe major sections, not every element
+  const revealElements = document.querySelectorAll('section > div, .grid > div');
   revealElements.forEach((el, index) => {
     el.classList.add('reveal-card');
-    // Stagger effect for items in the same viewport
-    (el as HTMLElement).style.transitionDelay = `${Math.min(index * 0.05, 0.3)}s`;
+    // Minimal stagger for mobile
+    if (!isMobile) {
+      (el as HTMLElement).style.transitionDelay = `${Math.min(index * 0.03, 0.15)}s`;
+    }
     observer.observe(el);
   });
 });
 
 // ========================================
-// 🎭 Enhanced Parallax Effects
+// 📜 Scroll Effects (Heavily Optimized)
 // ========================================
 let ticking = false;
+let lastScroll = 0;
+const headerElement = document.querySelector('header') as HTMLElement | null;
+const progressBar = document.getElementById('scroll-progress');
 
-// Cache elements for performance
-const headerElement = document.querySelector('header');
-const heroSection = document.querySelector('.min-h-screen');
+// Calculate these once
+const docHeight = () => document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+const handleScroll = () => {
+  const scrolled = window.pageYOffset;
+
+  // Header effects
+  if (headerElement) {
+    // Background opacity
+    if (scrolled > 50) {
+      headerElement.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+    } else {
+      headerElement.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
+    }
+
+    // Hide/Show header - only on desktop or if user scrolled significantly
+    if (!isMobile && scrolled > 150) {
+      const scrollDelta = scrolled - lastScroll;
+      if (scrollDelta > 15) {
+        headerElement.style.transform = 'translateY(-100%)';
+      } else if (scrollDelta < -15) {
+        headerElement.style.transform = 'translateY(0)';
+      }
+    } else {
+      headerElement.style.transform = 'translateY(0)';
+    }
+  }
+
+  // Progress bar - simple calculation
+  if (progressBar) {
+    const scrolledPct = (scrolled / docHeight()) * 100;
+    progressBar.style.width = `${scrolledPct}%`;
+  }
+
+  lastScroll = scrolled;
+  ticking = false;
+};
 
 window.addEventListener('scroll', () => {
   if (!ticking) {
-    window.requestAnimationFrame(() => {
-      const scrolled = window.pageYOffset;
-
-      // Header Logic
-      if (headerElement) {
-        if (scrolled > 50) {
-          headerElement.classList.add('shadow-xl');
-          (headerElement as HTMLElement).style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
-        } else {
-          headerElement.classList.remove('shadow-xl');
-          (headerElement as HTMLElement).style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
-        }
-
-        // Hide/Show on scroll with buffer
-        const scrollDelta = scrolled - lastScroll;
-        if (scrolled > 150) { // Only start hiding after initial scroll
-          if (scrollDelta > 10) { // Scrolling down
-            (headerElement as HTMLElement).style.transform = 'translateY(-100%)';
-          } else if (scrollDelta < -10) { // Scrolling up
-            (headerElement as HTMLElement).style.transform = 'translateY(0)';
-          }
-        } else {
-          (headerElement as HTMLElement).style.transform = 'translateY(0)';
-        }
-      }
-      lastScroll = scrolled;
-
-      // Update Scroll Progress Bar
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolledPct = (winScroll / height) * 100;
-      const progressBar = document.getElementById('scroll-progress');
-      if (progressBar) progressBar.style.width = `${scrolledPct}%`;
-
-      // Simplified Parallax for hero only (most visible)
-      if (heroSection && scrolled < window.innerHeight) {
-        (heroSection as HTMLElement).style.transform = `translateY(${scrolled * 0.3}px)`;
-        (heroSection as HTMLElement).style.opacity = `${Math.max(0, 1 - scrolled / 600)}`;
-      }
-
-      ticking = false;
-    });
-
+    requestAnimationFrame(handleScroll);
     ticking = true;
   }
 }, { passive: true });
 
 // ========================================
-// 🖱️ Magnetic Button Effect
+// 🖱️ Button Effects (Desktop Only)
 // ========================================
-const buttons = document.querySelectorAll('.bg-primary, .hover\\:bg-primary\\/90');
-buttons.forEach(button => {
-  button.addEventListener('mousemove', (e) => {
-    const mouseEvent = e as MouseEvent;
-    const rect = (button as HTMLElement).getBoundingClientRect();
-    const x = mouseEvent.clientX - rect.left - rect.width / 2;
-    const y = mouseEvent.clientY - rect.top - rect.height / 2;
+if (!isMobile && !prefersReducedMotion) {
+  const buttons = document.querySelectorAll('.bg-primary');
+  buttons.forEach(button => {
+    button.addEventListener('mousemove', (e) => {
+      const mouseEvent = e as MouseEvent;
+      const rect = (button as HTMLElement).getBoundingClientRect();
+      const x = (mouseEvent.clientX - rect.left - rect.width / 2) * 0.08;
+      const y = (mouseEvent.clientY - rect.top - rect.height / 2) * 0.08;
+      (button as HTMLElement).style.transform = `translate(${x}px, ${y}px)`;
+    }, { passive: true });
 
-    (button as HTMLElement).style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
+    button.addEventListener('mouseleave', () => {
+      (button as HTMLElement).style.transform = 'translate(0, 0)';
+    });
   });
-
-  button.addEventListener('mouseleave', () => {
-    (button as HTMLElement).style.transform = 'translate(0, 0) scale(1)';
-  });
-});
+}
 
 // ========================================
-// ✨ Image Hover Zoom Effects
-// ========================================
-const images = document.querySelectorAll('img');
-images.forEach(img => {
-  img.addEventListener('mouseenter', () => {
-    img.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-  });
-});
-
-// ========================================
-// 🌟 Cursor Trail Effect (Desktop only)
-// ========================================
-// Cursor trail removed for performance
-
-
-// ========================================
-// ⏳ Counter Animation
+// ⏳ Counter Animation (Optimized)
 // ========================================
 const animateCounter = (element: HTMLElement, target: number, suffix: string = '') => {
-  let current = 0;
-  const increment = target / 60;
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      element.textContent = target + suffix;
-      clearInterval(timer);
+  if (prefersReducedMotion) {
+    element.textContent = target + suffix;
+    return;
+  }
+
+  const duration = 1000; // 1 second
+  const startTime = performance.now();
+
+  const updateCounter = (currentTime: number) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Easing function for smooth animation
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(easeOut * target);
+
+    element.textContent = current + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCounter);
     } else {
-      element.textContent = Math.floor(current) + suffix;
+      element.textContent = target + suffix;
     }
-  }, 30);
+  };
+
+  requestAnimationFrame(updateCounter);
 };
 
-// Observe counters
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
@@ -187,6 +195,8 @@ const counterObserver = new IntersectionObserver((entries) => {
         const suffix = hasPlus ? '+' : hasPercent ? '%' : '';
         animateCounter(entry.target as HTMLElement, number, suffix);
       }
+      // Stop observing
+      counterObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.5 });
@@ -204,63 +214,56 @@ const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 
+const closeMenu = () => {
+  if (menuToggle && mobileMenu) {
+    menuToggle.classList.remove('menu-open');
+    mobileMenu.classList.remove('menu-active');
+    document.body.classList.remove('overflow-hidden');
+    setTimeout(() => {
+      if (!mobileMenu.classList.contains('menu-active')) {
+        mobileMenu.style.display = 'none';
+      }
+    }, 300);
+  }
+};
+
+const openMenu = () => {
+  if (menuToggle && mobileMenu) {
+    mobileMenu.style.display = 'flex';
+    requestAnimationFrame(() => {
+      menuToggle.classList.add('menu-open');
+      mobileMenu.classList.add('menu-active');
+      document.body.classList.add('overflow-hidden');
+    });
+  }
+};
+
 if (menuToggle && mobileMenu) {
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isActive = mobileMenu.classList.contains('menu-active');
-
-    if (!isActive) {
-      mobileMenu.style.display = 'flex';
-      // Pequeno timeout para o navegador registrar o display:flex antes da transição
-      setTimeout(() => {
-        menuToggle.classList.add('menu-open');
-        mobileMenu.classList.add('menu-active');
-        document.body.classList.add('overflow-hidden');
-      }, 10);
+    if (mobileMenu.classList.contains('menu-active')) {
+      closeMenu();
     } else {
-      menuToggle.classList.remove('menu-open');
-      mobileMenu.classList.remove('menu-active');
-      document.body.classList.remove('overflow-hidden');
-      // Espera a transição acabar para esconder
-      setTimeout(() => {
-        if (!mobileMenu.classList.contains('menu-active')) {
-          mobileMenu.style.display = 'none';
-        }
-      }, 500);
+      openMenu();
     }
   });
 
   mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('menu-open');
-      mobileMenu.classList.remove('menu-active');
-      document.body.classList.remove('overflow-hidden');
-      setTimeout(() => {
-        mobileMenu.style.display = 'none';
-      }, 500);
-    });
+    link.addEventListener('click', closeMenu);
   });
 
-  // Fecha o menu ao clicar fora dele
   document.addEventListener('click', (e) => {
-    if (mobileMenu.classList.contains('menu-active') && !mobileMenu.contains(e.target as Node) && !menuToggle.contains(e.target as Node)) {
-      menuToggle.classList.remove('menu-open');
-      mobileMenu.classList.remove('menu-active');
-      document.body.classList.remove('overflow-hidden');
-      setTimeout(() => {
-        mobileMenu.style.display = 'none';
-      }, 500);
+    if (mobileMenu.classList.contains('menu-active') &&
+      !mobileMenu.contains(e.target as Node) &&
+      !menuToggle.contains(e.target as Node)) {
+      closeMenu();
     }
   });
 }
 
 // ========================================
-// 🎯 Header Transitions
+// 🎯 Header Transitions Setup
 // ========================================
-const header = document.querySelector('header');
-if (header) {
-  (header as HTMLElement).style.transition = 'backdrop-filter 0.3s ease, box-shadow 0.3s ease, transform 0.4s ease';
+if (headerElement) {
+  headerElement.style.transition = 'background-color 0.2s ease, transform 0.3s ease';
 }
-
-
-
