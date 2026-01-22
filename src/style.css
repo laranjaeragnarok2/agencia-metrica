@@ -367,7 +367,7 @@ nav a:hover::after {
 /* ========================================
    📱 Mobile Optimizations
    ======================================== */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .cursor-trail {
     display: none;
   }
@@ -386,9 +386,17 @@ nav a:hover::after {
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Mobile Menu Visibility */
+  /* Mobile Menu Visibility Logic */
+  #mobile-menu {
+    transform: translateY(-100%);
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   #mobile-menu.menu-active {
     transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
   }
 
   /* Optimize animations for mobile without breaking long ones */
