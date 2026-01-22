@@ -193,6 +193,29 @@ document.querySelectorAll('.text-3xl, .text-5xl, .text-7xl, .text-8xl').forEach(
 });
 
 // ========================================
+// 📱 Mobile Menu Logic
+// ========================================
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+if (menuToggle && mobileMenu) {
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('menu-open');
+    mobileMenu.classList.toggle('menu-active');
+    document.body.classList.toggle('overflow-hidden');
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('menu-open');
+      mobileMenu.classList.remove('menu-active');
+      document.body.classList.remove('overflow-hidden');
+    });
+  });
+}
+
+// ========================================
 // 🎯 Header Transitions
 // ========================================
 const header = document.querySelector('header');

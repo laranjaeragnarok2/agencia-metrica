@@ -66,17 +66,51 @@
         <img src="/assets/logos/logo-horizontal.png" alt="Agência Métrica"
           class="h-8 md:h-10 w-auto transition group-hover:scale-105">
       </a>
-      <nav role="navigation" aria-label="Navegação principal" class="hidden lg:flex gap-8">
+      <nav role="navigation" aria-label="Navegação principal" class="hidden lg:flex gap-6 xl:gap-8">
         <a href="#sobre" class="text-sm font-medium text-gray hover:text-light transition">A Agência</a>
         <a href="#servicos" class="text-sm font-medium text-gray hover:text-light transition">Serviços</a>
+        <a href="#nichos" class="text-sm font-medium text-gray hover:text-light transition">Nichos</a>
         <a href="#metodo" class="text-sm font-medium text-gray hover:text-light transition">Método</a>
         <a href="#resultados" class="text-sm font-medium text-gray hover:text-light transition">Resultados</a>
+        <a href="#portfolio" class="text-sm font-medium text-gray hover:text-light transition">Portfólio</a>
       </nav>
 
-      <a href="https://wa.me/seunumeroaqui"
-        class="bg-primary hover:bg-primary/90 text-light px-4 md:px-6 py-2.5 md:py-3 rounded-lg font-semibold text-sm transition">
-        Fale Conosco
-      </a>
+      <div class="flex items-center gap-4">
+        <a href="https://wa.me/seunumeroaqui"
+          class="hidden sm:flex bg-primary hover:bg-primary/90 text-light px-6 py-2.5 rounded-lg font-semibold text-sm transition shadow-lg shadow-primary/20">
+          Fale Conosco
+        </a>
+
+        <!-- Hamburger Button -->
+        <button id="menu-toggle" aria-label="Menu"
+          class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[100] relative">
+          <span class="w-6 h-0.5 bg-light transition-all duration-300 origin-center" id="bar1"></span>
+          <span class="w-6 h-0.5 bg-light transition-all duration-300" id="bar2"></span>
+          <span class="w-6 h-0.5 bg-light transition-all duration-300 origin-center" id="bar3"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div id="mobile-menu"
+        class="fixed inset-0 bg-dark/98 backdrop-blur-2xl z-40 flex flex-col items-center justify-center gap-8 -translate-y-full transition-transform duration-500 lg:hidden">
+        <nav class="flex flex-col items-center gap-6">
+          <a href="#sobre" class="mobile-link text-2xl font-black text-gray hover:text-light transition">A Agência</a>
+          <a href="#servicos" class="mobile-link text-2xl font-black text-gray hover:text-light transition">Serviços</a>
+          <a href="#nichos" class="mobile-link text-2xl font-black text-gray hover:text-light transition">Nichos</a>
+          <a href="#metodo" class="mobile-link text-2xl font-black text-gray hover:text-light transition">Método</a>
+          <a href="#resultados"
+            class="mobile-link text-2xl font-black text-gray hover:text-light transition">Resultados</a>
+          <a href="#portfolio"
+            class="mobile-link text-2xl font-black text-gray hover:text-light transition">Portfólio</a>
+          <a href="#quem-somos" class="mobile-link text-2xl font-black text-gray hover:text-light transition">Quem
+            Somos</a>
+        </nav>
+
+        <a href="https://wa.me/seunumeroaqui"
+          class="bg-primary text-light px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25 mt-4">
+          Falar com a Métrica
+        </a>
+      </div>
     </div>
   </header>
 
@@ -220,7 +254,7 @@
     </section>
 
     <!-- Problema -->
-    <section class="py-10 md:py-16 px-4 md:px-6 relative overflow-hidden" id="problema">
+    <section class="relative overflow-hidden" id="problema">
       <!-- Glow background para preencher o vazio -->
       <div
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none">
@@ -450,7 +484,7 @@
       </div>
     </section>
     <!-- Antes e Depois -->
-    <section class="py-12 md:py-16 px-4 md:px-6 bg-[#0a0a0a]">
+    <section class="bg-[#0a0a0a]">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
           <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4">Evolução de <span
@@ -501,7 +535,7 @@
     </section>
 
     <!-- Nichos de Atuação -->
-    <section class="py-12 md:py-16 px-4 md:px-6 bg-[#0d0d0d]" id="nichos">
+    <section class="bg-[#0d0d0d]" id="nichos">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
           <span
@@ -522,9 +556,9 @@
             <div
               class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-[60px] group-hover:bg-red-500/20 transition-all duration-500">
             </div>
-            <div class="relative z-10">
+            <div class="relative z-10 text-center md:text-left">
               <div
-                class="w-14 h-14 md:w-16 md:h-16 bg-red-500/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 group-hover:bg-red-500/20 transition">
+                class="w-14 h-14 md:w-16 md:h-16 bg-red-500/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 mx-auto md:mx-0 group-hover:bg-red-500/20 transition">
                 <svg class="w-7 h-7 md:w-8 md:h-8 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -570,9 +604,9 @@
             <div
               class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[60px] group-hover:bg-primary/20 transition-all duration-500">
             </div>
-            <div class="relative z-10">
+            <div class="relative z-10 text-center md:text-left">
               <div
-                class="w-14 h-14 md:w-16 md:h-16 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 group-hover:bg-primary/20 transition">
+                class="w-14 h-14 md:w-16 md:h-16 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center mb-5 md:mb-6 mx-auto md:mx-0 group-hover:bg-primary/20 transition">
                 <svg class="w-7 h-7 md:w-8 md:h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -615,7 +649,7 @@
       </div>
     </section>
 
-    <section class="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden" id="servicos">
+    <section class="relative overflow-hidden" id="servicos">
       <!-- Glow decorativo para a seção -->
       <div
         class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none">
@@ -645,7 +679,7 @@
           <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-[100px] opacity-50"></div>
 
           <div class="relative z-10 grid lg:grid-cols-12 gap-10 items-center">
-            <div class="lg:col-span-7">
+            <div class="lg:col-span-7 text-center lg:text-left">
               <div
                 class="inline-block px-4 py-1.5 bg-primary text-white text-xs font-black uppercase tracking-widest rounded-full mb-6 shadow-lg shadow-primary/20">
                 O Carro-Chefe
@@ -661,7 +695,7 @@
 
               <div class="grid sm:grid-cols-2 gap-4 mb-10">
                 <div class="bg-white/5 border border-white/5 p-4 rounded-xl">
-                  <div class="flex items-center gap-3 mb-2">
+                  <div class="flex items-center gap-3 mb-2 justify-center lg:justify-start">
                     <div
                       class="w-8 h-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary font-bold">G
                     </div>
@@ -751,9 +785,9 @@
           <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <!-- SEO -->
             <div
-              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300">
+              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 text-center md:text-left hover:border-primary/30 transition-all duration-300">
               <div
-                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 group-hover:bg-primary/20 transition-colors">
+                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 mx-auto md:mx-0 group-hover:bg-primary/20 transition-colors">
                 <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -768,9 +802,9 @@
 
             <!-- Landing Pages -->
             <div
-              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300">
+              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 text-center md:text-left hover:border-primary/30 transition-all duration-300">
               <div
-                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 group-hover:bg-primary/20 transition-colors">
+                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 mx-auto md:mx-0 group-hover:bg-primary/20 transition-colors">
                 <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -785,9 +819,9 @@
 
             <!-- Mídias Sociais -->
             <div
-              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300">
+              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 text-center md:text-left hover:border-primary/30 transition-all duration-300">
               <div
-                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 group-hover:bg-primary/20 transition-colors">
+                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 mx-auto md:mx-0 group-hover:bg-primary/20 transition-colors">
                 <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -802,9 +836,9 @@
 
             <!-- Identidade Visual -->
             <div
-              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300">
+              class="group bg-[#111] border border-white/5 rounded-2xl p-5 md:p-6 text-center md:text-left hover:border-primary/30 transition-all duration-300">
               <div
-                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 group-hover:bg-primary/20 transition-colors">
+                class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4 md:mb-5 mx-auto md:mx-0 group-hover:bg-primary/20 transition-colors">
                 <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                   stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -822,7 +856,7 @@
     </section>
 
     <!-- Posicionamento -->
-    <section class="py-10 md:py-14 px-4 md:px-6" id="sobre">
+    <section id="sobre">
       <div class="max-w-6xl mx-auto">
         <div class="bg-primary rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-16 relative overflow-hidden">
           <!-- Pattern -->
@@ -864,7 +898,7 @@
     </section>
 
     <!-- Quem Somos -->
-    <section class="py-12 md:py-16 px-4 md:px-6" id="quem-somos">
+    <section id="quem-somos">
       <div class="max-w-6xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-10 items-center lg:items-stretch">
           <div class="relative mb-6 lg:mb-0 flex items-end group">
@@ -928,7 +962,7 @@
 
 
     <!-- Portfólio (Nosso Trabalho) -->
-    <section class="py-16 md:py-24 px-4 md:px-6" id="portfolio">
+    <section id="portfolio">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-16">
           <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-gradient">Nosso
@@ -1011,7 +1045,7 @@
 
 
     <!-- Método -->
-    <section class="py-12 md:py-20 px-4 md:px-6 bg-[#0d0d0d]" id="metodo">
+    <section class="bg-[#0d0d0d]" id="metodo">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10 md:mb-20">
           <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-gradient">Método
@@ -1020,22 +1054,22 @@
           <p class="text-gray text-sm md:text-lg">Marketing eficiente não é gastar mais. É gastar melhor.</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8">
+          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8 text-center md:text-left">
             <span class="text-3xl md:text-5xl font-black text-white/30 block mb-2 md:mb-4">01</span>
             <h3 class="text-base md:text-xl font-bold text-[#5B8DEF] mb-1 md:mb-3">Diagnóstico</h3>
             <p class="text-gray text-xs md:text-sm leading-relaxed">Entendemos seu momento e gargalos.</p>
           </div>
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8">
+          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8 text-center md:text-left">
             <span class="text-3xl md:text-5xl font-black text-white/30 block mb-2 md:mb-4">02</span>
             <h3 class="text-base md:text-xl font-bold text-[#5B8DEF] mb-1 md:mb-3">Estratégia</h3>
             <p class="text-gray text-xs md:text-sm leading-relaxed">Planejamento para conversão local.</p>
           </div>
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8">
+          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8 text-center md:text-left">
             <span class="text-3xl md:text-5xl font-black text-white/30 block mb-2 md:mb-4">03</span>
             <h3 class="text-base md:text-xl font-bold text-[#5B8DEF] mb-1 md:mb-3">Execução</h3>
             <p class="text-gray text-xs md:text-sm leading-relaxed">Anúncios com segmentação precisa.</p>
           </div>
-          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8">
+          <div class="bg-[#111] border border-white/5 rounded-xl md:rounded-2xl p-5 md:p-8 text-center md:text-left">
             <span class="text-3xl md:text-5xl font-black text-white/30 block mb-2 md:mb-4">04</span>
             <h3 class="text-base md:text-xl font-bold text-[#5B8DEF] mb-1 md:mb-3">Otimização</h3>
             <p class="text-gray text-xs md:text-sm leading-relaxed">Escala baseada no lucro real.</p>
@@ -1046,7 +1080,7 @@
 
 
     <!-- CTA Final -->
-    <section class="py-12 md:py-16 px-4 md:px-6">
+    <section>
       <div class="max-w-3xl mx-auto">
         <div class="bg-primary rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-20 text-center relative overflow-hidden">
           <!-- Glow -->
