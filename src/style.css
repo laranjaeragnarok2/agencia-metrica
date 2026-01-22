@@ -391,6 +391,7 @@ nav a:hover::after {
     transform: translateY(-100%);
     visibility: hidden;
     pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s;
   }
 
   #mobile-menu.menu-active {
@@ -405,9 +406,9 @@ nav a:hover::after {
   }
 }
 
-/* Base section spacing for mobile-first */
-section {
-  @apply py-16 md:py-24 px-4 md:px-6;
+/* Base section spacing for mobile-first (excluding hero) */
+section:not(.hero-section) {
+  @apply py-12 md:py-24 px-4 md:px-6;
 }
 
 /* ========================================

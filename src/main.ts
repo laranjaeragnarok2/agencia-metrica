@@ -200,7 +200,8 @@ const mobileMenu = document.getElementById('mobile-menu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 
 if (menuToggle && mobileMenu) {
-  menuToggle.addEventListener('click', () => {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     menuToggle.classList.toggle('menu-open');
     mobileMenu.classList.toggle('menu-active');
     document.body.classList.toggle('overflow-hidden');
@@ -212,6 +213,15 @@ if (menuToggle && mobileMenu) {
       mobileMenu.classList.remove('menu-active');
       document.body.classList.remove('overflow-hidden');
     });
+  });
+
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener('click', (e) => {
+    if (mobileMenu.classList.contains('menu-active') && !mobileMenu.contains(e.target as Node) && !menuToggle.contains(e.target as Node)) {
+      menuToggle.classList.remove('menu-open');
+      mobileMenu.classList.remove('menu-active');
+      document.body.classList.remove('overflow-hidden');
+    }
   });
 }
 
