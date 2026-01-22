@@ -52,14 +52,14 @@ const revealCallback = (entries: IntersectionObserverEntry[]) => {
 
 const observer = new IntersectionObserver(revealCallback, observerOptions);
 
-// Add reveal animation to cards only (keep sections instant for speed)
 document.addEventListener('DOMContentLoaded', () => {
-  // Reveal cards conditionally for better performance
-  const cards = document.querySelectorAll('.bg-\\[\\#111\\], .swiper-slide');
-  cards.forEach((card, index) => {
-    card.classList.add('reveal-card');
-    (card as HTMLElement).style.transitionDelay = `${Math.min(index * 0.03, 0.2)}s`;
-    observer.observe(card);
+  // Reveal sections and cards
+  const revealElements = document.querySelectorAll('section, .bg-\\[\\#111\\], .group, .max-w-3xl');
+  revealElements.forEach((el, index) => {
+    el.classList.add('reveal-card');
+    // Stagger effect for items in the same viewport
+    (el as HTMLElement).style.transitionDelay = `${Math.min(index * 0.05, 0.3)}s`;
+    observer.observe(el);
   });
 });
 

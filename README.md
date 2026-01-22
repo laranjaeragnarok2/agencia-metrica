@@ -7,7 +7,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 
-**Landing Page de Alta Conversão para Agência de Tráfego Pago**
+**Landing Page de Alta Performance para Agências de Tráfego Pago**
 
 [Ver Demo](https://agencia-metrica.vercel.app/) • [Reportar Bug](https://github.com/laranjaeragnarok2/agencia-metrica/issues)
 
@@ -17,47 +17,36 @@
 
 ## 📋 Sobre o Projeto
 
-Landing page profissional desenvolvida para a **Agência Métrica**, especializada em tráfego pago para negócios locais. O projeto foi construído com foco em **alta conversão**, **performance** e **design premium**.
+Landing page profissional desenvolvida para a **Agência Métrica**, especializada em tráfego pago para negócios locais. O projeto foi construído com foco em **alta conversão**, **performance** e **design premium**, utilizando técnicas avançadas de UX/UI para destacar a autoridade da marca.
 
 ### 🎯 Objetivo
 
-Converter visitantes em leads qualificados através de uma experiência visual impactante e copywriting estratégico focado em resultados reais para negócios locais.
+Converter visitantes em leads qualificados através de uma experiência visual impactante, prova social forte e copywriting estratégico focado no ROI do empresário local.
 
 ---
 
-## ✨ Funcionalidades
+## ✨ Funcionalidades Premium
 
-### Design & UX
-- ✅ **Design Dark Mode Premium** - Interface moderna com gradientes sutis
-- ✅ **Ícones SVG Customizados** - Heroicons integrados sem dependências externas
-- ✅ **Efeitos Glassmorphism** - Cards com backdrop-blur elegantes
-- ✅ **Hover Effects Premium** - Animações sutis em todos os elementos interativos
-- ✅ **Glow Effects** - Iluminação ambiente nos componentes principais
-- ✅ **100% Responsivo** - Layout otimizado para Mobile, Tablet e Desktop
-- ✅ **Mobile-First** - Textos e elementos otimizados para telas pequenas
+### Design & UX (Master Polish Update)
+- ✅ **Tipografia de Luxo** - Combinação de **Outfit** (títulos) e **Inter** (corpo) para um ar de modernidade e autoridade.
+- ✅ **Design Dark Mode Premium** - Interface moderna com gradientes atmosféricos.
+- ✅ **Glassmorphism Refinado** - Cards com efeitos de desfoque e bordas iluminadas.
+- ✅ **Scroll Reveal Avançado** - Animações de revelação progressiva ao rolar a página para uma navegação fluida.
+- ✅ **Hero Light Beam** - Efeito de feixe de luz dinâmico na seção principal para impacto visual imediato.
+- ✅ **Custom Scrollbar** - Barra de rolagem estilizada para combinar com a identidade visual da marca.
+- ✅ **100% Responsivo** - Layout otimizado meticulosamente para Mobile, Tablet e Desktop.
 
-### Conversão
-- ✅ **CTAs Estratégicos** - Botões de WhatsApp em pontos-chave da jornada
-- ✅ **Copywriting Focado** - Textos baseados em metodologia de vendas
-- ✅ **Seção de Nichos** - Destaque para Restaurantes/iFood e Garagens/Veículos
-- ✅ **Seção de Portfólio** - Grid para imagens e vídeos
-- ✅ **Seção de Resultados** - Espaço para prints de campanhas reais
-- ✅ **Prova Social** - Estrutura para depoimentos e cases
+### Conversão & Autoridade
+- ✅ **Logocloud Infinita** - Carrossel contínuo de marcas de clientes para prova social instantânea.
+- ✅ **Resultados Visuais** - Módulo de "Antes e Depois" para demonstração clara de evolução de perfil.
+- ✅ **Ecossistema de Suporte** - Destaque para serviços complementares (SEO, Landing Pages, Social Media, Branding).
+- ✅ **Nichos de Atuação** - Estratégias especializadas para Restaurantes (iFood) e Garagens (Veículos).
+- ✅ **Animações de Contador** - Números que crescem ao entrar na tela para métricas de investimento e clientes.
 
 ### Técnico & Performance
-- ✅ **Meta Tags SEO** - Otimizado para buscadores
-- ✅ **Open Graph Tags** - Preview otimizado para redes sociais
-- ✅ **Twitter Cards** - Compartilhamento premium no Twitter/X
-- ✅ **Preload de Fontes** - Carregamento assíncrono para melhor performance
-- ✅ **Smooth Scroll** - Navegação suave entre seções
-- ✅ **Header Fixo** - Navegação sempre acessível
-
-### Acessibilidade
-- ✅ **Skip Link** - Pular para conteúdo principal
-- ✅ **ARIA Labels** - Em todos os elementos interativos
-- ✅ **Roles Semânticos** - banner, navigation, main
-- ✅ **Color Scheme** - Dark mode nativo
-- ✅ **Contraste Adequado** - Textos legíveis
+- ✅ **Lighthouse Score 90+** - Performance, Acessibilidade e SEO otimizados.
+- ✅ **Zero Dependências Pesadas** - Implementação de animações puras sem bibliotecas externas como Swiper.js.
+- ✅ **Acessibilidade Completa** - Skip links, ARIA labels e semântica HTML5 rigorosa.
 
 ---
 
@@ -65,16 +54,18 @@ Converter visitantes em leads qualificados através de uma experiência visual i
 
 ```
 agencia-metrica/
-├── public/
-│   └── vite.svg
+├── dist/                # Build de produção (gerado pelo npm run build)
+├── public/              # Ativos estáticos (Logos, Imagens, Equipe)
+│   └── assets/
+│       ├── clients/     # Logos de clientes atendidos
+│       ├── portfolio/   # Imagens dos projetos realizados
+│       └── team/        # Foto da equipe da agência
 ├── src/
-│   ├── main.ts          # Lógica de interações (scroll, header)
-│   └── style.css         # Estilos Tailwind + customizações
-├── index.html            # Estrutura HTML completa
-├── vite.config.ts        # Configuração do Vite + Tailwind
-├── tsconfig.json         # Configuração TypeScript
-├── package.json          # Dependências do projeto
-└── README.md             # Este arquivo
+│   ├── main.ts          # Lógica de interações, scroll e animações
+│   └── style.css         # Estilos Tailwind + Design System customizado
+├── index.html            # Estrutura principal otimizada para SEO
+├── vite.config.ts        # Configuração do ambiente Vite
+└── package.json          # Gerenciamento de scripts e dependências
 ```
 
 ---
@@ -83,200 +74,77 @@ agencia-metrica/
 
 | Tecnologia | Versão | Descrição |
 |------------|--------|-----------|
-| **Vite** | 7.x | Build tool ultra-rápido |
-| **TypeScript** | 5.x | Tipagem estática para JavaScript |
-| **Tailwind CSS** | 4.x | Framework CSS utility-first |
-| **Inter Font** | - | Tipografia moderna do Google Fonts |
+| **Vite** | 7.x | Ferramenta de build ultra-rápida |
+| **TypeScript** | 5.x | Programação estruturada e tipada |
+| **Tailwind CSS** | 4.x | Framework CSS de última geração |
+| **Google Fonts** | - | Fontes **Outfit** e **Inter** |
 
 ---
 
-## 📄 Seções da Landing Page
+## 📄 Fluxo Estratégico da Página
 
-### 1. Hero Section
-- Headline de impacto focada em resultados
-- Badge de especialização
-- CTA principal para WhatsApp
-- Logo/Brand showcase com glow effect
-
-### 2. Problema + Identificação
-- Três cards destacando dores do cliente
-- Frase de fechamento impactante: "Estratégia paga."
-
-### 3. Posicionamento
-- Seção "Dados, não achismo"
-- Números grandes: 100% baseado em dados / 0% achismo
-- Background em azul da marca com pattern grid
-
-### 4. Serviços
-- Card principal: Tráfego Pago (Google Ads, Meta Ads)
-- Cards secundários: Mídias Sociais e Identidade Visual
-- CTA secundário
-
-### 5. 🆕 Nichos de Atuação
-- **Restaurantes & Delivery** - Estratégias para iFood, Rappi e delivery próprio
-- **Garagens & Veículos** - Leads qualificados para revendas e concessionárias
-- CTA específico para nichos
-
-### 6. Portfólio
-- Grid 2x3 no mobile, 3x2 no desktop
-- Suporte para imagens e vídeos
-- Hover effect com overlay
-
-### 7. Método Métrica
-- 4 etapas visuais: Diagnóstico → Estratégia → Execução → Otimização
-- Cards com efeito glow no hover
-
-### 8. Resultados Reais
-- 3 placeholders para prints de campanhas
-- Estrutura pronta para inserir provas sociais
-
-### 9. CTA Final
-- Seção de fechamento com headline forte
-- Botão de ação principal com glow
-
-### 10. Footer
-- Informações da empresa
-- Links para WhatsApp e Instagram
+1.  **Hero Section**: Proposta de valor clara e Beam Effect.
+2.  **Logocloud**: Relevância e autoridade imediata.
+3.  **Problema**: Agitação da dor do cliente (anúncios ineficientes).
+4.  **Resultados Reais**: Feedbacks e provas de performance.
+5.  **Antes e Depois**: Demonstração visual de impacto de perfil.
+6.  **Nichos Dominados**: Segmentação focada (iFood/Delivery e Veículos).
+7.  **Serviços Core**: Gestão de Tráfego + Ecossistema de Suporte.
+8.  **Posicionamento**: "Dados, não achismo" para reforçar seriedade.
+9.  **Quem Somos**: Humanização da equipe e métricas financeiras.
+10. **Portfólio**: Vitrine visual dos trabalhos realizados.
+11. **Método**: Transparência sobre as etapas do processo.
+12. **CTA Final**: Fechamento direto para o WhatsApp.
 
 ---
 
-## 🚀 Como Executar
+## 🚀 Como Executar Localmente
 
 ### Pré-requisitos
 - Node.js 18+ instalado
-- npm ou yarn
 
 ### Instalação
 
 ```bash
-# Clonar o repositório
+# 1. Clonar o repositório
 git clone https://github.com/laranjaeragnarok2/agencia-metrica.git
 
-# Entrar no diretório
+# 2. Entrar no diretório
 cd agencia-metrica
 
-# Instalar dependências
+# 3. Instalar dependências
 npm install
 
-# Rodar em desenvolvimento
+# 4. Rodar em desenvolvimento
 npm run dev
 
-# Build para produção
+# 5. Build para produção
 npm run build
-
-# Preview do build
-npm run preview
 ```
 
 ---
 
-## 🌐 Deploy
+## 🎨 Paleta de Cores e Identidade
 
-O projeto está configurado para deploy automático na **Vercel**.
-
-### Deploy Manual
-
-```bash
-# Instalar Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel --prod
-```
-
-### Configurações Vercel
-- **Framework Preset**: Vite
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Node Version**: 18.x
+| Elemento | Token | Hex |
+|----------|-------|-----|
+| **Voz da Marca** | `Primary` | `#1045D9` |
+| **Fundo Principal** | `Dark` | `#0a0a0a` |
+| **Destaques** | `Light` | `#ffffff` |
+| **Textos Apoio** | `Gray` | `#8a8a8a` |
 
 ---
 
-## 🎨 Paleta de Cores
+## 📞 Contato e Desenvolvimento
 
-| Cor | Hex | Uso |
-|-----|-----|-----|
-| **Primary** | `#1045D9` | Cor principal da marca, CTAs, destaques |
-| **Dark** | `#0a0a0a` | Background principal |
-| **Light** | `#ffffff` | Texto principal, elementos claros |
-| **Gray** | `#8a8a8a` | Texto secundário |
-| **Red** | `#ef4444` | Destaque iFood/Delivery |
-
-### Gradiente de Fundo
-```css
-background: linear-gradient(180deg, 
-  #0a0a0a 0%, 
-  #0d1117 25%,
-  #0f1620 50%,
-  #0d1117 75%,
-  #0a0a0a 100%
-);
-```
-
----
-
-## 📱 Responsividade
-
-| Breakpoint | Largura | Adaptações |
-|------------|---------|------------|
-| Mobile | < 640px | Layout single column, textos maiores |
-| SM | 640px+ | Grid 2 colunas, botões inline |
-| MD | 768px+ | Grid adaptativo |
-| LG | 1024px+ | Layout completo, navegação visível |
-
----
-
-## ⚡ Performance
-
-- **Lighthouse Score**: 90+ (Performance, Accessibility, SEO)
-- **First Contentful Paint**: < 1s
-- **Time to Interactive**: < 2s
-- **Bundle Size**: ~50KB (gzipped)
-
-### Otimizações Aplicadas
-- Preload de fontes com fallback noscript
-- Carregamento assíncrono de CSS
-- Imagens com lazy loading
-- SVGs inline (sem requisições extras)
-
----
-
-## 🔧 Customização
-
-### Alterar Cor Principal
-Edite `src/style.css`:
-```css
-@theme {
-  --color-primary: #SUA_COR_AQUI;
-}
-```
-
-### Alterar WhatsApp
-Busque e substitua `seunumeroaqui` em `index.html` pelo número real.
-
-### Adicionar Prints de Resultados
-Substitua os placeholders na seção "Resultados Reais" por imagens reais de campanhas.
-
-### Adicionar Portfólio
-Substitua os placeholders na seção "Nosso Trabalho" por imagens e vídeos reais.
-
----
-
-## 📞 Contato
-
-**Desenvolvido para**: Agência Métrica  
-**Website**: [agencia-metrica.vercel.app](https://agencia-metrica.vercel.app/)
-
----
-
-## 📜 Licença
-
-Este projeto é proprietário. Todos os direitos reservados.
+**Projeto desenvolvido para**: Agência Métrica  
+**Desenvolvedor**: [laranjaeragnarok2](https://github.com/laranjaeragnarok2)  
+**Website Final**: [agencia-metrica.vercel.app](https://agencia-metrica.vercel.app/)
 
 ---
 
 <div align="center">
 
-**Feito com 💙 para negócios que querem resultados reais.**
+**Feito com 💙 para agências que não aceitam resultados medianos.**
 
 </div>
