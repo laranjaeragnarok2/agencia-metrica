@@ -87,9 +87,14 @@ window.addEventListener('scroll', () => {
           (headerElement as HTMLElement).style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
         }
 
-        // Hide/Show on scroll
-        if (scrolled > lastScroll && scrolled > 100) {
-          (headerElement as HTMLElement).style.transform = 'translateY(-100%)';
+        // Hide/Show on scroll with buffer
+        const scrollDelta = scrolled - lastScroll;
+        if (scrolled > 150) { // Only start hiding after initial scroll
+          if (scrollDelta > 10) { // Scrolling down
+            (headerElement as HTMLElement).style.transform = 'translateY(-100%)';
+          } else if (scrollDelta < -10) { // Scrolling up
+            (headerElement as HTMLElement).style.transform = 'translateY(0)';
+          }
         } else {
           (headerElement as HTMLElement).style.transform = 'translateY(0)';
         }

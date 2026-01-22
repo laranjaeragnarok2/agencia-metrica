@@ -411,7 +411,12 @@ nav a:hover::after {
 
 /* Base section spacing for mobile-first (excluding hero) */
 section:not(.hero-section) {
-  @apply py-12 md:py-24 px-4 md:px-6;
+  @apply py-10 md:py-24 px-4 md:px-6;
+}
+
+/* Carousel Section Padding */
+#clientes {
+  @apply py-12 md:py-20;
 }
 
 /* ========================================
