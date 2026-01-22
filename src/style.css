@@ -388,6 +388,8 @@ nav a:hover::after {
 
   /* Mobile Menu Visibility Logic */
   #mobile-menu {
+    display: none;
+    /* Começa oculto para evitar aparição no load */
     transform: translateY(-100%);
     visibility: hidden;
     pointer-events: none;
@@ -395,6 +397,7 @@ nav a:hover::after {
   }
 
   #mobile-menu.menu-active {
+    display: flex;
     transform: translateY(0);
     visibility: visible;
     pointer-events: auto;
