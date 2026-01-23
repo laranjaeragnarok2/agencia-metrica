@@ -30,9 +30,6 @@ function initHeroAnimation() {
     defaults: { ease: 'power4.out' }
   });
 
-  // Fade in inicial do body
-  tl.set('body', { opacity: 1 });
-
   // Badge - slide suave
   tl.from('.hero-section span.inline-flex', {
     y: 20,
@@ -508,8 +505,6 @@ function initParallax() {
 // 🚀 Initialize
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Esconder body inicialmente
-  gsap.set('body', { opacity: 0 });
 
   // Inicializar animações
   initHeroAnimation();
