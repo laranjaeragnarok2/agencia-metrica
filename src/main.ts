@@ -63,15 +63,29 @@ function initHero() {
     gsap.set(scrollIndicator, { opacity: 0 });
     tl.to(scrollIndicator, { opacity: 1, duration: 0.5 }, '-=0.3');
 
-    // Animação de bounce infinita
+    // Flutuação suave do container inteiro
     gsap.to(scrollIndicator, {
-      y: 10,
-      duration: 1.5,
+      y: 8,
+      duration: 1.8,
       ease: 'sine.inOut',
       repeat: -1,
       yoyo: true,
       delay: 1
     });
+
+    // Animar a bolinha interna descendo
+    const scrollDot = scrollIndicator.querySelector('div > div');
+    if (scrollDot) {
+      gsap.to(scrollDot, {
+        y: 20,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power1.in',
+        repeat: -1,
+        repeatDelay: 0.5,
+        delay: 1.5
+      });
+    }
   }
 }
 
