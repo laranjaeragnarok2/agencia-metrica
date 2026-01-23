@@ -1,244 +1,297 @@
 import './style.css'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+// Registrar plugin
+gsap.registerPlugin(ScrollTrigger)
 
 // ========================================
 // 🚀 Performance Optimizations
 // ========================================
-
-// Detect mobile device
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
   || window.innerWidth < 768;
 
-// Detect reduced motion preference
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ========================================
-// 🎨 Loading Animation (Optimized)
+// 🎨 Initial Page Animation
 // ========================================
-window.addEventListener('load', () => {
-  if (!prefersReducedMotion) {
-    document.body.style.opacity = '0';
-    requestAnimationFrame(() => {
-      document.body.style.transition = 'opacity 0.4s ease';
-      document.body.style.opacity = '1';
+if (!prefersReducedMotion) {
+  gsap.from('body', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power2.out'
+  });
+}
+
+// ========================================
+// 🎪 Infinite Logo Carousel with GSAP
+// ========================================
+function initCarousel() {
+  const carousel = document.querySelector('.animate-infinite-scroll') as HTMLElement;
+  if (!carousel) return;
+
+  // Pegar todos os logos
+  const logos = carousel.querySelectorAll('img');
+  if (logos.length === 0) return;
+
+  // Calcular largura total do primeiro set de logos
+  let totalWidth = 0;
+  logos.forEach((logo, index) => {
+    if (index < logos.length / 2) {
+      totalWidth += logo.offsetWidth + 48; // 48px = 3rem gap
+    }
+  });
+
+  // Velocidade baseada no dispositivo
+  const duration = isMobile ? 25 : 35;
+
+  // Criar animação infinita com GSAP
+  const tl = gsap.to(carousel, {
+    x: -totalWidth,
+    duration: duration,
+    ease: 'none',
+    repeat: -1,
+    modifiers: {
+      x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+    }
+  });
+
+  // Pausar no hover (apenas desktop)
+  if (!isMobile) {
+    carousel.addEventListener('mouseenter', () => tl.pause());
+    carousel.addEventListener('mouseleave', () => tl.resume());
+  }
+
+  // Respeitar preferência de motion reduzida
+  if (prefersReducedMotion) {
+    tl.pause();
+  }
+}
+
+// ========================================
+// ✨ Scroll Reveal Animations
+// ========================================
+function initScrollAnimations() {
+  if (prefersReducedMotion) return;
+
+  // Animação de reveal para cards e seções
+  const revealElements = document.querySelectorAll('section > div, .grid > div');
+
+  revealElements.forEach((el) => {
+    gsap.from(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: 'power2.out'
+    });
+  });
+
+  // Animação especial para o Hero
+  const heroContent = document.querySelector('.hero-section .text-center, .hero-section .lg\\:text-left');
+  if (heroContent) {
+    gsap.from(heroContent.children, {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      delay: 0.2
     });
   }
-});
+}
 
 // ========================================
-// 🔗 Smooth Scroll (Native)
+// 📜 Header Scroll Effects
 // ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const target = e.currentTarget as HTMLAnchorElement;
-    const targetId = target.getAttribute('href');
-    if (targetId && targetId !== '#') {
-      e.preventDefault();
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const offset = 80;
-        const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-        window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+function initHeaderEffects() {
+  const header = document.querySelector('header') as HTMLElement;
+  const progressBar = document.getElementById('scroll-progress');
+
+  if (!header) return;
+
+  // Configurar transição inicial
+  header.style.transition = 'background-color 0.2s ease, transform 0.3s ease';
+
+  let lastScroll = 0;
+
+  ScrollTrigger.create({
+    start: 0,
+    end: 'max',
+    onUpdate: (self) => {
+      const scrolled = self.scroll();
+
+      // Background opacity
+      if (scrolled > 50) {
+        header.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+      } else {
+        header.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
       }
-    }
-  });
-});
 
-// ========================================
-// ✨ Scroll Reveal (Optimized for Mobile)
-// ========================================
-const observerOptions: IntersectionObserverInit = {
-  root: null,
-  rootMargin: '50px',
-  threshold: 0.05 // Lower threshold = earlier trigger
-};
-
-const revealCallback = (entries: IntersectionObserverEntry[]) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('revealed');
-      // Stop observing once revealed for performance
-      observer.unobserve(entry.target);
-    }
-  });
-};
-
-const observer = new IntersectionObserver(revealCallback, observerOptions);
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Only observe major sections, not every element
-  const revealElements = document.querySelectorAll('section > div, .grid > div');
-  revealElements.forEach((el, index) => {
-    el.classList.add('reveal-card');
-    // Minimal stagger for mobile
-    if (!isMobile) {
-      (el as HTMLElement).style.transitionDelay = `${Math.min(index * 0.03, 0.15)}s`;
-    }
-    observer.observe(el);
-  });
-});
-
-// ========================================
-// 📜 Scroll Effects (Heavily Optimized)
-// ========================================
-let ticking = false;
-let lastScroll = 0;
-const headerElement = document.querySelector('header') as HTMLElement | null;
-const progressBar = document.getElementById('scroll-progress');
-
-// Calculate these once
-const docHeight = () => document.documentElement.scrollHeight - document.documentElement.clientHeight;
-
-const handleScroll = () => {
-  const scrolled = window.pageYOffset;
-
-  // Header effects
-  if (headerElement) {
-    // Background opacity
-    if (scrolled > 50) {
-      headerElement.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
-    } else {
-      headerElement.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
-    }
-
-    // Hide/Show header - only on desktop or if user scrolled significantly
-    if (!isMobile && scrolled > 150) {
-      const scrollDelta = scrolled - lastScroll;
-      if (scrollDelta > 15) {
-        headerElement.style.transform = 'translateY(-100%)';
-      } else if (scrollDelta < -15) {
-        headerElement.style.transform = 'translateY(0)';
+      // Hide/Show header on desktop
+      if (!isMobile && scrolled > 150) {
+        if (scrolled > lastScroll + 15) {
+          gsap.to(header, { y: '-100%', duration: 0.3, ease: 'power2.out' });
+        } else if (scrolled < lastScroll - 15) {
+          gsap.to(header, { y: '0%', duration: 0.3, ease: 'power2.out' });
+        }
+      } else {
+        gsap.to(header, { y: '0%', duration: 0.3, ease: 'power2.out' });
       }
-    } else {
-      headerElement.style.transform = 'translateY(0)';
+
+      // Progress bar
+      if (progressBar) {
+        const progress = self.progress * 100;
+        progressBar.style.width = `${progress}%`;
+      }
+
+      lastScroll = scrolled;
     }
-  }
-
-  // Progress bar - simple calculation
-  if (progressBar) {
-    const scrolledPct = (scrolled / docHeight()) * 100;
-    progressBar.style.width = `${scrolledPct}%`;
-  }
-
-  lastScroll = scrolled;
-  ticking = false;
-};
-
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(handleScroll);
-    ticking = true;
-  }
-}, { passive: true });
+  });
+}
 
 // ========================================
-// 🖱️ Button Effects (Desktop Only)
+// 🔗 Smooth Scroll for Anchor Links
 // ========================================
-if (!isMobile && !prefersReducedMotion) {
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLAnchorElement;
+      const targetId = target.getAttribute('href');
+
+      if (targetId && targetId !== '#') {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          const offset = 80;
+          const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({
+            top,
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+          });
+        }
+      }
+    });
+  });
+}
+
+// ========================================
+// ⏳ Counter Animation
+// ========================================
+function initCounters() {
+  const counters = document.querySelectorAll('.text-3xl, .text-5xl, .text-7xl, .text-8xl');
+
+  counters.forEach(counter => {
+    const text = counter.textContent || '';
+    if (!text.match(/\d+/)) return;
+
+    const hasPlus = text.includes('+');
+    const hasPercent = text.includes('%');
+    const number = parseInt(text.replace(/\D/g, ''));
+    const suffix = hasPlus ? '+' : hasPercent ? '%' : '';
+
+    if (!number) return;
+
+    ScrollTrigger.create({
+      trigger: counter,
+      start: 'top 80%',
+      once: true,
+      onEnter: () => {
+        if (prefersReducedMotion) {
+          counter.textContent = number + suffix;
+          return;
+        }
+
+        gsap.from(counter, {
+          textContent: 0,
+          duration: 1.5,
+          ease: 'power2.out',
+          snap: { textContent: 1 },
+          onUpdate: function () {
+            counter.textContent = Math.round(parseFloat(this.targets()[0].textContent)) + suffix;
+          }
+        });
+      }
+    });
+  });
+}
+
+// ========================================
+// 🖱️ Button Hover Effects (Desktop)
+// ========================================
+function initButtonEffects() {
+  if (isMobile || prefersReducedMotion) return;
+
   const buttons = document.querySelectorAll('.bg-primary');
+
   buttons.forEach(button => {
     button.addEventListener('mousemove', (e) => {
       const mouseEvent = e as MouseEvent;
       const rect = (button as HTMLElement).getBoundingClientRect();
       const x = (mouseEvent.clientX - rect.left - rect.width / 2) * 0.08;
       const y = (mouseEvent.clientY - rect.top - rect.height / 2) * 0.08;
-      (button as HTMLElement).style.transform = `translate(${x}px, ${y}px)`;
-    }, { passive: true });
+
+      gsap.to(button, {
+        x: x,
+        y: y,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    });
 
     button.addEventListener('mouseleave', () => {
-      (button as HTMLElement).style.transform = 'translate(0, 0)';
+      gsap.to(button, {
+        x: 0,
+        y: 0,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
     });
   });
 }
 
 // ========================================
-// ⏳ Counter Animation (Optimized)
-// ========================================
-const animateCounter = (element: HTMLElement, target: number, suffix: string = '') => {
-  if (prefersReducedMotion) {
-    element.textContent = target + suffix;
-    return;
-  }
-
-  const duration = 1000; // 1 second
-  const startTime = performance.now();
-
-  const updateCounter = (currentTime: number) => {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-
-    // Easing function for smooth animation
-    const easeOut = 1 - Math.pow(1 - progress, 3);
-    const current = Math.floor(easeOut * target);
-
-    element.textContent = current + suffix;
-
-    if (progress < 1) {
-      requestAnimationFrame(updateCounter);
-    } else {
-      element.textContent = target + suffix;
-    }
-  };
-
-  requestAnimationFrame(updateCounter);
-};
-
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-      entry.target.classList.add('counted');
-      const text = entry.target.textContent || '';
-      const hasPlus = text.includes('+');
-      const hasPercent = text.includes('%');
-      const number = parseInt(text.replace(/\D/g, ''));
-
-      if (number) {
-        const suffix = hasPlus ? '+' : hasPercent ? '%' : '';
-        animateCounter(entry.target as HTMLElement, number, suffix);
-      }
-      // Stop observing
-      counterObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.text-3xl, .text-5xl, .text-7xl, .text-8xl').forEach(el => {
-  if (el.textContent?.match(/\d+/)) {
-    counterObserver.observe(el);
-  }
-});
-
-// ========================================
 // 📱 Mobile Menu Logic
 // ========================================
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-link');
+function initMobileMenu() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
 
-const closeMenu = () => {
-  if (menuToggle && mobileMenu) {
+  if (!menuToggle || !mobileMenu) return;
+
+  const closeMenu = () => {
     menuToggle.classList.remove('menu-open');
-    mobileMenu.classList.remove('menu-active');
-    document.body.classList.remove('overflow-hidden');
-    setTimeout(() => {
-      if (!mobileMenu.classList.contains('menu-active')) {
+    gsap.to(mobileMenu, {
+      y: '-100%',
+      duration: 0.3,
+      ease: 'power2.inOut',
+      onComplete: () => {
         mobileMenu.style.display = 'none';
+        mobileMenu.classList.remove('menu-active');
       }
-    }, 300);
-  }
-};
-
-const openMenu = () => {
-  if (menuToggle && mobileMenu) {
-    mobileMenu.style.display = 'flex';
-    requestAnimationFrame(() => {
-      menuToggle.classList.add('menu-open');
-      mobileMenu.classList.add('menu-active');
-      document.body.classList.add('overflow-hidden');
     });
-  }
-};
+    document.body.classList.remove('overflow-hidden');
+  };
 
-if (menuToggle && mobileMenu) {
+  const openMenu = () => {
+    mobileMenu.style.display = 'flex';
+    menuToggle.classList.add('menu-open');
+    mobileMenu.classList.add('menu-active');
+    document.body.classList.add('overflow-hidden');
+
+    gsap.fromTo(mobileMenu,
+      { y: '-100%' },
+      { y: '0%', duration: 0.3, ease: 'power2.out' }
+    );
+  };
+
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     if (mobileMenu.classList.contains('menu-active')) {
@@ -262,8 +315,23 @@ if (menuToggle && mobileMenu) {
 }
 
 // ========================================
-// 🎯 Header Transitions Setup
+// 🚀 Initialize Everything
 // ========================================
-if (headerElement) {
-  headerElement.style.transition = 'background-color 0.2s ease, transform 0.3s ease';
-}
+document.addEventListener('DOMContentLoaded', () => {
+  initCarousel();
+  initScrollAnimations();
+  initHeaderEffects();
+  initSmoothScroll();
+  initCounters();
+  initButtonEffects();
+  initMobileMenu();
+});
+
+// Recalcular no resize (debounced)
+let resizeTimer: number;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    ScrollTrigger.refresh();
+  }, 250);
+});

@@ -221,26 +221,27 @@ body {
 }
 
 /* ========================================
-   🎪 Infinite Scroll Animation
+   🎪 Infinite Scroll Carousel (GSAP controlled)
    ======================================== */
-@keyframes infinite-scroll {
-  from {
-    transform: translateX(0);
-  }
 
-  to {
-    transform: translateX(-50%);
-  }
+#clientes {
+  isolation: isolate;
+}
+
+#clientes .relative {
+  overflow: hidden;
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 40s linear infinite;
   display: flex;
+  align-items: center;
   width: max-content;
+  gap: 3rem;
+  will-change: transform;
 }
 
-.animate-infinite-scroll:hover {
-  animation-play-state: paused;
+.animate-infinite-scroll img {
+  flex-shrink: 0;
 }
 
 /* ========================================
@@ -392,9 +393,9 @@ nav a:hover::after {
     transform: none !important;
   }
 
-  /* Faster carousel on mobile */
+  /* Carousel gap para mobile */
   .animate-infinite-scroll {
-    animation-duration: 25s !important;
+    gap: 2rem !important;
   }
 
   /* Hamburger Animation */
@@ -446,8 +447,7 @@ nav a:hover::after {
     scroll-behavior: auto !important;
   }
 
-  .hero-light-beam,
-  .animate-infinite-scroll {
+  .hero-light-beam {
     animation: none !important;
   }
 }
