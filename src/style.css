@@ -67,18 +67,27 @@ h4,
   transform: rotate(-15deg);
   pointer-events: none;
   z-index: 0;
-  animation: beam-move 15s ease-in-out infinite;
+  /* Animação desativada por padrão - é muito pesada */
+  /* animation: beam-move 15s ease-in-out infinite; */
+}
+
+/* Animação só ativa em dispositivos com boa performance */
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .hero-light-beam {
+    animation: beam-move 20s ease-in-out infinite;
+    will-change: transform;
+  }
 }
 
 @keyframes beam-move {
 
   0%,
   100% {
-    transform: translate(0, 0) rotate(-15deg);
+    transform: translate3d(0, 0, 0) rotate(-15deg);
   }
 
   50% {
-    transform: translate(5%, 5%) rotate(-10deg);
+    transform: translate3d(3%, 3%, 0) rotate(-12deg);
   }
 }
 
@@ -226,6 +235,7 @@ body {
 
 #clientes {
   isolation: isolate;
+  contain: layout style;
 }
 
 #clientes .relative {
@@ -237,11 +247,20 @@ body {
   align-items: center;
   width: max-content;
   gap: 3rem;
+  /* GPU Optimizations */
   will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .animate-infinite-scroll img {
   flex-shrink: 0;
+  /* Cada imagem em sua própria layer */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Remover transições que podem causar jank */
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
 /* ========================================
@@ -334,9 +353,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* GPU Acceleration */
-.bg-\[\#111\],
-img,
+/* Reduzir blur pesado globalmente para melhor performance */
+.blur-\[100px\],
+.blur-\[120px\],
+.blur-\[150px\] {
+  filter: blur(60px) !important;
+  transform: translateZ(0);
+}
+
+/* GPU Acceleration para elementos interativos */
+.bg-\[\#111\] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+img {
+  transform: translateZ(0);
+}
+
 .bg-primary {
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -379,13 +414,6 @@ nav a:hover::after {
   /* Disable heavy animations on mobile */
   .hero-light-beam {
     animation: none !important;
-  }
-
-  /* Reduce blur intensity for performance */
-  .blur-\[100px\],
-  .blur-\[120px\],
-  .blur-\[150px\] {
-    filter: blur(40px) !important;
   }
 
   /* Disable card hover transforms on mobile (touch doesn't need them) */

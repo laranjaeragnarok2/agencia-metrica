@@ -25,85 +25,108 @@ if (!prefersReducedMotion) {
 }
 
 // ========================================
-// 🎪 Infinite Logo Carousel with GSAP
+// 🎪 Infinite Logo Carousel with GSAP (Optimized)
 // ========================================
 function initCarousel() {
   const carousel = document.querySelector('.animate-infinite-scroll') as HTMLElement;
   if (!carousel) return;
 
-  // Pegar todos os logos
   const logos = carousel.querySelectorAll('img');
   if (logos.length === 0) return;
 
-  // Calcular largura total do primeiro set de logos
-  let totalWidth = 0;
-  logos.forEach((logo, index) => {
-    if (index < logos.length / 2) {
-      totalWidth += logo.offsetWidth + 48; // 48px = 3rem gap
+  // Esperar imagens carregarem para calcular largura correta
+  const initAnimation = () => {
+    // Calcular largura do primeiro set de logos (metade)
+    let totalWidth = 0;
+    const halfLength = Math.ceil(logos.length / 2);
+
+    for (let i = 0; i < halfLength; i++) {
+      const logo = logos[i] as HTMLElement;
+      totalWidth += logo.offsetWidth;
+    }
+    // Adicionar gaps (3rem = 48px por logo)
+    totalWidth += halfLength * 48;
+
+    if (totalWidth === 0) return;
+
+    // Velocidade: pixels por segundo (mais consistente que duration)
+    const pixelsPerSecond = isMobile ? 50 : 40;
+    const duration = totalWidth / pixelsPerSecond;
+
+    // Criar timeline para animação suave
+    const tl = gsap.timeline({ repeat: -1 });
+
+    tl.to(carousel, {
+      x: -totalWidth,
+      duration: duration,
+      ease: 'none',
+      force3D: true,  // Força GPU acceleration
+    });
+
+    // Pausar no hover (apenas desktop)
+    if (!isMobile) {
+      carousel.addEventListener('mouseenter', () => {
+        gsap.to(tl, { timeScale: 0, duration: 0.3 });
+      });
+      carousel.addEventListener('mouseleave', () => {
+        gsap.to(tl, { timeScale: 1, duration: 0.3 });
+      });
+    }
+
+    // Respeitar preferência de motion reduzida
+    if (prefersReducedMotion) {
+      tl.pause();
+    }
+  };
+
+  // Aguardar todas as imagens carregarem
+  let loadedCount = 0;
+  const totalImages = logos.length;
+
+  logos.forEach((img) => {
+    if ((img as HTMLImageElement).complete) {
+      loadedCount++;
+      if (loadedCount === totalImages) initAnimation();
+    } else {
+      img.addEventListener('load', () => {
+        loadedCount++;
+        if (loadedCount === totalImages) initAnimation();
+      });
+      img.addEventListener('error', () => {
+        loadedCount++;
+        if (loadedCount === totalImages) initAnimation();
+      });
     }
   });
 
-  // Velocidade baseada no dispositivo
-  const duration = isMobile ? 25 : 35;
-
-  // Criar animação infinita com GSAP
-  const tl = gsap.to(carousel, {
-    x: -totalWidth,
-    duration: duration,
-    ease: 'none',
-    repeat: -1,
-    modifiers: {
-      x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
-    }
-  });
-
-  // Pausar no hover (apenas desktop)
-  if (!isMobile) {
-    carousel.addEventListener('mouseenter', () => tl.pause());
-    carousel.addEventListener('mouseleave', () => tl.resume());
-  }
-
-  // Respeitar preferência de motion reduzida
-  if (prefersReducedMotion) {
-    tl.pause();
-  }
+  // Fallback se as imagens já estiverem carregadas
+  if (loadedCount === totalImages) initAnimation();
 }
 
 // ========================================
-// ✨ Scroll Reveal Animations
+// ✨ Scroll Reveal Animations (Optimized)
 // ========================================
 function initScrollAnimations() {
   if (prefersReducedMotion) return;
 
-  // Animação de reveal para cards e seções
-  const revealElements = document.querySelectorAll('section > div, .grid > div');
+  // Animar apenas elementos principais, não todos os divs
+  const sections = document.querySelectorAll('section:not(.hero-section)');
 
-  revealElements.forEach((el) => {
-    gsap.from(el, {
+  sections.forEach((section) => {
+    gsap.from(section, {
       scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
+        trigger: section,
+        start: 'top 80%',
+        toggleActions: 'play none none none',
+        once: true  // Remove listener após executar
       },
-      y: 30,
+      y: 20,
       opacity: 0,
-      duration: 0.6,
-      ease: 'power2.out'
+      duration: 0.5,
+      ease: 'power2.out',
+      force3D: true
     });
   });
-
-  // Animação especial para o Hero
-  const heroContent = document.querySelector('.hero-section .text-center, .hero-section .lg\\:text-left');
-  if (heroContent) {
-    gsap.from(heroContent.children, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-      delay: 0.2
-    });
-  }
 }
 
 // ========================================
