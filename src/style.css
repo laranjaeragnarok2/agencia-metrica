@@ -157,12 +157,15 @@ img {
 }
 
 /* ========================================
-   📦 Card Hover Effects
+   📦 Card Styles & Effects
    ======================================== */
 .bg-\[\#111\] {
   background: rgba(17, 17, 17, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: border-color 0.2s ease;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 @media (hover: hover) {
@@ -235,7 +238,6 @@ body {
 
 #clientes {
   isolation: isolate;
-  contain: layout style;
 }
 
 #clientes .relative {
@@ -249,18 +251,38 @@ body {
   gap: 3rem;
   /* GPU Optimizations */
   will-change: transform;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .animate-infinite-scroll img {
   flex-shrink: 0;
-  /* Cada imagem em sua própria layer */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  /* Remover transições que podem causar jank */
+  height: 3.5rem;
+  width: auto;
   transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .animate-infinite-scroll img {
+    height: 4rem;
+  }
+}
+
+/* ========================================
+   🖱️ Scroll Indicator Animation
+   ======================================== */
+@keyframes bounce-gentle {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  50% {
+    transform: translateY(8px) translateX(-50%);
+  }
+}
+
+a[href="#clientes"] {
+  animation: bounce-gentle 2s ease-in-out infinite;
 }
 
 /* ========================================

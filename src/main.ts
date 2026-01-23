@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // ========================================
-// 🚀 Performance Optimizations
+// 🚀 Configuration
 // ========================================
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
   || window.innerWidth < 768;
@@ -14,18 +14,104 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ========================================
-// 🎨 Initial Page Animation
+// 🎨 Hero Entrance Animation
 // ========================================
-if (!prefersReducedMotion) {
-  gsap.from('body', {
+function initHeroAnimation() {
+  if (prefersReducedMotion) return;
+
+  const heroContent = document.querySelector('.hero-section');
+  if (!heroContent) return;
+
+  // Timeline para entrada do hero
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  // Fade in do body
+  tl.from('body', { opacity: 0, duration: 0.3 });
+
+  // Badge animado
+  tl.from('.hero-section span:first-child', {
+    y: -20,
+    opacity: 0,
+    duration: 0.6,
+    scale: 0.8
+  }, 0.2);
+
+  // Título com efeito de reveal
+  tl.from('.hero-section h1', {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+  }, 0.3);
+
+  // Parágrafo
+  tl.from('.hero-section p', {
+    y: 30,
+    opacity: 0,
+    duration: 0.6,
+  }, 0.5);
+
+  // Botão com bounce
+  tl.from('.hero-section a.bg-primary', {
+    scale: 0,
     opacity: 0,
     duration: 0.5,
+    ease: 'back.out(1.7)'
+  }, 0.6);
+
+  // Card do lado direito
+  tl.from('.hero-section .bg-\\[\\#111\\]', {
+    x: 100,
+    opacity: 0,
+    rotation: 10,
+    duration: 0.8,
     ease: 'power2.out'
+  }, 0.4);
+}
+
+// ========================================
+// 🖱️ Scroll Indicator Animation
+// ========================================
+function initScrollIndicator() {
+  const scrollIndicator = document.querySelector('a[href="#clientes"]');
+  if (!scrollIndicator || prefersReducedMotion) return;
+
+  // Animação flutuante infinita
+  gsap.to(scrollIndicator, {
+    y: 10,
+    duration: 1.5,
+    ease: 'power1.inOut',
+    repeat: -1,
+    yoyo: true
+  });
+
+  // Pulso no círculo
+  const circle = scrollIndicator.querySelector('div');
+  if (circle) {
+    gsap.to(circle, {
+      scale: 1.1,
+      opacity: 0.8,
+      duration: 1,
+      ease: 'power1.inOut',
+      repeat: -1,
+      yoyo: true
+    });
+  }
+
+  // Esconder ao scrollar
+  ScrollTrigger.create({
+    start: 100,
+    onUpdate: (self) => {
+      const opacity = 1 - (self.scroll() / 300);
+      gsap.to(scrollIndicator, {
+        opacity: Math.max(0, opacity),
+        duration: 0.2
+      });
+    }
   });
 }
 
 // ========================================
-// 🎪 Infinite Logo Carousel with GSAP (Optimized)
+// 🎪 Infinite Logo Carousel
 // ========================================
 function initCarousel() {
   const carousel = document.querySelector('.animate-infinite-scroll') as HTMLElement;
@@ -34,178 +120,192 @@ function initCarousel() {
   const logos = carousel.querySelectorAll('img');
   if (logos.length === 0) return;
 
-  // Esperar imagens carregarem para calcular largura correta
-  const initAnimation = () => {
-    // Calcular largura do primeiro set de logos (metade)
+  const startAnimation = () => {
+    // Calcular largura do primeiro set de logos
     let totalWidth = 0;
     const halfLength = Math.ceil(logos.length / 2);
 
     for (let i = 0; i < halfLength; i++) {
       const logo = logos[i] as HTMLElement;
-      totalWidth += logo.offsetWidth;
+      const style = getComputedStyle(carousel);
+      const gap = parseFloat(style.gap) || 48;
+      totalWidth += logo.offsetWidth + gap;
     }
-    // Adicionar gaps (3rem = 48px por logo)
-    totalWidth += halfLength * 48;
 
-    if (totalWidth === 0) return;
+    if (totalWidth <= 0) {
+      // Fallback se não conseguir calcular
+      totalWidth = halfLength * 150;
+    }
 
-    // Velocidade: pixels por segundo (mais consistente que duration)
-    const pixelsPerSecond = isMobile ? 50 : 40;
-    const duration = totalWidth / pixelsPerSecond;
+    // Velocidade em pixels por segundo
+    const speed = isMobile ? 40 : 30;
+    const duration = totalWidth / speed;
 
-    // Criar timeline para animação suave
-    const tl = gsap.timeline({ repeat: -1 });
-
-    tl.to(carousel, {
+    // Animação infinita suave
+    gsap.to(carousel, {
       x: -totalWidth,
       duration: duration,
       ease: 'none',
-      force3D: true,  // Força GPU acceleration
+      repeat: -1,
+      force3D: true
     });
 
-    // Pausar no hover (apenas desktop)
+    // Hover pause/resume (desktop only)
     if (!isMobile) {
       carousel.addEventListener('mouseenter', () => {
-        gsap.to(tl, { timeScale: 0, duration: 0.3 });
+        gsap.to(carousel, { timeScale: 0, duration: 0.5 });
       });
       carousel.addEventListener('mouseleave', () => {
-        gsap.to(tl, { timeScale: 1, duration: 0.3 });
+        gsap.to(carousel, { timeScale: 1, duration: 0.5 });
       });
-    }
-
-    // Respeitar preferência de motion reduzida
-    if (prefersReducedMotion) {
-      tl.pause();
     }
   };
 
-  // Aguardar todas as imagens carregarem
-  let loadedCount = 0;
-  const totalImages = logos.length;
-
-  logos.forEach((img) => {
+  // Aguardar imagens carregarem
+  let loaded = 0;
+  logos.forEach(img => {
     if ((img as HTMLImageElement).complete) {
-      loadedCount++;
-      if (loadedCount === totalImages) initAnimation();
+      loaded++;
     } else {
       img.addEventListener('load', () => {
-        loadedCount++;
-        if (loadedCount === totalImages) initAnimation();
-      });
-      img.addEventListener('error', () => {
-        loadedCount++;
-        if (loadedCount === totalImages) initAnimation();
+        loaded++;
+        if (loaded === logos.length) startAnimation();
       });
     }
   });
 
-  // Fallback se as imagens já estiverem carregadas
-  if (loadedCount === totalImages) initAnimation();
+  // Se todas já carregaram
+  if (loaded === logos.length) {
+    setTimeout(startAnimation, 100);
+  }
 }
 
 // ========================================
-// ✨ Scroll Reveal Animations (Optimized)
+// ✨ Card Animations (Fun & Interactive)
 // ========================================
-function initScrollAnimations() {
+function initCardAnimations() {
   if (prefersReducedMotion) return;
 
-  // Animar apenas elementos principais, não todos os divs
-  const sections = document.querySelectorAll('section:not(.hero-section)');
+  // Selecionar todos os cards
+  const cards = document.querySelectorAll('.bg-\\[\\#111\\]');
 
-  sections.forEach((section) => {
-    gsap.from(section, {
+  cards.forEach((card, index) => {
+    const direction = index % 2 === 0 ? -1 : 1;
+
+    // Animação de entrada com ScrollTrigger
+    gsap.from(card, {
       scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-        once: true  // Remove listener após executar
+        trigger: card,
+        start: 'top 85%',
+        toggleActions: 'play none none none'
       },
-      y: 20,
+      x: 50 * direction,
+      y: 30,
       opacity: 0,
-      duration: 0.5,
-      ease: 'power2.out',
-      force3D: true
+      rotation: 3 * direction,
+      scale: 0.95,
+      duration: 0.7,
+      ease: 'back.out(1.2)',
+      delay: (index % 3) * 0.1
     });
-  });
-}
 
-// ========================================
-// 📜 Header Scroll Effects
-// ========================================
-function initHeaderEffects() {
-  const header = document.querySelector('header') as HTMLElement;
-  const progressBar = document.getElementById('scroll-progress');
+    // Hover effect (desktop only)
+    if (!isMobile) {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          scale: 1.02,
+          y: -5,
+          boxShadow: '0 20px 40px rgba(16, 69, 217, 0.2)',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
 
-  if (!header) return;
-
-  // Configurar transição inicial
-  header.style.transition = 'background-color 0.2s ease, transform 0.3s ease';
-
-  let lastScroll = 0;
-
-  ScrollTrigger.create({
-    start: 0,
-    end: 'max',
-    onUpdate: (self) => {
-      const scrolled = self.scroll();
-
-      // Background opacity
-      if (scrolled > 50) {
-        header.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
-      } else {
-        header.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
-      }
-
-      // Hide/Show header on desktop
-      if (!isMobile && scrolled > 150) {
-        if (scrolled > lastScroll + 15) {
-          gsap.to(header, { y: '-100%', duration: 0.3, ease: 'power2.out' });
-        } else if (scrolled < lastScroll - 15) {
-          gsap.to(header, { y: '0%', duration: 0.3, ease: 'power2.out' });
-        }
-      } else {
-        gsap.to(header, { y: '0%', duration: 0.3, ease: 'power2.out' });
-      }
-
-      // Progress bar
-      if (progressBar) {
-        const progress = self.progress * 100;
-        progressBar.style.width = `${progress}%`;
-      }
-
-      lastScroll = scrolled;
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          scale: 1,
+          y: 0,
+          boxShadow: 'none',
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
     }
   });
 }
 
 // ========================================
-// 🔗 Smooth Scroll for Anchor Links
+// 🎯 Section Reveal Animations
 // ========================================
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const target = e.currentTarget as HTMLAnchorElement;
-      const targetId = target.getAttribute('href');
+function initSectionAnimations() {
+  if (prefersReducedMotion) return;
 
-      if (targetId && targetId !== '#') {
-        e.preventDefault();
-        const targetElement = document.querySelector(targetId);
+  // Animação para títulos de seções
+  const sectionTitles = document.querySelectorAll('section h2');
+  sectionTitles.forEach(title => {
+    gsap.from(title, {
+      scrollTrigger: {
+        trigger: title,
+        start: 'top 80%'
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power3.out'
+    });
+  });
 
-        if (targetElement) {
-          const offset = 80;
-          const top = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-          window.scrollTo({
-            top,
-            behavior: prefersReducedMotion ? 'auto' : 'smooth'
-          });
-        }
-      }
+  // Animação para badges/tags
+  const badges = document.querySelectorAll('section span.inline-flex');
+  badges.forEach(badge => {
+    gsap.from(badge, {
+      scrollTrigger: {
+        trigger: badge,
+        start: 'top 85%'
+      },
+      scale: 0,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'back.out(2)'
+    });
+  });
+
+  // Animação para grid items com stagger
+  const grids = document.querySelectorAll('.grid');
+  grids.forEach(grid => {
+    const items = grid.children;
+    gsap.from(items, {
+      scrollTrigger: {
+        trigger: grid,
+        start: 'top 80%'
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.15,
+      ease: 'power2.out'
+    });
+  });
+
+  // Animação para ícones
+  const icons = document.querySelectorAll('.bg-primary\\/10, .bg-red-500\\/10');
+  icons.forEach(icon => {
+    gsap.from(icon, {
+      scrollTrigger: {
+        trigger: icon,
+        start: 'top 85%'
+      },
+      scale: 0,
+      rotation: -180,
+      opacity: 0,
+      duration: 0.6,
+      ease: 'back.out(1.5)'
     });
   });
 }
 
 // ========================================
-// ⏳ Counter Animation
+// 🔢 Counter Animation
 // ========================================
 function initCounters() {
   const counters = document.querySelectorAll('.text-3xl, .text-5xl, .text-7xl, .text-8xl');
@@ -226,18 +326,13 @@ function initCounters() {
       start: 'top 80%',
       once: true,
       onEnter: () => {
-        if (prefersReducedMotion) {
-          counter.textContent = number + suffix;
-          return;
-        }
-
-        gsap.from(counter, {
-          textContent: 0,
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: number,
           duration: 1.5,
           ease: 'power2.out',
-          snap: { textContent: 1 },
-          onUpdate: function () {
-            counter.textContent = Math.round(parseFloat(this.targets()[0].textContent)) + suffix;
+          onUpdate: () => {
+            counter.textContent = Math.round(obj.val) + suffix;
           }
         });
       }
@@ -246,7 +341,72 @@ function initCounters() {
 }
 
 // ========================================
-// 🖱️ Button Hover Effects (Desktop)
+// 📜 Header Scroll Effects
+// ========================================
+function initHeaderEffects() {
+  const header = document.querySelector('header') as HTMLElement;
+  const progressBar = document.getElementById('scroll-progress');
+
+  if (!header) return;
+
+  let lastScroll = 0;
+
+  ScrollTrigger.create({
+    start: 0,
+    end: 'max',
+    onUpdate: (self) => {
+      const scrolled = self.scroll();
+
+      // Background opacity
+      if (scrolled > 50) {
+        header.style.backgroundColor = 'rgba(10, 10, 10, 0.95)';
+      } else {
+        header.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
+      }
+
+      // Hide/Show header on scroll
+      if (!isMobile && scrolled > 150) {
+        if (scrolled > lastScroll + 10) {
+          gsap.to(header, { y: '-100%', duration: 0.3 });
+        } else if (scrolled < lastScroll - 10) {
+          gsap.to(header, { y: '0%', duration: 0.3 });
+        }
+      } else {
+        gsap.to(header, { y: '0%', duration: 0.3 });
+      }
+
+      // Progress bar
+      if (progressBar) {
+        progressBar.style.width = `${self.progress * 100}%`;
+      }
+
+      lastScroll = scrolled;
+    }
+  });
+}
+
+// ========================================
+// 🔗 Smooth Scroll
+// ========================================
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+      if (targetId && targetId !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(targetId);
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    });
+  });
+}
+
+// ========================================
+// 🖱️ Button Magnetic Effect
 // ========================================
 function initButtonEffects() {
   if (isMobile || prefersReducedMotion) return;
@@ -255,37 +415,25 @@ function initButtonEffects() {
 
   buttons.forEach(button => {
     button.addEventListener('mousemove', (e) => {
-      const mouseEvent = e as MouseEvent;
       const rect = (button as HTMLElement).getBoundingClientRect();
-      const x = (mouseEvent.clientX - rect.left - rect.width / 2) * 0.08;
-      const y = (mouseEvent.clientY - rect.top - rect.height / 2) * 0.08;
+      const x = ((e as MouseEvent).clientX - rect.left - rect.width / 2) * 0.1;
+      const y = ((e as MouseEvent).clientY - rect.top - rect.height / 2) * 0.1;
 
-      gsap.to(button, {
-        x: x,
-        y: y,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
+      gsap.to(button, { x, y, duration: 0.3, ease: 'power2.out' });
     });
 
     button.addEventListener('mouseleave', () => {
-      gsap.to(button, {
-        x: 0,
-        y: 0,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
+      gsap.to(button, { x: 0, y: 0, duration: 0.3, ease: 'power2.out' });
     });
   });
 }
 
 // ========================================
-// 📱 Mobile Menu Logic
+// 📱 Mobile Menu
 // ========================================
 function initMobileMenu() {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-link');
 
   if (!menuToggle || !mobileMenu) return;
 
@@ -294,7 +442,6 @@ function initMobileMenu() {
     gsap.to(mobileMenu, {
       y: '-100%',
       duration: 0.3,
-      ease: 'power2.inOut',
       onComplete: () => {
         mobileMenu.style.display = 'none';
         mobileMenu.classList.remove('menu-active');
@@ -308,32 +455,16 @@ function initMobileMenu() {
     menuToggle.classList.add('menu-open');
     mobileMenu.classList.add('menu-active');
     document.body.classList.add('overflow-hidden');
-
-    gsap.fromTo(mobileMenu,
-      { y: '-100%' },
-      { y: '0%', duration: 0.3, ease: 'power2.out' }
-    );
+    gsap.fromTo(mobileMenu, { y: '-100%' }, { y: '0%', duration: 0.3 });
   };
 
   menuToggle.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (mobileMenu.classList.contains('menu-active')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    mobileMenu.classList.contains('menu-active') ? closeMenu() : openMenu();
   });
 
-  mobileLinks.forEach(link => {
+  document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', closeMenu);
-  });
-
-  document.addEventListener('click', (e) => {
-    if (mobileMenu.classList.contains('menu-active') &&
-      !mobileMenu.contains(e.target as Node) &&
-      !menuToggle.contains(e.target as Node)) {
-      closeMenu();
-    }
   });
 }
 
@@ -341,20 +472,24 @@ function initMobileMenu() {
 // 🚀 Initialize Everything
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
+  // Animações principais
+  initHeroAnimation();
+  initScrollIndicator();
   initCarousel();
-  initScrollAnimations();
+  initCardAnimations();
+  initSectionAnimations();
+  initCounters();
+
+  // Funcionalidades
   initHeaderEffects();
   initSmoothScroll();
-  initCounters();
   initButtonEffects();
   initMobileMenu();
 });
 
-// Recalcular no resize (debounced)
+// Refresh ScrollTrigger no resize
 let resizeTimer: number;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    ScrollTrigger.refresh();
-  }, 250);
+  resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 250);
 });
