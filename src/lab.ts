@@ -56,15 +56,35 @@ function initMagnetic() {
 // 🎭 4. Cinematic Text Reveal
 // ========================================
 function initTextReveal() {
-    gsap.to(".reveal-line", {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        duration: 1.5,
-        ease: "power4.out",
+    const revealLines = document.querySelectorAll('.reveal-line');
+
+    revealLines.forEach((line) => {
+        gsap.to(line, {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power4.out",
+            scrollTrigger: {
+                trigger: line,
+                start: "top 90%",
+                toggleActions: "play none none none"
+            }
+        });
+    });
+}
+
+// ========================================
+// 📊 5. Scroll Progress Bar
+// ========================================
+function initScrollProgress() {
+    gsap.to("#scroll-progress", {
+        width: "100%",
+        ease: "none",
         scrollTrigger: {
-            trigger: ".hero-section",
-            start: "top 80%",
+            trigger: "body",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.3
         }
     });
 }
@@ -75,4 +95,5 @@ function initTextReveal() {
 document.addEventListener('DOMContentLoaded', () => {
     initMagnetic();
     initTextReveal();
+    initScrollProgress();
 });

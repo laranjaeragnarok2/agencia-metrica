@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LAB v2 | Agência Métrica</title>
-    <meta name="description" content="Variação Minimalista Cinética da Agência Métrica." />
+    <title>Agência Métrica | Tráfego Pago que gera Vendas Reais</title>
+    <meta name="description"
+        content="Especialistas em tráfego pago para negócios locais. Transformamos investimento em anúncios no Google e Instagram em leads e vendas reais para o seu WhatsApp." />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,10 +83,35 @@
             background-size: 60px 60px;
             background-position: center center;
         }
+
+        /* Infinite Scroll Animation */
+        @keyframes infinite-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-infinite-scroll {
+            display: flex;
+            width: max-content;
+            animation: infinite-scroll 40s linear infinite;
+        }
+
+        .animate-infinite-scroll:hover {
+            animation-play-state: paused;
+        }
     </style>
 </head>
 
 <body class="overflow-x-hidden grid-bg">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"
+        class="fixed top-0 left-0 h-1 bg-primary-vibrant z-[100] transition-all duration-100 ease-out"
+        style="width: 0%"></div>
 
     <!-- Nav Minimalist -->
     <header class="fixed top-0 left-0 w-full z-50 py-6">
@@ -97,17 +123,21 @@
                 </div>
                 <span class="font-space font-bold tracking-tighter text-xl">MÉTRICA</span>
             </a>
-            <nav class="hidden md:flex gap-10">
-                <a href="#metodo"
-                    class="text-xs font-bold uppercase tracking-widest text-gray hover:text-white transition">Método</a>
+            <nav class="hidden md:flex gap-8">
+                <a href="#problema"
+                    class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Foco</a>
                 <a href="#servicos"
-                    class="text-xs font-bold uppercase tracking-widest text-gray hover:text-white transition">Serviços</a>
-                <a href="#casos"
-                    class="text-xs font-bold uppercase tracking-widest text-gray hover:text-white transition">Casos</a>
+                    class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Serviços</a>
+                <a href="#nichos"
+                    class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Nichos</a>
+                <a href="#funil"
+                    class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Método</a>
+                <a href="#evolucao"
+                    class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Provas</a>
             </nav>
             <a href="https://wa.me/5564992834371"
-                class="text-xs font-bold uppercase tracking-widest bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">Analise
-                Agora</a>
+                class="text-[10px] font-bold uppercase tracking-widest bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">Análise
+                Gratuita</a>
         </div>
     </header>
 
@@ -162,6 +192,90 @@
             </div>
         </section>
 
+        <!-- Logocloud Minimalist -->
+        <section id="clientes" class="py-20 border-y border-white/5 bg-black/20">
+            <div class="max-w-6xl mx-auto px-6 mb-12">
+                <p class="text-[10px] font-bold uppercase tracking-[0.5em] text-gray/40 text-center">Empresas que
+                    confiam no nosso método</p>
+            </div>
+            <div class="relative overflow-hidden flex">
+                <div class="animate-infinite-scroll gap-12 md:gap-24 items-center px-12">
+                    <!-- Set 1 -->
+                    <img src="/assets/clients/ACM - LOGOMARCA_ACM VERTICAL.png" alt="ACM"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/BRASILMED-01.png" alt="BrasilMed"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/JAGUAR-01.png" alt="Jaguar"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/IDVISUAL_ONROTA_Prancheta 1-10.png" alt="OnRota"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/EASYFIT - LOGOMARCA_Prancheta 1 cópia 5.png" alt="EasyFit"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/Logo New Life-01.png" alt="New Life"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/Terra e Sabor - Logo-01.png" alt="Terra e Sabor"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/WP - LOGO FUNDO BRANCO.png" alt="WP"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/27-12-25 - Logo Adaptalog V2-01.png" alt="Adaptalog"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <!-- Set 2 -->
+                    <img src="/assets/clients/ACM - LOGOMARCA_ACM VERTICAL.png" alt="ACM"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/BRASILMED-01.png" alt="BrasilMed"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/JAGUAR-01.png" alt="Jaguar"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/IDVISUAL_ONROTA_Prancheta 1-10.png" alt="OnRota"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/EASYFIT - LOGOMARCA_Prancheta 1 cópia 5.png" alt="EasyFit"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/Logo New Life-01.png" alt="New Life"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/Terra e Sabor - Logo-01.png" alt="Terra e Sabor"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/WP - LOGO FUNDO BRANCO.png" alt="WP"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                    <img src="/assets/clients/27-12-25 - Logo Adaptalog V2-01.png" alt="Adaptalog"
+                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                </div>
+                <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
+                <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+            </div>
+        </section>
+
+        <!-- Problema: High Tension Text -->
+        <section id="problema" class="py-32 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="reveal-mask mb-12">
+                    <h2 class="reveal-line text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.9]">
+                        O problema não é falta de anúncio. <span class="text-primary italic">É anúncio sem
+                            estratégia.</span>
+                    </h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="space-y-4">
+                        <span class="text-primary font-bold">01/</span>
+                        <h3 class="text-xl font-bold uppercase">Like não paga boleto</h3>
+                        <p class="text-gray text-sm leading-relaxed">Métricas de vaidade não enchem o caixa. Focamos no
+                            que realmente importa: Lucro Real.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <span class="text-primary font-bold">02/</span>
+                        <h3 class="text-xl font-bold uppercase">Engajamento ≠ Venda</h3>
+                        <p class="text-gray text-sm leading-relaxed">Curtidas são ótimas, mas o objetivo final é sempre
+                            novos clientes no seu WhatsApp.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <span class="text-primary font-bold">03/</span>
+                        <h3 class="text-xl font-bold uppercase">Tráfego não é Gasto</h3>
+                        <p class="text-gray text-sm leading-relaxed">Anúncios sem estratégia são desperdício. Com a
+                            Métrica, são investimento escalável.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Bento Section: Operação -->
         <section id="servicos" class="py-32 px-6">
             <div class="max-w-6xl mx-auto">
@@ -210,161 +324,384 @@
             </div>
         </section>
 
-        <!-- Funil de Vendas: A Arquitetura da Escala -->
-        <section id="funil" class="py-32 px-6 relative overflow-hidden">
+        <!-- Nichos: Focused Expertise -->
+        <section id="nichos" class="py-32 px-6 bg-white/5">
             <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-24">
-                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6">A Arquitetura<br><span
-                            class="text-primary">do Funil Métrica</span></h2>
-                    <p class="text-gray/60 font-bold uppercase tracking-[0.4em]">Como transformamos investimento em
-                        lucro real</p>
+                <div class="text-center mb-20">
+                    <span
+                        class="text-xs font-bold text-primary uppercase tracking-[0.4em] mb-4 block">Especialidades</span>
+                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter">Nichos que <span
+                            class="text-primary">Dominamos.</span></h2>
                 </div>
-
-                <div class="relative">
-                    <!-- Linha Central de Conexão (Desktop) -->
-                    <div
-                        class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-primary via-white/20 to-transparent -translate-x-1/2">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bento-card group">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path
+                                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                </svg>
+                            </div>
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-40">Delivery &
+                                Gastro</span>
+                        </div>
+                        <h3 class="text-3xl font-black uppercase mb-4">Restaurantes</h3>
+                        <p class="text-gray leading-relaxed mb-6">Estratégias para aumentar pedidos no iFood e WhatsApp.
+                            Anúncios geolocalizados no momento da fome.</p>
+                        <ul class="space-y-3">
+                            <li
+                                class="flex items-center gap-3 text-sm font-bold text-gray/80 uppercase tracking-tighter">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Visibilidade iFood
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm font-bold text-gray/80 uppercase tracking-tighter">
+                                <span class="w-1.5 h-1.5 bg-red-500 rounded-full"></span> Campanhas de Pico
+                            </li>
+                        </ul>
                     </div>
 
-                    <div class="space-y-24 relative">
-                        <!-- Etapa 1: Atração -->
-                        <div class="relative grid md:grid-cols-2 gap-10 items-center">
-                            <div class="md:text-right">
-                                <span class="text-primary font-black text-6xl opacity-20 block mb-4">01</span>
-                                <h3 class="text-3xl font-black uppercase mb-4">Atração Cirúrgica</h3>
-                                <p class="text-gray text-lg leading-relaxed max-w-sm ml-auto">Interceptamos o interesse
-                                    do seu cliente no Google e Meta no exato momento da necessidade.</p>
+                    <div class="bento-card group">
+                        <div class="flex justify-between items-start mb-8">
+                            <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path
+                                        d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+                                </svg>
                             </div>
-                            <div class="flex justify-start md:justify-center">
-                                <div
-                                    class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/30 relative z-10 group-hover:scale-110 transition-transform">
-                                    <svg class="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
-                                </div>
-                            </div>
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-widest opacity-40">Automobilístico</span>
                         </div>
-
-                        <!-- Etapa 2: Conversão -->
-                        <div class="relative grid md:grid-cols-2 gap-10 items-center">
-                            <div class="hidden md:flex justify-end pr-10">
-                                <div
-                                    class="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 relative z-10">
-                                    <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path
-                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="text-primary font-black text-6xl opacity-20 block mb-4">02</span>
-                                <h3 class="text-3xl font-black uppercase mb-4">Condução Estratégica</h3>
-                                <p class="text-gray text-lg leading-relaxed max-w-sm">Não é apenas um clique.
-                                    Direcionamos o lead por um funil persuasivo que elimina curiosos e separa os reais
-                                    compradores.</p>
-                            </div>
-                        </div>
-
-                        <!-- Etapa 3: Venda -->
-                        <div class="relative grid md:grid-cols-2 gap-10 items-center">
-                            <div class="md:text-right">
-                                <span class="text-primary font-black text-6xl opacity-20 block mb-4">03</span>
-                                <h3 class="text-3xl font-black uppercase mb-4">Oportunidade no Balcão</h3>
-                                <p class="text-gray text-lg leading-relaxed max-w-sm ml-auto">O lead qualificado bate no
-                                    seu WhatsApp. Sua única preocupação agora é processar o pedido e vender.</p>
-                            </div>
-                            <div class="flex justify-start md:justify-center">
-                                <div
-                                    class="w-20 h-20 bg-green-500/10 rounded-2xl flex items-center justify-center border border-green-500/30 relative z-10">
-                                    <svg class="w-10 h-10 text-green-500" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path
-                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Etapa 4: Escala -->
-                        <div class="relative grid md:grid-cols-2 gap-10 items-center">
-                            <div class="hidden md:flex justify-end pr-10">
-                                <div
-                                    class="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(0,82,255,0.4)] relative z-10">
-                                    <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor" stroke-width="2">
-                                        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div>
-                                <span class="text-primary font-black text-6xl opacity-20 block mb-4">04</span>
-                                <h3 class="text-3xl font-black uppercase mb-4">Escala Infinitum</h3>
-                                <p class="text-gray text-lg leading-relaxed max-w-sm">Analisamos os dados, otimizamos o
-                                    custo e aumentamos o investimento. O lucro de ontem financia o crescimento de
-                                    amanhã.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <!-- Casos: Horizontal Scroll Preview -->
-        <section id="casos" class="py-32 bg-white text-black rounded-[3.5rem]">
-            <div class="max-w-6xl mx-auto px-6">
-                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-20 text-center">
-                    Resultados<br><span class="text-primary italic">Incontestáveis.</span></h2>
-                <div class="grid md:grid-cols-3 gap-10">
-                    <!-- Case 1 -->
-                    <div class="space-y-6 group cursor-pointer">
-                        <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
-                            <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                        </div>
-                        <div>
-                            <h4 class="text-2xl font-black uppercase">Clínica Odonto</h4>
-                            <p class="text-xs font-bold uppercase tracking-widest opacity-50">Performance de Leads</p>
-                        </div>
-                    </div>
-                    <!-- Case 2 -->
-                    <div class="space-y-6 group cursor-pointer pt-12">
-                        <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
-                            <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                        </div>
-                        <div>
-                            <h4 class="text-2xl font-black uppercase">Garagem 4x4</h4>
-                            <p class="text-xs font-bold uppercase tracking-widest opacity-50">Conversão Direta</p>
-                        </div>
-                    </div>
-                    <!-- Case 3 -->
-                    <div class="space-y-6 group cursor-pointer">
-                        <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
-                            <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
-                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                        </div>
-                        <div>
-                            <h4 class="text-2xl font-black uppercase">Revenda Premium</h4>
-                            <p class="text-xs font-bold uppercase tracking-widest opacity-50">Escala de WhatsApp</p>
-                        </div>
+                        <h3 class="text-3xl font-black uppercase mb-4">Garagens</h3>
+                        <p class="text-gray leading-relaxed mb-6">Tráfego qualificado para revendas de veículos. Leads
+                            prontos para negociar direto no seu balcão digital.</p>
+                        <ul class="space-y-3">
+                            <li
+                                class="flex items-center gap-3 text-sm font-bold text-gray/80 uppercase tracking-tighter">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Leads Qualificados
+                            </li>
+                            <li
+                                class="flex items-center gap-3 text-sm font-bold text-gray/80 uppercase tracking-tighter">
+                                <span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Remarketing de Estoque
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- CTA Final v2 -->
-        <section class="py-40 px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-5xl md:text-[8rem] font-black uppercase tracking-tighter leading-none mb-20">
-                    O Próximo<br>Grande <span class="text-primary">Salto.</span>
-                </h2>
-                <a href="https://wa.me/5564992834371"
-                    class="magnetic-effect bg-white text-black px-16 py-8 rounded-full text-2xl font-black uppercase hover:scale-105 transition shadow-2xl">
-                    Solicitar Diagnóstico
-                </a>
-            </div>
-        </section>
+            <!-- Funil de Vendas: A Arquitetura da Escala -->
+            <section id="funil" class="py-32 px-6 relative overflow-hidden">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-24">
+                        <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6">A
+                            Arquitetura<br><span class="text-primary">do Funil Métrica</span></h2>
+                        <p class="text-gray/60 font-bold uppercase tracking-[0.4em]">Como transformamos investimento em
+                            lucro real</p>
+                    </div>
+
+                    <div class="relative">
+                        <!-- Linha Central de Conexão (Desktop) -->
+                        <div
+                            class="hidden md:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-primary via-white/20 to-transparent -translate-x-1/2">
+                        </div>
+
+                        <div class="space-y-24 relative">
+                            <!-- Etapa 1: Atração -->
+                            <div class="relative grid md:grid-cols-2 gap-10 items-center">
+                                <div class="md:text-right">
+                                    <span class="text-primary font-black text-6xl opacity-20 block mb-4">01</span>
+                                    <h3 class="text-3xl font-black uppercase mb-4">Atração Cirúrgica</h3>
+                                    <p class="text-gray text-lg leading-relaxed max-w-sm ml-auto">Interceptamos o
+                                        interesse
+                                        do seu cliente no Google e Meta no exato momento da necessidade.</p>
+                                </div>
+                                <div class="flex justify-start md:justify-center">
+                                    <div
+                                        class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center border border-primary/30 relative z-10 group-hover:scale-110 transition-transform">
+                                        <svg class="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 2: Conversão -->
+                            <div class="relative grid md:grid-cols-2 gap-10 items-center">
+                                <div class="hidden md:flex justify-end pr-10">
+                                    <div
+                                        class="w-20 h-20 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 relative z-10">
+                                        <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path
+                                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="text-primary font-black text-6xl opacity-20 block mb-4">02</span>
+                                    <h3 class="text-3xl font-black uppercase mb-4">Condução Estratégica</h3>
+                                    <p class="text-gray text-lg leading-relaxed max-w-sm">Não é apenas um clique.
+                                        Direcionamos o lead por um funil persuasivo que elimina curiosos e separa os
+                                        reais
+                                        compradores.</p>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 3: Venda -->
+                            <div class="relative grid md:grid-cols-2 gap-10 items-center">
+                                <div class="md:text-right">
+                                    <span class="text-primary font-black text-6xl opacity-20 block mb-4">03</span>
+                                    <h3 class="text-3xl font-black uppercase mb-4">Oportunidade no Balcão</h3>
+                                    <p class="text-gray text-lg leading-relaxed max-w-sm ml-auto">O lead qualificado
+                                        bate no
+                                        seu WhatsApp. Sua única preocupação agora é processar o pedido e vender.</p>
+                                </div>
+                                <div class="flex justify-start md:justify-center">
+                                    <div
+                                        class="w-20 h-20 bg-green-500/10 rounded-2xl flex items-center justify-center border border-green-500/30 relative z-10">
+                                        <svg class="w-10 h-10 text-green-500" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path
+                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Etapa 4: Escala -->
+                            <div class="relative grid md:grid-cols-2 gap-10 items-center">
+                                <div class="hidden md:flex justify-end pr-10">
+                                    <div
+                                        class="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-[0_0_30px_rgba(0,82,255,0.4)] relative z-10">
+                                        <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <span class="text-primary font-black text-6xl opacity-20 block mb-4">04</span>
+                                    <h3 class="text-3xl font-black uppercase mb-4">Escala Infinitum</h3>
+                                    <p class="text-gray text-lg leading-relaxed max-w-sm">Analisamos os dados,
+                                        otimizamos o
+                                        custo e aumentamos o investimento. O lucro de ontem financia o crescimento de
+                                        amanhã.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- Evolução de Perfil: Antes e Depois -->
+            <section id="evolucao" class="py-32 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="text-center mb-24">
+                        <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6">Evolução de <span
+                                class="text-primary italic">Posicionamento.</span></h2>
+                        <p class="text-gray text-lg max-w-2xl mx-auto">O impacto imediato de um design premium e
+                            estratégia core no perfil do seu negócio.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold uppercase text-center md:text-left">Case ACM</h3>
+                            <div
+                                class="relative group overflow-hidden rounded-[2rem] border border-white/5 bg-white/5 p-4 flex gap-4">
+                                <div class="relative w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                                    <span
+                                        class="absolute top-3 left-3 z-10 bg-black/80 text-[10px] px-2 py-1 rounded font-bold">ANTES</span>
+                                    <img src="/assets/before-after/ACM- ANTES.jpeg" alt="Antes"
+                                        class="w-full h-auto grayscale transition-all duration-700 group-hover:grayscale-0">
+                                </div>
+                                <div class="relative w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                                    <span
+                                        class="absolute top-3 right-3 z-10 bg-primary text-[10px] px-2 py-1 rounded font-bold">DEPOIS</span>
+                                    <img src="/assets/before-after/ACM- DEPOIS.jpeg" alt="Depois" class="w-full h-auto">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold uppercase text-center md:text-left">Case WP</h3>
+                            <div
+                                class="relative group overflow-hidden rounded-[2rem] border border-white/5 bg-white/5 p-4 flex gap-4">
+                                <div class="relative w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                                    <span
+                                        class="absolute top-3 left-3 z-10 bg-black/80 text-[10px] px-2 py-1 rounded font-bold">ANTES</span>
+                                    <img src="/assets/before-after/WP- ANTES.jpeg" alt="Antes"
+                                        class="w-full h-auto grayscale transition-all duration-700 group-hover:grayscale-0">
+                                </div>
+                                <div class="relative w-1/2 rounded-xl overflow-hidden shadow-2xl">
+                                    <span
+                                        class="absolute top-3 right-3 z-10 bg-primary text-[10px] px-2 py-1 rounded font-bold">DEPOIS</span>
+                                    <img src="/assets/before-after/WP- DEPOIS 2.jpeg" alt="Depois"
+                                        class="w-full h-auto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfólio Minimalista -->
+            <section id="portfolio" class="py-32 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="flex flex-col md:flex-row justify-between items-end gap-10 mb-20">
+                        <div>
+                            <span class="text-xs font-bold text-primary uppercase tracking-[0.4em] mb-4 block">Visual
+                                Core</span>
+                            <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+                                Nosso<br>Trabalho.</h2>
+                        </div>
+                        <p class="text-gray max-w-xs text-sm uppercase font-bold tracking-widest text-right">Criações
+                            que
+                            conectam marcas ao seu público e geram autoridade instantânea.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div
+                            class="group relative aspect-square overflow-hidden rounded-3xl bg-white/5 border border-white/5">
+                            <img src="/assets/portfolio/art-1.png" alt="Portfolio"
+                                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all">
+                                <div class="absolute bottom-6 left-6">
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-primary">Social Media
+                                    </p>
+                                    <h4 class="text-lg font-black uppercase mt-1">ACM Performance</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative aspect-square overflow-hidden rounded-3xl bg-white/5 border border-white/5">
+                            <img src="/assets/portfolio/easyfit-logo.png" alt="Portfolio"
+                                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all">
+                                <div class="absolute bottom-6 left-6">
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-primary">Identidade
+                                    </p>
+                                    <h4 class="text-lg font-black uppercase mt-1">EasyFit Logo</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative aspect-square overflow-hidden rounded-3xl bg-white/5 border border-white/5">
+                            <img src="/assets/portfolio/casa-do-macarrao.png" alt="Portfolio"
+                                class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all">
+                                <div class="absolute bottom-6 left-6">
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-primary">Visual Id
+                                    </p>
+                                    <h4 class="text-lg font-black uppercase mt-1">Casa do Macarrão</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Casos: Horizontal Scroll Preview -->
+            <section id="casos" class="py-32 bg-white text-black rounded-[3.5rem]">
+                <div class="max-w-6xl mx-auto px-6">
+                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-20 text-center">
+                        Resultados<br><span class="text-primary italic">Incontestáveis.</span></h2>
+                    <div class="grid md:grid-cols-3 gap-10">
+                        <!-- Case 1 -->
+                        <div class="space-y-6 group cursor-pointer">
+                            <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
+                                <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black uppercase">Clínica Odonto</h4>
+                                <p class="text-xs font-bold uppercase tracking-widest opacity-50">Performance de Leads
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Case 2 -->
+                        <div class="space-y-6 group cursor-pointer pt-12">
+                            <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
+                                <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black uppercase">Garagem 4x4</h4>
+                                <p class="text-xs font-bold uppercase tracking-widest opacity-50">Conversão Direta</p>
+                            </div>
+                        </div>
+                        <!-- Case 3 -->
+                        <div class="space-y-6 group cursor-pointer">
+                            <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
+                                <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
+                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-black uppercase">Revenda Premium</h4>
+                                <p class="text-xs font-bold uppercase tracking-widest opacity-50">Escala de WhatsApp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quem Somos: Human Behind Data -->
+            <section id="sobre" class="py-32 px-6">
+                <div class="max-w-6xl mx-auto">
+                    <div class="grid lg:grid-cols-2 gap-20 items-center">
+                        <div>
+                            <span
+                                class="text-xs font-bold text-primary uppercase tracking-[0.4em] mb-4 block">Bastidores</span>
+                            <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none">
+                                Pessoas por<br>trás dos <span class="text-primary italic">Dados.</span></h2>
+                            <p class="text-gray text-lg leading-relaxed mb-8">Somos um time de especialistas apaixonados
+                                por gerar escala e rentabilidade para negócios que buscam crescimento real. Não
+                                entregamos apenas cliques; entregamos clientes.</p>
+
+                            <div class="grid grid-cols-2 gap-10">
+                                <div>
+                                    <p class="text-5xl font-black text-white leading-none">81+</p>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray mt-2">Clientes
+                                        Atendidos</p>
+                                </div>
+                                <div>
+                                    <p class="text-5xl font-black text-white leading-none">0.5M+</p>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray mt-2">Investidos
+                                        em Ads</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="relative group">
+                            <div
+                                class="absolute -inset-4 bg-primary/20 blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700">
+                            </div>
+                            <div
+                                class="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5] bg-white/5">
+                                <img src="/assets/team/equipe.png" alt="Equipe Métrica"
+                                    class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Final v2 -->
+            <section class="py-40 px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-5xl md:text-[8rem] font-black uppercase tracking-tighter leading-none mb-20">
+                        O Próximo<br>Grande <span class="text-primary">Salto.</span>
+                    </h2>
+                    <a href="https://wa.me/5564992834371"
+                        class="magnetic-effect bg-white text-black px-16 py-8 rounded-full text-2xl font-black uppercase hover:scale-105 transition shadow-2xl">
+                        Solicitar Diagnóstico
+                    </a>
+                </div>
+            </section>
     </main>
 
     <footer class="py-20 border-t border-white/5 opacity-40">
