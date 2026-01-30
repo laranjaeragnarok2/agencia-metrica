@@ -182,6 +182,8 @@
                     class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Método</a>
                 <a href="#evolucao"
                     class="text-[10px] font-bold uppercase tracking-widest text-gray hover:text-white transition">Provas</a>
+                <a href="#casos"
+                    class="text-[10px] font-bold uppercase tracking-widest text-primary hover:text-white transition">Casos</a>
             </nav>
             <a href="https://wa.me/5564992834371"
                 class="text-[10px] font-bold uppercase tracking-widest bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">Análise
@@ -650,46 +652,70 @@
                 </div>
             </section>
 
-            <!-- Casos: Horizontal Scroll Preview -->
-            <section id="casos" class="py-32 bg-white text-black rounded-[3.5rem]">
+            <!-- Casos: Horizontal Scroll 3D Carousel -->
+            <section id="casos" class="py-32 bg-white text-black rounded-[3.5rem] overflow-hidden">
                 <div class="max-w-6xl mx-auto px-6">
                     <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-20 text-center">
                         Resultados<br><span class="text-primary italic">Incontestáveis.</span></h2>
-                    <div class="grid md:grid-cols-3 gap-10">
-                        <!-- Case 1 -->
-                        <div class="space-y-6 group cursor-pointer">
-                            <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
-                                <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
-                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+
+                    <!-- Swiper -->
+                    <div class="swiper swiper-container">
+                        <div class="swiper-wrapper">
+                            <!-- Case 1 -->
+                            <div class="swiper-slide">
+                                <div class="reflection-container">
+                                    <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
+                                        class="w-full h-full object-cover">
+                                    <div
+                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Clínica Odonto</h4>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Leads
+                                            Qualificados</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h4 class="text-2xl font-black uppercase">Clínica Odonto</h4>
-                                <p class="text-xs font-bold uppercase tracking-widest opacity-50">Performance de Leads
-                                </p>
+                            <!-- Case 2 -->
+                            <div class="swiper-slide">
+                                <div class="reflection-container">
+                                    <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
+                                        class="w-full h-full object-cover">
+                                    <div
+                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Garagem 4x4</h4>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Conversão
+                                            Direta</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Case 3 -->
+                            <div class="swiper-slide">
+                                <div class="reflection-container">
+                                    <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
+                                        class="w-full h-full object-cover">
+                                    <div
+                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Revenda Premium</h4>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Escala
+                                            Global</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Extra Slides -->
+                            <div class="swiper-slide">
+                                <div class="reflection-container">
+                                    <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 4"
+                                        class="w-full h-full object-cover">
+                                    <div
+                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Gastro Burger</h4>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Delivery
+                                            Peak</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- Case 2 -->
-                        <div class="space-y-6 group cursor-pointer pt-12">
-                            <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
-                                <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
-                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-black uppercase">Garagem 4x4</h4>
-                                <p class="text-xs font-bold uppercase tracking-widest opacity-50">Conversão Direta</p>
-                            </div>
-                        </div>
-                        <!-- Case 3 -->
-                        <div class="space-y-6 group cursor-pointer">
-                            <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
-                                <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
-                                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-black uppercase">Revenda Premium</h4>
-                                <p class="text-xs font-bold uppercase tracking-widest opacity-50">Escala de WhatsApp</p>
-                            </div>
-                        </div>
+                        <!-- Add Pagination & Nav -->
+                        <div class="swiper-pagination !-bottom-2"></div>
                     </div>
                 </div>
             </section>

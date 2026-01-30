@@ -2,6 +2,11 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import Lenis from '@studio-freight/lenis'
+import Swiper from 'swiper'
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
@@ -90,10 +95,40 @@ function initScrollProgress() {
 }
 
 // ========================================
+// 🎪 6. 3D Swiper Carousel
+// ========================================
+function initSwiper() {
+    new Swiper('.swiper-container', {
+        modules: [EffectCoverflow, Pagination, Autoplay],
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        coverflowEffect: {
+            rotate: 20,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+}
+
+// ========================================
 // 🚀 Execute All
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     initMagnetic();
     initTextReveal();
     initScrollProgress();
+    initSwiper();
 });
