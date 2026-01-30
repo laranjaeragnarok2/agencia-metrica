@@ -19,31 +19,6 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0)
 
 // ========================================
-// 🖱️ 2. Ultra-Smooth Custom Cursor
-// ========================================
-const cursor = document.getElementById('custom-cursor');
-const follower = document.querySelector('.cursor-follower') as HTMLElement;
-
-if (cursor && follower) {
-    window.addEventListener('mousemove', (e) => {
-        // Ponto central (imediato)
-        gsap.to(cursor, {
-            x: e.clientX,
-            y: e.clientY,
-            duration: 0,
-        });
-
-        // Círculo rastro (Inércia avançada estilo Fantasy.co)
-        gsap.to(follower, {
-            x: e.clientX,
-            y: e.clientY,
-            duration: 0.8,
-            ease: "power3.out"
-        });
-    });
-}
-
-// ========================================
 // 🧲 3. Advanced Magnetic Elements
 // ========================================
 function initMagnetic() {
@@ -64,10 +39,6 @@ function initMagnetic() {
                 duration: 0.4,
                 ease: "power2.out"
             });
-
-            if (cursor && follower) {
-                gsap.to([cursor, follower], { scale: 1.5, opacity: 0.3, duration: 0.3 });
-            }
         });
 
         el.addEventListener('mouseleave', () => {
@@ -77,9 +48,6 @@ function initMagnetic() {
                 duration: 1.2,
                 ease: "elastic.out(1, 0.4)"
             });
-            if (cursor && follower) {
-                gsap.to([cursor, follower], { scale: 1, opacity: 1, duration: 0.3 });
-            }
         });
     });
 }
