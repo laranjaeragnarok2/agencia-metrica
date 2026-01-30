@@ -4,20 +4,35 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LAB Experimental | Agência Métrica</title>
-    <meta name="description" content="Laboratório experimental de UI/UX da Agência Métrica." />
-    <meta property="og:image" content="/og-image.png" />
+    <title>LAB v2 | Agência Métrica</title>
+    <meta name="description" content="Variação Minimalista Cinética da Agência Métrica." />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&family=Space+Grotesk:wght@300;500;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
 
     <style>
-        /* Máscaras de Revelação Cinematográficas */
+        :root {
+            --primary-vibrant: #0052FF;
+            --bg-pure: #000000;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-pure);
+            font-family: 'Inter', sans-serif;
+            color: #fff;
+        }
+
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Máscaras de Revelação v2 */
         .reveal-mask {
             overflow: hidden;
             display: block;
@@ -29,446 +44,237 @@
             display: inline-block;
         }
 
-        /* Melhoria no scroll suave */
-        html {
-            scroll-behavior: initial;
+        /* Bento Grid Helpers */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Elementos Magnéticos base */
-        .magnetic-wrap {
-            display: inline-block;
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .bento-card .glow {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--primary-vibrant);
+            filter: blur(80px);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+
+        .bento-card:hover .glow {
+            opacity: 0.15;
+        }
+
+        /* Linhas Estilo Grid de Engenharia */
+        .grid-bg {
+            background-image: linear-gradient(var(--border-subtle) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center center;
         }
     </style>
 </head>
 
-<body class="bg-dark text-light selection:bg-primary selection:text-white overflow-x-hidden">
+<body class="overflow-x-hidden grid-bg">
 
-    <!-- Header Experimental -->
-    <header role="banner"
-        class="fixed top-0 left-0 w-full z-50 py-3 md:py-4 bg-dark/90 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-6xl mx-auto px-4 md:px-6 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group magnetic-effect">
-                <img src="/assets/logos/logo-horizontal.png" alt="Agência Métrica" width="160" height="40"
-                    class="h-8 md:h-10 w-auto transition group-hover:scale-105">
+    <!-- Nav Minimalist -->
+    <header class="fixed top-0 left-0 w-full z-50 py-6">
+        <div
+            class="max-w-6xl mx-auto px-6 flex items-center justify-between bg-black/50 backdrop-blur-md rounded-2xl border border-white/5 py-4">
+            <a href="#" class="magnetic-effect flex items-center gap-2">
+                <div class="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                    <div class="w-4 h-4 bg-black rounded-sm"></div>
+                </div>
+                <span class="font-space font-bold tracking-tighter text-xl">MÉTRICA</span>
             </a>
-            <nav role="navigation" class="hidden lg:flex gap-6 xl:gap-8">
-                <a href="#sobre" class="text-sm font-medium text-gray hover:text-light transition magnetic-effect">A
-                    Agência</a>
-                <a href="#servicos"
-                    class="text-sm font-medium text-gray hover:text-light transition magnetic-effect">Serviços</a>
-                <a href="#nichos"
-                    class="text-sm font-medium text-gray hover:text-light transition magnetic-effect">Nichos</a>
+            <nav class="hidden md:flex gap-10">
                 <a href="#metodo"
-                    class="text-sm font-medium text-gray hover:text-light transition magnetic-effect">Método</a>
-                <a href="#resultados"
-                    class="text-sm font-medium text-gray hover:text-light transition magnetic-effect">Resultados</a>
-                <a href="#portfolio"
-                    class="text-sm font-medium text-gray hover:text-light transition magnetic-effect">Portfólio</a>
+                    class="text-xs font-bold uppercase tracking-widest text-gray hover:text-white transition">Método</a>
+                <a href="#servicos"
+                    class="text-xs font-bold uppercase tracking-widest text-gray hover:text-white transition">Serviços</a>
+                <a href="#casos"
+                    class="text-xs font-bold uppercase tracking-widest text-gray hover:text-white transition">Casos</a>
             </nav>
-
-            <div class="flex items-center gap-4">
-                <a href="https://wa.me/5564992834371"
-                    class="hidden sm:flex bg-primary hover:bg-primary/90 text-light px-6 py-2.5 rounded-lg font-semibold text-sm transition shadow-lg shadow-primary/20 magnetic-effect">
-                    Análise Grátis
-                </a>
-            </div>
+            <a href="https://wa.me/5564992834371"
+                class="text-xs font-bold uppercase tracking-widest bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">Analise
+                Agora</a>
         </div>
     </header>
 
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section min-h-screen flex items-center relative overflow-hidden">
-            <div
-                class="absolute top-0 right-0 w-72 md:w-[600px] h-72 md:h-[600px] bg-primary/20 rounded-full blur-[100px] md:blur-[150px] pointer-events-none">
-            </div>
+        <!-- Hero v2: High Tension -->
+        <section class="min-h-screen flex items-center pt-20 relative px-6">
+            <div class="max-w-6xl mx-auto w-full">
+                <div class="reveal-mask">
+                    <span class="reveal-line text-xs font-bold tracking-[0.5em] text-primary uppercase mb-6">Agência de
+                        Performance</span>
+                </div>
 
-            <div
-                class="max-w-6xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10 py-20">
-                <div class="text-center lg:text-left">
+                <h1 class="text-5xl md:text-[9rem] font-black leading-[0.85] tracking-tighter uppercase mb-12">
+                    <span class="reveal-mask"><span class="reveal-line">Escalamos</span></span>
+                    <span class="reveal-mask"><span class="reveal-line">Seu Lucro.</span></span>
+                </h1>
+
+                <div class="grid lg:grid-cols-2 gap-10 items-end">
                     <div class="reveal-mask">
-                        <span
-                            class="reveal-line inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-primary/10 text-primary text-xs md:text-sm font-bold rounded-full border border-primary/20 mb-6">
-                            <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-                            Performance de Elite para Negócios Locais
-                        </span>
-                    </div>
-
-                    <h1 class="text-4xl md:text-7xl font-black leading-tight mb-8">
-                        <span class="reveal-mask"><span class="reveal-line">Tráfego pago que</span></span>
-                        <span class="reveal-mask"><span class="reveal-line text-accent-gradient italic">gera vendas
-                                reais.</span></span>
-                    </h1>
-
-                    <div class="reveal-mask">
-                        <p
-                            class="reveal-line text-lg text-gray mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                            Transformamos seu investimento em anúncios em uma máquina previsível de novos clientes
-                            batendo no seu WhatsApp todos os dias.
+                        <p class="reveal-line text-lg md:text-2xl text-gray leading-relaxed max-w-md font-medium">
+                            Não vendemos apenas anúncios. Construímos infraestruturas de aquisição de clientes para
+                            empresas que buscam o topo.
                         </p>
                     </div>
+                    <div class="flex flex-col items-end gap-6">
+                        <div class="reveal-mask">
+                            <div class="reveal-line flex gap-2">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center font-bold">
+                                    81+</div>
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#servicos"
+                            class="magnetic-effect group flex items-center gap-4 text-xs font-bold tracking-widest uppercase py-4">
+                            Ver o Método
+                            <span
+                                class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="reveal-mask">
-                        <div class="reveal-line">
+        <!-- Bento Section: Operação -->
+        <section id="servicos" class="py-32 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid md:grid-cols-12 gap-6">
+                    <!-- Card Principal -->
+                    <div class="md:col-span-8 bento-card magnetic-effect flex flex-col justify-between min-h-[400px]">
+                        <div class="glow" style="top: -20px; left: -20px;"></div>
+                        <div>
+                            <span class="text-xs font-bold text-primary uppercase tracking-widest mb-4 block">01 /
+                                Tráfego Pago</span>
+                            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">
+                                Aquisição de Elite</h2>
+                        </div>
+                        <p class="text-xl text-gray max-w-sm">Google e Meta Ads focados 100% em ROI. Levamos o cliente
+                            pronto para comprar no seu WhatsApp.</p>
+                    </div>
+
+                    <!-- Card Lateral Superior -->
+                    <div
+                        class="md:col-span-4 bento-card magnetic-effect flex flex-col justify-center items-center text-center">
+                        <div class="text-6xl font-black text-primary mb-2">14x</div>
+                        <p class="text-xs font-bold uppercase tracking-widest">Média de ROAS</p>
+                    </div>
+
+                    <!-- Card Lateral Inferior -->
+                    <div class="md:col-span-4 bento-card magnetic-effect">
+                        <h3 class="text-xl font-bold mb-4">Negócios Locais</h3>
+                        <p class="text-sm text-gray leading-relaxed">Geolocalização cirúrgica. Dominamos o raio de
+                            alcance da sua empresa.</p>
+                    </div>
+
+                    <!-- Card Rodapé -->
+                    <div class="md:col-span-8 bento-card magnetic-effect bg-primary !border-none group">
+                        <div class="flex justify-between items-center h-full">
+                            <h3 class="text-2xl md:text-4xl font-black uppercase">Pronto para<br>escalar hoje?</h3>
                             <a href="https://wa.me/5564992834371"
-                                class="magnetic-effect inline-flex items-center justify-center gap-3 bg-primary hover:bg-primary/90 text-light px-8 py-4 rounded-xl font-bold text-lg shadow-xl shadow-primary/25">
-                                ESCALAR MEU NEGÓCIO
-                                <svg class="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                class="w-20 h-20 bg-white rounded-full flex items-center justify-center text-black hover:scale-110 transition">
+                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M5 12h14m-7-7l7 7-7 7" />
                                 </svg>
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="hidden lg:flex items-center justify-center">
-                    <div class="magnetic-effect w-full max-w-md">
-                        <div
-                            class="bg-[#111] rounded-[2.5rem] p-12 border border-white/10 shadow-2xl relative overflow-hidden aspect-square flex items-center justify-center group">
-                            <div class="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors">
-                            </div>
-                            <div class="relative z-10 text-center">
-                                <div
-                                    class="w-32 h-32 bg-gradient-to-br from-primary to-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-primary/30">
-                                    <svg class="w-16 h-16 text-white" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2.5">
-                                        <path d="M3 3v18h18" />
-                                        <path d="M18 17V9" />
-                                        <path d="M13 17V5" />
-                                        <path d="M8 17v-3" />
-                                    </svg>
-                                </div>
-                                <p class="text-3xl font-black tracking-tight">AGÊNCIA</p>
-                                <p class="text-3xl font-black tracking-tight text-gradient">MÉTRICA</p>
-                                <p class="text-xs text-gray mt-4 font-bold uppercase tracking-widest opacity-60">High
-                                    Performance Lab</p>
-                            </div>
+        <!-- Casos: Horizontal Scroll Preview -->
+        <section id="casos" class="py-32 bg-white text-black rounded-[3.5rem]">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-20 text-center">
+                    Resultados<br><span class="text-primary italic">Incontestáveis.</span></h2>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Case 1 -->
+                    <div class="space-y-6 group cursor-pointer">
+                        <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
+                            <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-black uppercase">Clínica Odonto</h4>
+                            <p class="text-xs font-bold uppercase tracking-widest opacity-50">Performance de Leads</p>
+                        </div>
+                    </div>
+                    <!-- Case 2 -->
+                    <div class="space-y-6 group cursor-pointer pt-12">
+                        <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
+                            <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-black uppercase">Garagem 4x4</h4>
+                            <p class="text-xs font-bold uppercase tracking-widest opacity-50">Conversão Direta</p>
+                        </div>
+                    </div>
+                    <!-- Case 3 -->
+                    <div class="space-y-6 group cursor-pointer">
+                        <div class="overflow-hidden rounded-3xl aspect-[4/5] bg-gray-100">
+                            <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
+                                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div>
+                            <h4 class="text-2xl font-black uppercase">Revenda Premium</h4>
+                            <p class="text-xs font-bold uppercase tracking-widest opacity-50">Escala de WhatsApp</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção: O Problema -->
-        <section class="py-32 relative overflow-hidden px-4" id="problema">
-            <div class="max-w-6xl mx-auto text-center relative z-10">
-                <div class="reveal-mask">
-                    <h2 class="reveal-line text-3xl md:text-6xl font-black mb-20 leading-tight">
-                        O problema não é falta de anúncio.<br>
-                        <span class="text-accent-gradient italic">É anúncio sem estratégia de escala.</span>
-                    </h2>
-                </div>
-
-                <div class="grid gap-8 md:grid-cols-3">
-                    <div class="magnetic-effect h-full">
-                        <div
-                            class="bg-[#111] border border-white/5 rounded-[2rem] p-10 flex flex-col items-center h-full group hover:border-primary/20 transition-all">
-                            <div
-                                class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <path
-                                        d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75" />
-                                </svg>
-                            </div>
-                            <h3 class="font-black text-2xl mb-4">Métricas Reais</h3>
-                            <p class="text-gray/80 text-sm leading-relaxed">Like não paga boleto. Focamos no lucro real
-                                que entra no seu caixa todos os meses.</p>
-                        </div>
-                    </div>
-
-                    <div class="magnetic-effect h-full">
-                        <div
-                            class="bg-[#0c0c0c] border border-white/5 rounded-[2rem] p-10 flex flex-col items-center h-full group hover:border-primary/20 transition-all">
-                            <div
-                                class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <path d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22" />
-                                </svg>
-                            </div>
-                            <h3 class="font-black text-2xl mb-4">Zero Achismo</h3>
-                            <p class="text-gray/80 text-sm leading-relaxed">Toda decisão é baseada em dados e testes A/B
-                                constantes para reduzir seu custo por lead.</p>
-                        </div>
-                    </div>
-
-                    <div class="magnetic-effect h-full">
-                        <div
-                            class="bg-[#111] border border-white/5 rounded-[2rem] p-10 flex flex-col items-center h-full group hover:border-primary/20 transition-all">
-                            <div
-                                class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 text-primary group-hover:scale-110 transition-transform">
-                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    stroke-width="1.5">
-                                    <path
-                                        d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0s1.172-2.303 0-3.182" />
-                                </svg>
-                            </div>
-                            <h3 class="font-black text-2xl mb-4">Investimento</h3>
-                            <p class="text-gray/80 text-sm leading-relaxed">O tráfego pago não é custo, é a engrenagem
-                                que escala o seu faturamento de forma previsível.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção: Estratégia Core (Serviços) -->
-        <section class="py-32 relative overflow-hidden px-4 bg-[#0a0a0a]" id="servicos">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-20 text-center">
-                    <div class="reveal-mask">
-                        <h2 class="reveal-line text-4xl md:text-6xl font-black mb-6 text-gradient">Estratégia Core</h2>
-                    </div>
-                </div>
-
-                <div class="magnetic-effect w-full">
-                    <div
-                        class="group relative bg-[#0d0d0d] border border-primary/20 rounded-[3rem] p-12 md:p-16 mb-16 overflow-hidden shadow-2xl">
-                        <div
-                            class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none">
-                        </div>
-                        <div class="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-                            <div>
-                                <h3 class="text-3xl md:text-5xl font-black mb-8 leading-tight">Gestão de Performance
-                                    <span class="text-primary">Master</span>
-                                </h3>
-                                <p class="text-gray/80 text-lg mb-10 leading-relaxed font-medium">Não é só sobre apertar
-                                    botões. É sobre criar canais de venda que batem recordes de faturamento mês após
-                                    mês.</p>
-
-                                <ul class="grid sm:grid-cols-2 gap-6 mb-10">
-                                    <li class="flex items-center gap-4 text-white font-bold"><span
-                                            class="w-2 h-2 bg-primary rounded-full"></span> Google Ads Expert</li>
-                                    <li class="flex items-center gap-4 text-white font-bold"><span
-                                            class="w-2 h-2 bg-primary rounded-full"></span> Meta Ads High-End</li>
-                                    <li class="flex items-center gap-4 text-white font-bold"><span
-                                            class="w-2 h-2 bg-primary rounded-full"></span> Funis de WhatsApp</li>
-                                    <li class="flex items-center gap-4 text-white font-bold"><span
-                                            class="w-2 h-2 bg-primary rounded-full"></span> Especialista Local</li>
-                                </ul>
-
-                                <a href="https://wa.me/5564992834371"
-                                    class="magnetic-effect inline-flex items-center justify-center gap-3 bg-primary text-white px-10 py-5 rounded-2xl font-black text-xl shadow-xl shadow-primary/30">
-                                    QUERO ESSA PERFORMANCE
-                                </a>
-                            </div>
-                            <div class="hidden lg:block">
-                                <div class="bg-dark p-8 rounded-[2rem] border border-white/5 relative shadow-inner">
-                                    <div class="flex items-center justify-between mb-8">
-                                        <span class="text-xs font-bold uppercase tracking-widest text-gray">Escala
-                                            Mensal</span>
-                                        <span class="text-primary font-black text-2xl">14.8x ROI</span>
-                                    </div>
-                                    <div class="h-48 flex items-end gap-3">
-                                        <div class="flex-1 bg-primary/20 h-1/4 rounded-t-lg"></div>
-                                        <div class="flex-1 bg-primary/30 h-2/5 rounded-t-lg"></div>
-                                        <div class="flex-1 bg-primary h-full rounded-t-lg animate-pulse"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção: Nichos -->
-        <section class="py-32 px-4 bg-[#0d0d0d]" id="nichos">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-20">
-                    <h2 class="text-3xl md:text-5xl font-black mb-6">Expertise por <span
-                            class="text-accent-gradient">Segmento</span></h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-10">
-                    <div class="magnetic-effect">
-                        <div
-                            class="bg-[#111] p-10 rounded-[2.5rem] border border-white/5 hover:border-red-500/30 transition-all flex flex-col h-full">
-                            <div
-                                class="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center mb-8 text-red-500">
-                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5" />
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-black mb-4">Restaurantes & Gastronomia</h3>
-                            <p class="text-gray/80 leading-relaxed font-medium">Dominamos os algoritmos de delivery para
-                                fazer seu restaurante ser a primeira opção do bairro no iFood e WhatsApp.</p>
-                        </div>
-                    </div>
-                    <div class="magnetic-effect">
-                        <div
-                            class="bg-[#111] p-10 rounded-[2.5rem] border border-white/5 hover:border-primary/30 transition-all flex flex-col h-full">
-                            <div
-                                class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 text-primary">
-                                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M8.25 18.75a1.5 1.5 0 01-3 0" />
-                                </svg>
-                            </div>
-                            <h3 class="text-2xl font-black mb-4">Garagens & Concessionárias</h3>
-                            <p class="text-gray/80 leading-relaxed font-medium">Leads de alto ticket que realmente têm
-                                interesse e poder de compra para trocar de carro imediatamente.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção: Prova Real (Resultados) -->
-        <section class="py-32 px-4 relative overflow-hidden bg-dark" id="resultados">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-20 text-center">
-                    <h2 class="text-4xl md:text-7xl font-black tracking-tighter mb-6">Resultados <span
-                            class="text-primary italic">Incontestáveis.</span></h2>
-                </div>
-
-                <div class="magnetic-effect w-full">
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div
-                            class="bg-[#111] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/40 transition-all group">
-                            <div class="aspect-[3/4] overflow-hidden">
-                                <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Lead"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            </div>
-                            <div class="p-8">
-                                <h4 class="font-black text-xl mb-2">Clínica Odontológica</h4>
-                                <p class="text-primary font-bold text-sm">Escala Exponencial</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-[#111] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/40 transition-all group pt-10">
-                            <div class="aspect-[3/4] overflow-hidden">
-                                <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Lead"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            </div>
-                            <div class="p-8">
-                                <h4 class="font-black text-xl mb-2">Garagem Premium</h4>
-                                <p class="text-primary font-bold text-sm">Venda de Alto Ticket</p>
-                            </div>
-                        </div>
-                        <div
-                            class="bg-[#111] rounded-[2rem] overflow-hidden border border-white/5 hover:border-primary/40 transition-all group">
-                            <div class="aspect-[3/4] overflow-hidden">
-                                <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Lead"
-                                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            </div>
-                            <div class="p-8">
-                                <h4 class="font-black text-xl mb-2">Multi-Leads Diários</h4>
-                                <p class="text-primary font-bold text-sm">Operação Imparável</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção: Portfólio (Design) -->
-        <section id="portfolio" class="py-32 px-4 bg-[#050505]">
-            <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-20">
-                    <h2 class="text-3xl md:text-5xl font-black mb-6">Estúdio de <span
-                            class="text-accent-gradient">Criação</span></h2>
-                    <p class="text-gray/60 font-bold uppercase tracking-[0.4em]">Design que Escala</p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="magnetic-effect aspect-square rounded-3xl overflow-hidden border border-white/5 group">
-                        <img src="/assets/portfolio/art-1.png" alt="Portfólio"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div
-                        class="magnetic-effect aspect-square rounded-3xl overflow-hidden border border-white/5 group pt-8">
-                        <img src="/assets/portfolio/easyfit-logo.png" alt="Portfólio"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="magnetic-effect aspect-square rounded-3xl overflow-hidden border border-white/5 group">
-                        <img src="/assets/portfolio/casa-do-macarrao.png" alt="Portfólio"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div
-                        class="magnetic-effect aspect-square rounded-3xl overflow-hidden border border-white/5 group pt-8">
-                        <img src="/assets/portfolio/acm-campanha.jpg" alt="Portfólio"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção: Quem Somos -->
-        <section id="sobre" class="py-32 px-4 relative overflow-hidden">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid lg:grid-cols-2 gap-20 items-center">
-                    <div>
-                        <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight">Gente que vive<br><span
-                                class="text-primary italic">de performance.</span></h2>
-                        <p class="text-lg text-gray/80 mb-10 leading-relaxed font-medium">A Gência Métrica não é apenas
-                            um time de marketing. Somos parceiros de negócio que entendem que cada real investido
-                            precisa retornar com fôlego para o seu caixa.</p>
-                        <div class="grid grid-cols-2 gap-10">
-                            <div>
-                                <p class="text-4xl font-black text-blue-500">81+</p>
-                                <p class="text-xs font-bold uppercase text-gray/60 tracking-widest mt-2">Batalhões
-                                    Atendidos</p>
-                            </div>
-                            <div>
-                                <p class="text-4xl font-black text-blue-500">R$ 500k+</p>
-                                <p class="text-xs font-bold uppercase text-gray/60 tracking-widest mt-2">Gerenciados</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="magnetic-effect">
-                        <div class="relative rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group">
-                            <img src="/assets/team/equipe.png" alt="Equipe"
-                                class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000">
-                            <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-60"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Final -->
-        <section class="py-40 px-4">
-            <div class="max-w-4xl mx-auto">
-                <div class="magnetic-effect w-full">
-                    <div
-                        class="bg-primary rounded-[4rem] p-16 md:p-24 text-center relative overflow-hidden shadow-2xl group">
-                        <div
-                            class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
-                        </div>
-                        <div class="relative z-10">
-                            <div class="reveal-mask">
-                                <h2 class="reveal-line text-4xl md:text-7xl font-black mb-10 leading-none">Próximo
-                                    Passo?<br>A Escala.</h2>
-                            </div>
-                            <div class="reveal-mask">
-                                <p class="reveal-line text-xl text-white/80 mb-12 font-medium">Sua análise de tráfego
-                                    gratuita está a um botão de distância.</p>
-                            </div>
-                            <div class="reveal-mask">
-                                <div class="reveal-line">
-                                    <a href="https://wa.me/5564992834371"
-                                        class="magnetic-effect inline-flex items-center justify-center gap-4 bg-white text-primary px-12 py-6 rounded-[2rem] font-black text-2xl shadow-2xl hover:scale-105 transition-transform">
-                                        FALAR COM A MÉTRICA
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- CTA Final v2 -->
+        <section class="py-40 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-5xl md:text-[8rem] font-black uppercase tracking-tighter leading-none mb-20">
+                    O Próximo<br>Grande <span class="text-primary">Salto.</span>
+                </h2>
+                <a href="https://wa.me/5564992834371"
+                    class="magnetic-effect bg-white text-black px-16 py-8 rounded-full text-2xl font-black uppercase hover:scale-105 transition shadow-2xl">
+                    Solicitar Diagnóstico
+                </a>
             </div>
         </section>
     </main>
 
-    <footer class="py-20 border-t border-white/5 text-center bg-[#050505]">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex items-center justify-center gap-3 mb-10 opacity-60">
-                <div class="w-8 h-8 bg-primary rounded shadow-lg"></div>
-                <span class="font-black text-2xl text-white">Métrica</span>
+    <footer class="py-20 border-t border-white/5 opacity-40">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
+            <span class="font-space font-bold tracking-tighter text-xl">MÉTRICA</span>
+            <p class="text-xs font-bold uppercase tracking-[0.4em]">Hub de Performance Estratégica</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-xs font-bold uppercase">IG</a>
+                <a href="#" class="text-xs font-bold uppercase">WA</a>
             </div>
-            <p class="text-xs text-gray/40 leading-relaxed max-w-3xl mx-auto mb-10">
-                Agência Métrica • LMA Publicidade LTDA • Rio Verde – GO • Foco em Tráfego de Alta Performance • Estúdio
-                UI/UX Lab
-            </p>
-            <p class="text-[10px] text-gray/20 uppercase tracking-[0.8em]">Criado por Horyu</p>
         </div>
     </footer>
 
