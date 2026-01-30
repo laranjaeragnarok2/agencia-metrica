@@ -4,8 +4,11 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import Lenis from '@studio-freight/lenis'
 import Swiper from 'swiper'
 import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
+// @ts-ignore
 import 'swiper/css'
+// @ts-ignore
 import 'swiper/css/effect-coverflow'
+// @ts-ignore
 import 'swiper/css/pagination'
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
@@ -111,7 +114,7 @@ function initScrollProgress() {
 // 🎪 6. 3D Swiper Carousel
 // ========================================
 function initSwiper() {
-    const swiper = new Swiper('.swiper-container', {
+    new Swiper('.swiper-container', {
         modules: [EffectCoverflow, Pagination, Autoplay],
         effect: 'coverflow',
         grabCursor: true,
