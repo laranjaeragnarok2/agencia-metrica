@@ -1,8 +1,9 @@
 import './style.css'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 // ========================================
 // 🎯 Configuration
@@ -399,9 +400,11 @@ function initHeader() {
 }
 
 // ========================================
-// 🔗 Smooth Scroll
+// 🔗 Smooth Scroll & Back to Top
 // ========================================
 function initSmoothScroll() {
+  const backToTop = document.getElementById('back-to-top');
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
       const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
@@ -411,10 +414,34 @@ function initSmoothScroll() {
       if (target) {
         e.preventDefault();
         const y = target.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top: y, behavior: 'smooth' });
+        gsap.to(window, {
+          duration: 1,
+          scrollTo: { y: y, autoKill: true },
+          ease: 'power4.inOut'
+        });
       }
     });
   });
+
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTop.classList.remove('translate-y-24', 'opacity-0');
+        backToTop.classList.add('translate-y-0', 'opacity-100');
+      } else {
+        backToTop.classList.add('translate-y-24', 'opacity-0');
+        backToTop.classList.remove('translate-y-0', 'opacity-100');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      gsap.to(window, {
+        duration: 1.5,
+        scrollTo: { y: 0, autoKill: true },
+        ease: 'power4.inOut'
+      });
+    });
+  }
 }
 
 // ========================================
