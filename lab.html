@@ -132,23 +132,6 @@
             background-position: center center;
         }
 
-        /* Infinite Scroll Animation */
-        @keyframes infinite-scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        .animate-infinite-scroll {
-            display: flex;
-            width: max-content;
-            animation: infinite-scroll 40s linear infinite;
-        }
-
         .animate-infinite-scroll:hover {
             animation-play-state: paused;
         }
@@ -242,55 +225,73 @@
             </div>
         </section>
 
-        <!-- Logocloud Minimalist -->
-        <section id="clientes" class="py-20 border-y border-white/5 bg-black/20">
-            <div class="max-w-6xl mx-auto px-6 mb-12">
-                <p class="text-[10px] font-bold uppercase tracking-[0.5em] text-gray/40 text-center">Empresas que
-                    confiam no nosso método</p>
+        <!-- Logocloud Premium: Double Marquee -->
+        <section id="clientes" class="py-24 border-y border-white/5 bg-black/40 overflow-hidden relative">
+            <div class="max-w-6xl mx-auto px-6 mb-16 text-center">
+                <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-primary mb-4 block">Trust &
+                    Velocity</span>
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tighter">Empresas que escalam com o <span
+                        class="text-primary">nosso método.</span></h2>
             </div>
-            <div class="relative overflow-hidden flex">
-                <div class="animate-infinite-scroll gap-12 md:gap-24 items-center px-12">
-                    <!-- Set 1 -->
+
+            <div class="flex flex-col gap-8 md:gap-12">
+                <!-- Row 1: Right to Left -->
+                <div class="marquee-row marquee-ltr flex gap-12 md:gap-24 items-center">
                     <img src="/assets/clients/ACM - LOGOMARCA_ACM VERTICAL.png" alt="ACM"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/BRASILMED-01.png" alt="BrasilMed"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/JAGUAR-01.png" alt="Jaguar"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/IDVISUAL_ONROTA_Prancheta 1-10.png" alt="OnRota"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/EASYFIT - LOGOMARCA_Prancheta 1 cópia 5.png" alt="EasyFit"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/Logo New Life-01.png" alt="New Life"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/Terra e Sabor - Logo-01.png" alt="Terra e Sabor"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/WP - LOGO FUNDO BRANCO.png" alt="WP"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/27-12-25 - Logo Adaptalog V2-01.png" alt="Adaptalog"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <!-- Set 2 -->
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <!-- Duplicate for infinite -->
                     <img src="/assets/clients/ACM - LOGOMARCA_ACM VERTICAL.png" alt="ACM"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/BRASILMED-01.png" alt="BrasilMed"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/JAGUAR-01.png" alt="Jaguar"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                     <img src="/assets/clients/IDVISUAL_ONROTA_Prancheta 1-10.png" alt="OnRota"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/EASYFIT - LOGOMARCA_Prancheta 1 cópia 5.png" alt="EasyFit"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/Logo New Life-01.png" alt="New Life"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/Terra e Sabor - Logo-01.png" alt="Terra e Sabor"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/WP - LOGO FUNDO BRANCO.png" alt="WP"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
-                    <img src="/assets/clients/27-12-25 - Logo Adaptalog V2-01.png" alt="Adaptalog"
-                        class="h-10 md:h-12 w-auto grayscale opacity-30 hover:opacity-100 transition-all duration-500">
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
                 </div>
-                <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10"></div>
-                <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10"></div>
+
+                <!-- Row 2: Left to Right -->
+                <div class="marquee-row marquee-rtl flex gap-12 md:gap-24 items-center">
+                    <img src="/assets/clients/Terra e Sabor - Logo-01.png" alt="Terra e Sabor"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/WP - LOGO FUNDO BRANCO.png" alt="WP"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/27-12-25 - Logo Adaptalog V2-01.png" alt="Adaptalog"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/Logo New Life-01.png" alt="New Life"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/BRASILMED-01.png" alt="BrasilMed"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/JAGUAR-01.png" alt="Jaguar"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <!-- Duplicate for infinite -->
+                    <img src="/assets/clients/Terra e Sabor - Logo-01.png" alt="Terra e Sabor"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/WP - LOGO FUNDO BRANCO.png" alt="WP"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/27-12-25 - Logo Adaptalog V2-01.png" alt="Adaptalog"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                    <img src="/assets/clients/Logo New Life-01.png" alt="New Life"
+                        class="h-10 md:h-12 w-auto grayscale opacity-40 hover:opacity-100 transition-all">
+                </div>
+            </div>
+
+            <!-- Gradient Overlays -->
+            <div
+                class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none">
             </div>
         </section>
 

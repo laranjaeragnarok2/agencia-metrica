@@ -215,6 +215,8 @@ img {
 
 /* GSAP controla as animações de entrada */
 
+/* GSAP controla as animações de entrada */
+
 /* ========================================
    🎪 Infinite Scroll Carousel (GSAP controlled)
    ======================================== */
@@ -223,30 +225,16 @@ img {
   isolation: isolate;
 }
 
-#clientes .relative {
-  overflow: hidden;
-}
-
-.animate-infinite-scroll {
+#clientes .marquee-row {
   display: flex;
   align-items: center;
   width: max-content;
-  gap: 3rem;
-  /* GPU Optimizations */
   will-change: transform;
 }
 
-.animate-infinite-scroll img {
+#clientes img {
   flex-shrink: 0;
-  height: 3.5rem;
-  width: auto;
   transition: filter 0.3s ease, opacity 0.3s ease;
-}
-
-@media (min-width: 768px) {
-  .animate-infinite-scroll img {
-    height: 4rem;
-  }
 }
 
 /* ========================================
