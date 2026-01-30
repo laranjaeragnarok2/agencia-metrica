@@ -16,6 +16,7 @@
     "vite": "npm:rolldown-vite@7.2.5"
   },
   "dependencies": {
+    "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.1.18",
     "gsap": "^3.14.2",
     "swiper": "^12.0.3",

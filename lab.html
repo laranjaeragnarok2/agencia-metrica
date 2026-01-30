@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRO Lab | Agência Métrica</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Estilos base para o laboratório */
+        #custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #1045D9;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(16, 69, 217, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Máscara para o texto revelado */
+        .reveal-mask {
+            overflow: hidden;
+            display: block;
+        }
+
+        .reveal-line {
+            transform: translateY(100%);
+            opacity: 0;
+            display: inline-block;
+        }
+
+        /* Esconder o cursor padrão */
+        html,
+        body {
+            cursor: none !important;
+        }
+
+        a,
+        button {
+            cursor: none !important;
+        }
+    </style>
+</head>
+
+<body class="bg-[#030303] text-white">
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <main>
+        <!-- HERO SECTION (Versão PRO) -->
+        <section class="hero-section min-h-screen flex items-center justify-center relative px-4 overflow-hidden">
+
+            <!-- Fundo com Glow (Vindo da sua landing) -->
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none">
+            </div>
+
+            <div class="max-w-4xl w-full text-center relative z-10">
+
+                <div class="reveal-mask">
+                    <span
+                        class="reveal-line inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        Especialistas em Escala
+                    </span>
+                </div>
+
+                <h1 class="text-4xl md:text-7xl font-black tracking-tight mb-8 leading-[1.1]">
+                    <span class="reveal-mask">
+                        <span class="reveal-line">Tráfego pago que gera</span>
+                    </span>
+                    <span class="reveal-mask">
+                        <span class="reveal-line text-blue-500">vendas reais.</span>
+                    </span>
+                </h1>
+
+                <div class="reveal-mask">
+                    <p class="reveal-line text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12">
+                        O método usado por grandes players para transformar anúncios em faturamento todos os dias no seu
+                        WhatsApp.
+                    </p>
+                </div>
+
+                <div class="reveal-mask">
+                    <div class="reveal-line">
+                        <!-- BOTÃO MAGNÉTICO -->
+                        <a href="#"
+                            class="magnetic-effect inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-black rounded-xl text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 transition-all">
+                            SOLICITAR ANÁLISE GRÁTIS
+                            <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="3">
+                                <path d="M5 12h14m-7-7l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mais espaço para testar scroll -->
+        <section class="h-screen flex items-center justify-center border-t border-white/10">
+            <h2 class="text-2xl font-bold text-gray-500">SINTA A FLUIDEZ DO SCROLL</h2>
+        </section>
+    </main>
+
+    <script type="module" src="/src/lab.ts"></script>
+</body>
+
+</html>
