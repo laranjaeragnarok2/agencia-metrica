@@ -111,9 +111,40 @@ function initScrollProgress() {
 }
 
 // ========================================
+// 🔢 5.1. Animated Counters
+// ========================================
+function initCounters() {
+    const counters = document.querySelectorAll('.counter');
+
+    counters.forEach((counter: any) => {
+        const target = parseFloat(counter.getAttribute('data-target') || '0');
+        const suffix = counter.getAttribute('data-suffix') || '';
+
+        gsap.to(counter, {
+            innerText: target,
+            duration: 2,
+            snap: { innerText: target % 1 === 0 ? 1 : 0.1 },
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: counter,
+                start: "top 85%",
+            },
+            onUpdate: function () {
+                const val = parseFloat(counter.innerText);
+                counter.innerText = val.toLocaleString('pt-BR', {
+                    minimumFractionDigits: target % 1 === 0 ? 0 : 1,
+                    maximumFractionDigits: target % 1 === 0 ? 0 : 1
+                }) + suffix;
+            }
+        });
+    });
+}
+
+// ========================================
 // 🎪 6. 3D Swiper Carousel
 // ========================================
 function initSwiper() {
+    // Main Showcase Swiper
     new Swiper('.swiper-container', {
         modules: [EffectCoverflow, Pagination, Autoplay],
         effect: 'coverflow',
@@ -138,6 +169,57 @@ function initSwiper() {
         },
     });
 
+    // Results Swiper (Custom)
+    const swiperResults = new Swiper('.swiper-container-results', {
+        modules: [EffectCoverflow, Pagination, Autoplay],
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: true,
+        spaceBetween: 20,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        coverflowEffect: {
+            rotate: 5,
+            stretch: 0,
+            depth: 100,
+            modifier: 2,
+            slideShadows: false,
+        },
+        pagination: {
+            el: '.swiper-pagination-results',
+            clickable: true,
+        },
+        on: {
+            init: function () {
+                animatePills(this);
+            },
+            slideChange: function () {
+                animatePills(this);
+            }
+        }
+    });
+
+    function animatePills(swiper: any) {
+        const activeSlide = swiper.slides[swiper.activeIndex];
+        const pills = activeSlide.querySelectorAll('.floating-pill');
+
+        // Hide all pills first
+        gsap.to('.floating-pill', { opacity: 0, y: 10, duration: 0.3 });
+
+        // Show active slide pills
+        gsap.to(pills, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(2)"
+        });
+    }
+
     // Revelação do Carousel
     gsap.from(".swiper-slide", {
         scale: 0.8,
@@ -146,7 +228,7 @@ function initSwiper() {
         duration: 1.2,
         ease: "back.out(1.7)",
         scrollTrigger: {
-            trigger: ".swiper-container",
+            trigger: ".swiper-container-results",
             start: "top 80%"
         }
     });
@@ -158,7 +240,7 @@ function initSwiper() {
 function initMarquee() {
     const rows = document.querySelectorAll('.marquee-row');
 
-    rows.forEach((row, index) => {
+    rows.forEach((row: any, index) => {
         const isLTR = row.classList.contains('marquee-ltr');
         const distance = row.scrollWidth / 2;
 
@@ -199,6 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMagnetic();
     initTextReveal();
     initScrollProgress();
+    initCounters();
     initSwiper();
     initMarquee();
 });

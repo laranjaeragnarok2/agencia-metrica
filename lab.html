@@ -135,6 +135,34 @@
         .animate-infinite-scroll:hover {
             animation-play-state: paused;
         }
+
+        /* Results Enhancements */
+        .phone-mockup {
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .swiper-slide-active .phone-mockup {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
+            border-color: var(--primary-vibrant);
+        }
+
+        .floating-pill {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            white-space: nowrap;
+        }
+
+        .swiper-pagination-results .swiper-pagination-bullet {
+            width: 30px;
+            height: 4px;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .swiper-pagination-results .swiper-pagination-bullet-active {
+            width: 60px;
+        }
     </style>
 </head>
 
@@ -654,69 +682,220 @@
             </section>
 
             <!-- Casos: Horizontal Scroll 3D Carousel -->
-            <section id="casos" class="py-32 bg-white text-black rounded-[3.5rem] overflow-hidden">
-                <div class="max-w-6xl mx-auto px-6">
-                    <h2 class="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-20 text-center">
-                        Resultados<br><span class="text-primary italic">Incontestáveis.</span></h2>
+            <!-- Casos: Resultados Incontestáveis (Bento + Carousel) -->
+            <section id="casos" class="py-32 relative overflow-hidden">
+                <!-- Background Grid specific to this section -->
+                <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+                <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-black to-transparent z-10"></div>
 
-                    <!-- Swiper -->
-                    <div class="swiper swiper-container">
+                <div class="max-w-6xl mx-auto px-6 relative z-20">
+                    <div class="text-center mb-16">
+                        <div class="reveal-mask mb-4">
+                            <span class="reveal-line text-xs font-bold tracking-[0.5em] text-primary uppercase">Prova de
+                                Performance</span>
+                        </div>
+                        <h2 class="text-5xl md:text-[6rem] font-black uppercase tracking-tighter leading-none mb-6">
+                            Resultados<br><span class="text-primary italic">Incontestáveis.</span>
+                        </h2>
+                        <div class="reveal-mask">
+                            <p class="reveal-line text-gray text-lg md:text-xl max-w-2xl mx-auto">
+                                Não é sorte, é método. Transformamos investimento em conversas reais e lucrativas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Grid of Summary Metrics -->
+                    <div class="grid md:grid-cols-3 gap-6 mb-20">
+                        <div
+                            class="bento-card group flex flex-col justify-between p-8 bg-white/5 border border-white/10 rounded-[2rem]">
+                            <div class="flex justify-between items-start">
+                                <div
+                                    class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray">Média de
+                                    ROI</span>
+                            </div>
+                            <div class="mt-12">
+                                <div class="text-6xl font-black text-white tabular-nums counter" data-target="14"
+                                    data-suffix="x">0</div>
+                                <div class="text-sm font-bold uppercase tracking-widest text-primary mt-2">Retorno sobre
+                                    Investimento</div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bento-card group flex flex-col justify-between p-8 bg-white/5 border border-white/10 rounded-[2rem]">
+                            <div class="flex justify-between items-start">
+                                <div
+                                    class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray">Leads /
+                                    Mês</span>
+                            </div>
+                            <div class="mt-12">
+                                <div class="text-6xl font-black text-white tabular-nums counter" data-target="1200"
+                                    data-suffix="+">0</div>
+                                <div class="text-sm font-bold uppercase tracking-widest text-green-500 mt-2">Contatos
+                                    Qualificados</div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bento-card group flex flex-col justify-between p-8 bg-white/5 border border-white/10 rounded-[2rem]">
+                            <div class="flex justify-between items-start">
+                                <div
+                                    class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-gray">Investimento
+                                    Seguro</span>
+                            </div>
+                            <div class="mt-12">
+                                <div class="text-6xl font-black text-white tabular-nums counter" data-target="0.5"
+                                    data-suffix="M+">0</div>
+                                <div class="text-sm font-bold uppercase tracking-widest text-blue-500 mt-2">Gerenciados
+                                    em Anúncios</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enhanced Swiper with "Phone Frames" and Data Pills -->
+                    <div class="swiper swiper-container-results overflow-visible">
                         <div class="swiper-wrapper">
-                            <!-- Case 1 -->
-                            <div class="swiper-slide">
-                                <div class="reflection-container">
-                                    <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
-                                        class="w-full h-full object-cover">
+                            <!-- Case 1: Odonto -->
+                            <div class="swiper-slide !w-[280px] md:!w-[320px]">
+                                <div class="relative group cursor-pointer">
+                                    <!-- Floating Data Pills -->
                                     <div
-                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
-                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Clínica Odonto</h4>
-                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Leads
-                                            Qualificados</p>
+                                        class="absolute -top-4 -right-4 z-30 bg-primary px-4 py-2 rounded-full font-black text-xs shadow-2xl floating-pill opacity-0 translate-y-4">
+                                        +42 LEADS NO DIA
+                                    </div>
+                                    <div
+                                        class="absolute top-1/2 -left-8 z-30 bg-white text-black px-4 py-2 rounded-xl font-black text-[10px] shadow-2xl floating-pill opacity-0 -translate-x-4 rotate-[-12deg]">
+                                        ROI 18.5x
+                                    </div>
+
+                                    <!-- Phone Frame Perspective -->
+                                    <div
+                                        class="phone-mockup rounded-[2.5rem] overflow-hidden border-[8px] border-white/10 shadow-2xl bg-black">
+                                        <div class="reflection-container aspect-[9/18]">
+                                            <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 1"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                                                <h4 class="text-xl font-black uppercase text-white leading-none mb-1">
+                                                    Clinic Odonto</h4>
+                                                <p class="text-[10px] font-bold text-primary uppercase tracking-widest">
+                                                    Nicho: Saúde</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Case 2 -->
-                            <div class="swiper-slide">
-                                <div class="reflection-container">
-                                    <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
-                                        class="w-full h-full object-cover">
+
+                            <!-- Case 2: Veículos -->
+                            <div class="swiper-slide !w-[280px] md:!w-[320px]">
+                                <div class="relative group cursor-pointer">
                                     <div
-                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
-                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Garagem 4x4</h4>
-                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Conversão
-                                            Direta</p>
+                                        class="absolute -top-4 -right-4 z-30 bg-green-500 px-4 py-2 rounded-full font-black text-xs shadow-2xl floating-pill opacity-0 translate-y-4">
+                                        ROI 45x
+                                    </div>
+                                    <div
+                                        class="absolute top-1/4 -left-8 z-30 bg-primary text-white px-4 py-2 rounded-xl font-black text-[10px] shadow-2xl floating-pill opacity-0 -translate-x-4 rotate-[5deg]">
+                                        CPV R$ 13,28
+                                    </div>
+
+                                    <div
+                                        class="phone-mockup rounded-[2.5rem] overflow-hidden border-[8px] border-white/10 shadow-2xl bg-black">
+                                        <div class="reflection-container aspect-[9/18]">
+                                            <img src="/assets/feedbacks/venda-veiculo.jpg" alt="Caso 2"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                                                <h4 class="text-xl font-black uppercase text-white leading-none mb-1">
+                                                    Jaguar Auto</h4>
+                                                <p class="text-[10px] font-bold text-primary uppercase tracking-widest">
+                                                    Nicho: Automóveis</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Case 3 -->
-                            <div class="swiper-slide">
-                                <div class="reflection-container">
-                                    <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
-                                        class="w-full h-full object-cover">
+
+                            <!-- Case 3: Garagem -->
+                            <div class="swiper-slide !w-[280px] md:!w-[320px]">
+                                <div class="relative group cursor-pointer">
                                     <div
-                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
-                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Revenda Premium</h4>
-                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Escala
-                                            Global</p>
+                                        class="absolute -top-4 -right-4 z-30 bg-primary px-4 py-2 rounded-full font-black text-xs shadow-2xl floating-pill opacity-0 translate-y-4">
+                                        ESCALA MÁXIMA
                                     </div>
-                                </div>
-                            </div>
-                            <!-- Extra Slides -->
-                            <div class="swiper-slide">
-                                <div class="reflection-container">
-                                    <img src="/assets/feedbacks/feedback-odontologica.jpeg" alt="Caso 4"
-                                        class="w-full h-full object-cover">
+
                                     <div
-                                        class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
-                                        <h4 class="text-xl font-black uppercase leading-none mb-2">Gastro Burger</h4>
-                                        <p class="text-[10px] font-bold uppercase tracking-widest opacity-60">Delivery
-                                            Peak</p>
+                                        class="phone-mockup rounded-[2.5rem] overflow-hidden border-[8px] border-white/10 shadow-2xl bg-black">
+                                        <div class="reflection-container aspect-[9/18]">
+                                            <img src="/assets/feedbacks/feedback-garagem.jpeg" alt="Caso 3"
+                                                class="w-full h-full object-cover">
+                                            <div
+                                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                                                <h4 class="text-xl font-black uppercase text-white leading-none mb-1">
+                                                    Revenda Premium</h4>
+                                                <p class="text-[10px] font-bold text-primary uppercase tracking-widest">
+                                                    Nicho: Investimentos</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Add Pagination & Nav -->
-                        <div class="swiper-pagination !-bottom-2"></div>
+
+                        <!-- Custom Controls -->
+                        <div class="swiper-pagination-results !bottom-[-60px]"></div>
+                    </div>
+
+                    <div class="mt-32 text-center">
+                        <div
+                            class="inline-block p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+                            <div class="flex items-center gap-4 px-6 py-2">
+                                <div class="flex -space-x-3">
+                                    <div
+                                        class="w-8 h-8 rounded-full border-2 border-black bg-primary flex items-center justify-center text-[10px] font-bold">
+                                        M</div>
+                                    <div
+                                        class="w-8 h-8 rounded-full border-2 border-black bg-white flex items-center justify-center text-[10px] font-bold text-black">
+                                        A</div>
+                                    <div
+                                        class="w-8 h-8 rounded-full border-2 border-black bg-gray-500 flex items-center justify-center text-[10px] font-bold text-white">
+                                        +81</div>
+                                </div>
+                                <p class="text-xs font-bold uppercase tracking-widest text-gray">Empresas transformadas
+                                    pelo método</p>
+                            </div>
+                        </div>
+                        <br>
+                        <a href="https://wa.me/5564992834371"
+                            class="magnetic-effect group inline-flex items-center gap-6 bg-white text-black px-12 py-6 rounded-full text-xl font-black uppercase hover:scale-105 transition-all shadow-[0_20px_50px_rgba(255,255,255,0.1)]">
+                            Quero estes resultados
+                            <div
+                                class="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white group-hover:translate-x-2 transition-transform">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="3">
+                                    <path d="M5 12h14m-7-7l7 7-7 7" />
+                                </svg>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
