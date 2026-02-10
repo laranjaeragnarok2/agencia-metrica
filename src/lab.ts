@@ -170,7 +170,7 @@ function initSwiper() {
     });
 
     // Results Swiper (Custom)
-    const swiperResults = new Swiper('.swiper-container-results', {
+    new Swiper('.swiper-container-results', {
         modules: [EffectCoverflow, Pagination, Autoplay],
         effect: 'coverflow',
         grabCursor: true,
